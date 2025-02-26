@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    height: 10%;
+}
+
+.container .body {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.container .body .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container .body .content ul {
+    display: flex;
+    list-style: none;
+}
+
+.container .body .content ul li {
+    padding: 10px;
+    position: relative;
+}
+
+.container .body .content ul li:not(:last-child)::after {
+    content: "|";
+    margin-left: 10px;
+    color: #000;
+    /* Đổi màu theo ý thích */
+}
+
+.container .body .content .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
