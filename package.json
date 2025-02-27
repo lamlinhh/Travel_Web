@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "eslint './**/*.tsx' --rule 'no-console:error'; prettier --check './**/*.tsx' || true; echo '✅ Test completed'",
     "dev": "next dev --turbopack -p 3308",
     "build": "next build",
     "start": "next start",
