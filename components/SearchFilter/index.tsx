@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
 const SearchFilter = () => {
-  const [price, setPrice] = useState(5000);
+  const [price, setPrice] = useState(10000);
   return (
     <div className={styles.filterContainer}>
       <div className={styles.section}>
