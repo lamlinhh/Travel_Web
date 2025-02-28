@@ -3,10 +3,10 @@ import {
   EnvironmentFilled,
   MailFilled,
   MergeFilled,
-} from '@ant-design/icons';
-import Image from 'next/image';
-import styles from './styles.module.scss';
-import CardDetail from '@/type/CardDetail';
+} from "@ant-design/icons";
+import Image from "next/image";
+import styles from "./styles.module.scss";
+import CardDetail from "@/type/CardDetail";
 
 const index = (props: CardDetail) => {
   const { name, location, desc, price, img, time, colors } = props;
@@ -18,24 +18,24 @@ const index = (props: CardDetail) => {
       <div className={styles.cardContent}>
         <div className={styles.infoBar}>
           <span>
-            <span style={{ marginRight: '6px' }}>
-              <ClockCircleFilled style={{ color: colors, fontSize: '18px' }} />
+            <span style={{ marginRight: "6px" }}>
+              <ClockCircleFilled style={{ color: colors, fontSize: "18px" }} />
             </span>
             <span>{time}</span>
           </span>
           <div className={styles.icons}>
-            <span style={{ marginRight: '10px' }}>
-              <MailFilled style={{ color: colors, fontSize: '18px' }} />
+            <span style={{ marginRight: "10px" }}>
+              <MailFilled style={{ color: colors, fontSize: "18px" }} />
             </span>
             <span>
-              <MergeFilled style={{ color: colors, fontSize: '18px' }} />
+              <MergeFilled style={{ color: colors, fontSize: "18px" }} />
             </span>
           </div>
         </div>
 
         <h2 className={styles.cardTitle}>{name}</h2>
         <p className={styles.location}>
-          <EnvironmentFilled style={{ color: colors, fontSize: '18px' }} />
+          <EnvironmentFilled style={{ color: colors, fontSize: "18px" }} />
           {location}
         </p>
 
@@ -44,8 +44,7 @@ const index = (props: CardDetail) => {
         <div className={styles.cardFooter}>
           <button
             className={styles.detailsBtn}
-            style={{ backgroundColor: colors }}
-          >
+            style={{ backgroundColor: colors }}>
             Details
           </button>
           <p className={styles.price}>
