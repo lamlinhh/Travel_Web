@@ -1,25 +1,25 @@
-import React from 'react';
-import styles from './styles.module.scss';
-import Image from 'next/image';
-import BarImage from '@/public/assets/Search/BarImage.svg';
 import CardDetails from '@/components/CardDetails';
 import SearchFilter from '@/components/SearchFilter';
-import ChiangMai from '@/public/assets/ImageDetail/ChiangMai.svg';
-import ChaoPhraya from '@/public/assets/ImageDetail/ChaoPhraya.svg';
-import Nara from '@/public/assets/ImageDetail/Nara.svg';
+import { Group, Yard } from '@/libs';
 import Bangkok from '@/public/assets/ImageDetail/Bangkok.svg';
+import ChaoPhraya from '@/public/assets/ImageDetail/ChaoPhraya.svg';
+import ChiangMai from '@/public/assets/ImageDetail/ChiangMai.svg';
+import Nara from '@/public/assets/ImageDetail/Nara.svg';
+import BarImage from '@/public/assets/Search/BarImage.svg';
+import Image from 'next/image';
+import styles from './styles.module.scss';
 
 const Search = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.nav}>
+      <Yard className={styles.nav}>
         <Image src={BarImage} alt="image" className={styles.image} />
-      </div>
-      <div className={styles.content}>
-        <div className={styles.filter}>
+      </Yard>
+      <Yard className={styles.content}>
+        <Group className={styles.filter}>
           <SearchFilter />
-        </div>
-        <div className={styles.detail1}>
+        </Group>
+        <Group className={styles.detail1}>
           <CardDetails
             name={'Chiang Mai'}
             location={'Thailand'}
@@ -42,8 +42,8 @@ const Search = () => {
             img={ChaoPhraya}
             colors="#14B9D5"
           />
-        </div>
-        <div className={styles.detail2}>
+        </Group>
+        <Group className={styles.detail2}>
           <CardDetails
             name={'Nara'}
             location={'Japan'}
@@ -66,8 +66,8 @@ const Search = () => {
             img={Bangkok}
             colors={'#FFD205'}
           />
-        </div>
-      </div>
+        </Group>
+      </Yard>
     </div>
   );
 };
