@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-recommended", "stylelint-config-prettier"],
+  "plugins": ["stylelint-less"],
+  "rules": {
+    "no-descending-specificity": null,
+    "color-no-invalid-hex": true,
+    "at-rule-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "custom-property-no-missing-var-function": "off"
+  }
+}
