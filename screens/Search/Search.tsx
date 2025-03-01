@@ -19,7 +19,6 @@ const Search = () => {
         <Group className={styles.filter}>
           <SearchFilter />
         </Group>
-
         <Group className={styles.detail1}>
           <CardDetails
             name={"Chiang Mai"}
