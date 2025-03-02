@@ -3,23 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "test": "yarn lint:types && yarn lint-next && yarn prettier",
+    "dev": "next dev --turbopack -p 3308",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "prettier": "prettier --write **/*.{ts,tsx,js} **/*.scss",
+    "lint": "eslint . --fix --ext .ts,.tsx ",
+    "lint:es": "eslint -c .eslintrc.json --fix **/*.{ts,tsx}",
+    "lint:types": "tsc -p . --noEmit",
+    "lint-next": "next lint"
   },
   "dependencies": {
+    "antd": "^5.24.2",
+    "axios": "^1.8.1",
+    "lodash": "^4.17.21",
+    "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.7"
+    "react-router": "^7.2.0",
+    "sass": "^1.85.1",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
+    "prettier": "^3.5.2",
+    "typescript": "^5"
   }
 }
