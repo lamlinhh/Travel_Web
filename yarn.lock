@@ -2383,11 +2383,7 @@ prelude-ls@^1.2.1:
 
 prettier@^3.5.2:
   version "3.5.2"
-<<<<<<< HEAD
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.5.2.tgz#d066c6053200da0234bf8fa1ef45168abed8b914"
-=======
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.5.2.tgz"
->>>>>>> a8700c622dd9ec46f603f97a3caccf746e02a57c
   integrity sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==
 
 prop-types@^15.8.1:

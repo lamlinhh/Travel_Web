@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import styles from './styles.module.scss';
+"use client";
+import React, { useState } from "react";
+import styles from "./styles.module.scss";
 
 const SearchFilter = () => {
   const [price, setPrice] = useState(10000);
@@ -25,11 +25,11 @@ const SearchFilter = () => {
         <label className={styles.label}>Typologies:</label>
         <div className={styles.checkboxGroup}>
           {[
-            'Sports Activities',
-            'Heritage Tours',
-            'Budget Travel',
-            'Eco-tourism',
-            'Beach Holidays',
+            "Sports Activities",
+            "Heritage Tours",
+            "Budget Travel",
+            "Eco-tourism",
+            "Beach Holidays",
           ].map((item) => (
             <label key={item}>
               <input type="checkbox" /> {item}
@@ -39,7 +39,7 @@ const SearchFilter = () => {
       </div>
 
       <div className={styles.section}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <label className={styles.label}>Max Price:</label>
           <span>${price}</span>
         </div>
@@ -60,7 +60,7 @@ const SearchFilter = () => {
       <div className={styles.section}>
         <label className={styles.label}>Durations:</label>
         <div className={styles.checkboxGroup}>
-          {['1 Week', '15 Days', '10 Days', '5 Days'].map((item) => (
+          {["1 Week", "15 Days", "10 Days", "5 Days"].map((item) => (
             <label key={item}>
               <input type="checkbox" /> {item}
             </label>
@@ -71,7 +71,7 @@ const SearchFilter = () => {
       <div className={styles.section}>
         <label className={styles.label}>Difficulty:</label>
         <div className={styles.checkboxGroup}>
-          {['Challenging', 'Easy', 'Difficult', 'Medium'].map((item) => (
+          {["Challenging", "Easy", "Difficult", "Medium"].map((item) => (
             <label key={item}>
               <input type="checkbox" /> {item}
             </label>
@@ -82,7 +82,7 @@ const SearchFilter = () => {
       <div className={styles.section}>
         <label className={styles.label}>Min Age:</label>
         <div className={styles.checkboxGroup}>
-          {['0', '18', '16', '5'].map((item) => (
+          {["0", "18", "16", "5"].map((item) => (
             <label key={item}>
               <input type="checkbox" /> {item}
             </label>
