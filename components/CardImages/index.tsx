@@ -1,4 +1,4 @@
-import { Yard } from "@/libs";
+import { Block, Section, Yard } from "@/libs";
 import CardImage from "@/type/cardImage";
 import Image from "next/image";
 import styles from "./styles.module.scss";
@@ -8,13 +8,13 @@ const Index = (props: CardImage) => {
     const { img, name } = props;
     return (
         <Yard className={styles.yard}>
-            <div className={styles.imageContainer}>
+            <Section className={styles.imageContainer}>
                 <Image src={img} alt="Tour Image" fill className={styles.img} />
-                <div className={styles.overlay}>
+                <Block className={styles.overlay}>
                     <HomeOutlined className={styles.icon} />
                     <span className={styles.text}>{name}</span>
-                </div>
-            </div>
+                </Block>
+            </Section>
         </Yard>
     );
 };
