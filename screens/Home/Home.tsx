@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./styles.module.scss";
 import {
   SearchOutlined,
@@ -7,13 +8,21 @@ import {
   GlobalOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
+import { Container } from "@/libs";
 
 const Home = () => {
   return (
-    <div className={styles.container}>
+    <Container className={styles.container}>
       <div className={styles.body}>
         <div className={styles.content}>
           <div className={styles.overlay}></div>
+          <Image
+            src="/assets/ImageHome/banner.svg"
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            className={styles.backgroundImage}
+          />
           <div className={styles.subtitle}>
             <h3>LOVE TRAVEL THEME</h3>
             <h1>
@@ -59,8 +68,26 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <div className={styles.content}>
+          <div>
+            <span>Dream Vacation Destination</span>
+            <h1>Plan the Trip of a Lifetime with Ease</h1>
+            <span>
+              Whether you are looking for a romantic getaway, a family-friendly
+              adventure, or a solo journey to explore the world, a travel agency
+              can provide you with a custom-tailored itinerary that exceeds your
+              expectations.
+            </span>
+
+            <div className={styles.buttonContainer}>
+              <Button className={styles.btn}>More Info</Button>
+            </div>
+          </div>
+          <div></div>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 export default Home;
