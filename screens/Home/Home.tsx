@@ -8,7 +8,13 @@ import {
   GlobalOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
-import { Container } from "@/libs";
+import { Area, Block, Container, Text } from "@/libs";
+import CardDetails from "@/components/CardDetails";
+import ChiangMai from "@/public/assets/ImageDetail/ChiangMai.svg";
+import CardImages from "@/components/CardImages";
+import mountain from "@/public/assets/ImageHome/mountain.svg";
+import skyscraper from "@/public/assets/ImageHome/skyscraper.svg";
+import tour from "@/public/assets/ImageHome/tour.svg";
 
 const Home = () => {
   return (
@@ -70,21 +76,42 @@ const Home = () => {
         </div>
 
         <div className={styles.content}>
-          <div>
+          <Block className={styles.desc}>
             <span>Dream Vacation Destination</span>
             <h1>Plan the Trip of a Lifetime with Ease</h1>
-            <span>
+            <Text fontSize={16} width="500px">
               Whether you are looking for a romantic getaway, a family-friendly
               adventure, or a solo journey to explore the world, a travel agency
               can provide you with a custom-tailored itinerary that exceeds your
               expectations.
-            </span>
+            </Text>
 
             <div className={styles.buttonContainer}>
-              <Button className={styles.btn}>More Info</Button>
+              <Button className={styles.btn} type="primary">More Info</Button>
             </div>
-          </div>
-          <div></div>
+          </Block>
+
+          <Area className={styles.card}>
+            <Block>
+
+            </Block>
+            <Block gap={2} mBot={3.5}>
+              <CardImages img={mountain} name="City Walks Tour" />
+              <CardImages img={skyscraper} name="Electric Bikes" />
+              <CardImages img={tour} name="Skyscrapers View" />
+            </Block>
+            <Block gap={2}>
+              <CardDetails desc="Visit the temples and the Chiang Mai Night
+Bazaar, a huge huge market located on
+Chiang Klan Road." img={ChiangMai} name="Chiang Mai" location={"Thailand"} price="490" time="1 Week" colors="#14B9D5" />
+              <CardDetails desc="Visit the temples and the Chiang Mai Night
+Bazaar, a huge huge market located on
+Chiang Klan Road." img={ChiangMai} name="Chiang Mai" location={"Thailand"} price="490" time="1 Week" colors="#14B9D5" />
+              <CardDetails desc="Visit the temples and the Chiang Mai Night
+Bazaar, a huge huge market located on
+Chiang Klan Road." img={ChiangMai} name="Chiang Mai" location={"Thailand"} price="490" time="1 Week" colors="#14B9D5" />
+            </Block>
+          </Area>
         </div>
       </div>
     </Container>

@@ -92,7 +92,7 @@
 
                 .btn {
                     font-size: 14px;
-                    background: darkslateblue;
+                    background-color: darkslateblue;
                     color: white;
                     font-weight: bold;
                     width: 200px;
@@ -108,4 +108,17 @@
             }
         }
     }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: start;
 }
