@@ -1,0 +1,84 @@
+.prices {
+  text-align: center;
+  padding: 50px;
+
+  .banner {
+    background: url("/assets/Prices/banner.svg") no-repeat center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: antiquewhite;
+  }
+
+  .title {
+    margin: 50px 0;
+    span {
+      color: #6c63ff;
+      font-size: 1.2rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+    p {
+      max-width: 700px;
+      margin: auto;
+    }
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+    .card {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: translateY(-10px);
+        color: red;
+        background-color: blue;
+      }
+
+
+      img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .content {
+        padding: 20px;
+        background: white;
+
+        h3 {
+          color: #6c63ff;
+        }
+
+        ul {
+          text-align: left;
+        }
+
+        button {
+          background: #6c63ff;
+          color: white;
+          border: none;
+          padding: 10px;
+          width: 100%;
+          cursor: pointer;
+
+          &:hover {
+            background: #5145cd;
+          }
+        }
+      }
+    }
+  }
+}

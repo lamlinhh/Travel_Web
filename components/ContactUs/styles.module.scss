@@ -1,0 +1,46 @@
+.contact {
+  .banner {
+    background: url("/assets/contactus/banner.svg") center/cover;
+    text-align: center;
+    padding: 100px;
+    color: red;
+    background-color: antiquewhite;
+    font-size: 48px;
+    font-weight: bold;
+  }
+
+  .infos {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    text-align: center;
+
+    .info {
+      h3 {
+        color: #6c63ff;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .formContainer {
+    text-align: center;
+    padding: 50px;
+    background: #f9f9f9;
+
+    span {
+      color: #6c63ff;
+    }
+
+    .btn {
+      margin-top: 20px;
+      background: #6c63ff;
+      border: none;
+      padding: 10px 40px;
+    }
+  }
+
+  .map {
+    margin-top: 50px;
+  }
+}

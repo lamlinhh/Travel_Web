@@ -14,17 +14,24 @@
     "lint-next": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "antd": "^5.24.2",
+    "aos": "^2.3.4",
     "lodash": "^4.17.21",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-router": "^7.2.0",
+    "react-router-dom": "^7.2.0",
     "sass": "^1.85.1",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "travelweb": "file:"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/antd": "^1.0.4",
+    "@types/aos": "^3.0.7",
     "@types/lodash": "^4.17.15",
     "@types/node": "^20",
     "@types/react": "^19",
