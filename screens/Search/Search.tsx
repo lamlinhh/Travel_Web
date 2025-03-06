@@ -15,7 +15,7 @@ const Search = () => {
       <Yard className={styles.nav}>
         <Image src={BarImage} alt="image" className={styles.image} />
       </Yard>
-      <Yard className={styles.content}>
+      <Yard className={styles.content} full>
         <Group className={styles.filter}>
           <SearchFilter />
         </Group>
