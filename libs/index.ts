@@ -34,9 +34,6 @@ export {
 
 export { _get, _listenEvent };
 
-// export { modalRef };
-// export type { IModal, SearchRef };
-
 declare global {
   type IOptionCheck =
     | {
