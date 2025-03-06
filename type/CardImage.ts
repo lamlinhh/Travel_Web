@@ -1,6 +1,6 @@
 interface CardImage {
-    img: string;
-    name: string;
+  img: string;
+  name: string;
 }
 
 export default CardImage;
