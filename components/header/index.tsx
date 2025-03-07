@@ -17,16 +17,19 @@ const Header = () => {
                 <Link href="/">Travel</Link>
               </li>
               <li>
-                <Link href="/">Pages</Link>
+                <Link href="/Prices">Prices</Link>
               </li>
               <li>
-                <Link href="/">Shop</Link>
+                <Link href="/Shop">Shop</Link>
               </li>
               <li>
-                <Link href="/">Blog</Link>
+                <Link href="/Blog">Blog</Link>
               </li>
               <li>
-                <Link href="/">Contact Us</Link>
+                <Link href="/AboutUs">About Us</Link>
+              </li>
+              <li>
+                <Link href="/ContactUs">Contact Us</Link>
               </li>
             </ul>
           </div>
