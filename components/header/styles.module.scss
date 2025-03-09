@@ -1,7 +1,7 @@
 .container {
   width: 100%;
-  height: 10%;
-  background-color: #ccc;
+  height: 50px;
+  background-color: #fff;
 
   .body {
     width: 50%;
@@ -22,19 +22,7 @@
         li {
           padding: 10px;
           position: relative;
-
-          &:not(:last-child)::after {
-            content: "|";
-            margin-left: 10px;
-            color: #000;
-          }
         }
-      }
-
-      .button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
   }
