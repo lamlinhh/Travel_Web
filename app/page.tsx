@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation";
+import Home from "@/screens/Home/Home";
+import React from "react";
 
-export default function HomeRedirect() {
-  redirect("/Home");
-}
+const page = () => {
+  return (
+    <>
+      <Home />
+    </>
+  );
+};
+
+export default page;
