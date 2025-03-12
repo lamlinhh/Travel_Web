@@ -1,13 +1,14 @@
 "use client";
-import { Button } from "antd";
-import styles from "./styles.module.scss";
 import Link from "next/link";
+import styles from "./styles.module.scss";
+import { Container, Yard } from "@/libs";
 
 const Header = () => {
   return (
-    <div className={styles.container}>
+    <Container className={styles.container} center>
       <div className={styles.body}>
         <div className={styles.content}>
+          <Yard center>ICON</Yard>
           <div>
             <ul className={styles.ul}>
               <li>
@@ -33,14 +34,9 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className={styles.button}>
-            <Button type="primary" size={"middle"}>
-              Seacrh
-            </Button>
-          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
