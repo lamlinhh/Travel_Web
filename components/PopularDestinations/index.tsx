@@ -6,37 +6,37 @@ const destinations = [
     name: "Sydney",
     tours: 10,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737607159%2Fnextravel%2Fsydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.jpg&w=640&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/sydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.webp",
   },
   {
     name: "Tokyo",
     tours: 20,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737617176%2Fnextravel%2Fjapan-tokyo_wpvxra.jpg&w=750&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/japan-tokyo_wpvxra.webp",
   },
   {
     name: "Moscow",
     tours: 13,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737617705%2Fnextravel%2Fmoscow_jr5bb4.jpg&w=750&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/moscow_jr5bb4.webp",
   },
   {
     name: "Phuket",
     tours: 19,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fc_crop%2Cw_800%2Fv1737617874%2Fnextravel%2Fphuket_utqmlt.jpg&w=828&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/phuket_utqmlt.webp",
   },
   {
     name: "Singapore",
     tours: 19,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737618599%2Fnextravel%2Fsingapore_qihqqs_ehracs.png&w=1200&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/singapore_qihqqs_ehracs.webp",
   },
   {
     name: "Hoi An",
     tours: 19,
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737618707%2Fnextravel%2Fpeter-borter-ai_mpqLXBTc-unsplash_u2s6qy.jpg&w=1080&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/peter-borter-ai_mpqLXBTc-unsplash_u2s6qy.webp",
   },
 ];
 
