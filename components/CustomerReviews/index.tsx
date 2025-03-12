@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 const reviews = [
   {
     avatar:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fc_pad%2Cw_400%2Fv1737656275%2Fnextravel%2Ftravelers%2Fpexels-pawan-yadav-1321878-2577274_v3fgsy.jpg&w=128&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/pexels-pawan-yadav-1321878-2577274_v3fgsy.webp",
     name: "Greyson Decker",
     title: "Clean Cabin, Good Service",
     rating: 5,
@@ -12,7 +12,7 @@ const reviews = [
   },
   {
     avatar:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fc_pad%2Cw_400%2Fv1737656270%2Fnextravel%2Ftravelers%2Fpexels-ionelceban-2577440_lpfpbd.jpg&w=128&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/pexels-ionelceban-2577440_lpfpbd.webp",
     name: "Grace Houston",
     title: "Coastal to Capital: A Seamless Journey",
     rating: 5,
@@ -21,7 +21,7 @@ const reviews = [
   },
   {
     avatar:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fc_pad%2Cw_400%2Fv1737656271%2Fnextravel%2Ftravelers%2Fpexels-te-lensfix-380994-1371360_bu9hxg.jpg&w=64&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/pexels-te-lensfix-380994-1371360_bu9hxg.webp",
     name: "Lara Mcleod",
     title: "Scenic Serenity on Rails",
     rating: 5,
