@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 const tours = [
   {
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737605324%2Fnextravel%2Fred-telephone-booth_lt9tej.jpg&w=750&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/sydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.webp",
     location: "Paris, France",
     title: "Cannes and Antibes Night Tour",
     rating: 4,
