@@ -14,7 +14,7 @@ const tours = [
   },
   {
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdrnf8u8vq%2Fimage%2Fupload%2Fv1737605686%2Fnextravel%2FVenice_cldsgh.jpg&w=640&q=75",
+      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/Venice_cldsgh.webp",
     location: "Venice, Italy",
     title: "Vinecy and Toul Night Tour",
     rating: 5,
