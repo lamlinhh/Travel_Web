@@ -1,0 +1,51 @@
+.container {
+    .nav {
+        position: relative;
+        overflow: hidden;
+
+        .nav_img {
+            width: 100vw;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .nav_text {
+            width: 100%;
+            position: absolute;
+            top: 40px;
+            left: 100px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+
+            .navTitleText {
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+
+            .navContentText {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        .topArea {
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            padding-bottom: 10px;
+
+            .titleContent {
+                color: rgb(0, 0, 0);
+                font-weight: 600;
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+    }
+}
