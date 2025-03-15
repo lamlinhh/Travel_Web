@@ -1,3 +1,4 @@
+import axiosInstance from "@/axios/axiosInstance";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -19,7 +20,7 @@ const initialState: ItemState = {
 };
 
 export const fetchItems = createAsyncThunk("item/fetchItems", async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/item/");
+  const response = await axiosInstance.get("/");
   return response.data.results;
 });
 
