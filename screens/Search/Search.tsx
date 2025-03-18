@@ -67,7 +67,6 @@ const Search = () => {
             colors={"#FFD205"}
           />
         </Group>
-
       </Yard>
     </div>
   );

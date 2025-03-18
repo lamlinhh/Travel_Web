@@ -87,7 +87,7 @@ const CardTour = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CardTour;
