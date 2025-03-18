@@ -1,10 +1,16 @@
 import axiosInstance from "@/axios/axiosInstance";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 interface Item {
-  name: string;
-  url: string;
+  _id?: number,
+  TourId?: string,
+  UserId?: string,
+  UserName?: string,
+  Rating?: number,
+  Title?: string,
+  Comment?: string,
+  createdAt?: string,
+  updatedAt?: string,
 }
 
 interface ItemState {
@@ -19,9 +25,9 @@ const initialState: ItemState = {
   error: null,
 };
 
-export const fetchItems = createAsyncThunk("item/fetchItems", async () => {
-  const response = await axiosInstance.get("/");
-  return response.data.results;
+export const fetchItems = createAsyncThunk("GetAllReviews", async () => {
+  const response = await axiosInstance.get("/GetAllReviews");
+  return response.data;
 });
 
 const itemSlice = createSlice({

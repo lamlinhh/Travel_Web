@@ -1,13 +1,13 @@
 "use client";
 
 import { fetchItems } from "@/redux/slices/itemSlice";
-import { AppDispatch, RootState } from "@/redux/store";
+import { AppDispatch } from "@/redux/store";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const ItemList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { items } = useSelector((state: RootState) => state.item);
+  const { items } = useSelector((state: any) => state?.item);
 
   useEffect(() => {
     dispatch(fetchItems());
@@ -15,10 +15,10 @@ const ItemList = () => {
 
   return (
     <div>
-      {items.map((item) => {
+      {items?.reviews?.map((item: any) => {
         return (
-          <ul>
-            <li key={item.name}>{item.name}</li>
+          <ul key={item?._id}>
+            <li >{item?.Title}</li>
           </ul>
         );
       })}
