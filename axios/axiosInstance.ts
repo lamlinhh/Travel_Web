@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://pokeapi.co/api/v2/item/",
+  baseURL: "https://travel-website-service.onrender.com",
 });
 
 axiosInstance.interceptors.request.use(

@@ -1,7 +1,10 @@
 export interface ReviewProps {
-  avatar: string;
-  name: string;
-  title: string;
-  rating: number;
-  content: string;
+  _id: string;
+  TourId: string;
+  UserId: string;
+  avatar?: string;
+  UserName: string;
+  Title: string;
+  Rating: number;
+  Comment: string;
 }
