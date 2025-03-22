@@ -3,6 +3,7 @@
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Avatar, Button, Input, Table, Tag } from "antd";
 import { useState } from "react";
+import styles from "./styles.module.scss";
 
 const index = () => {
   const [search, setSearch] = useState("");
@@ -80,7 +81,7 @@ const index = () => {
   ];
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className={styles.container}>
       <h2>Users</h2>
       <div
         style={{

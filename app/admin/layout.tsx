@@ -13,13 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Providers>
+    <div style={{ display: "flex" }}>
       <div>
-        <div>
-          <Sidebar />
-        </div>
-        <div>{children}</div>
+        <Sidebar />
       </div>
-    </Providers>
+      <div style={{ width: "100%" }}>{children}</div>
+    </div>
   );
 }
