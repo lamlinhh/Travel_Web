@@ -34,7 +34,6 @@ const UserModal: React.FC<UserModalProps> = ({ open, onClose, onSuccess }) => {
     setLoading(true);
     try {
       const response = await axiosInstance.post("CreateNewUser", values);
-      console.log("Response:", response.data);
 
       if (isEqual(response.data.errCode, 0)) {
         form.resetFields();
