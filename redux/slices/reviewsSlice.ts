@@ -1,4 +1,3 @@
-// src/redux/slices/reviewsSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { ReviewProps } from '@/types/ReviewProps';
 import { getAllReviews, createReview, updateReview, deleteReview } from '@/api/reviewAPI';
