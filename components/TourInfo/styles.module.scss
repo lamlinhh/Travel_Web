@@ -1,0 +1,35 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tourInfo {
+    .tourinfoName {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.review {
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    color: gray;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.goldStar {
+    color: gold;
+}
+
+.grayStar {
+    color: gray;
+}

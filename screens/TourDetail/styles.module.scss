@@ -1,0 +1,38 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    // padding: 20px;
+
+    .sectiontop {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+
+        .blockleft {
+            width: 50%;
+        }
+
+        .blockright {
+            width: 50%;
+        }
+    }
+
+    .sectionbottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .blocktop {
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            padding-bottom: 20px;
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,151 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: max-content;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 750px;
+  width: 100%;
+}
+
+.imageContainer {
+  width: 40%;
+  min-width: 180px;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff5733;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.content {
+  flex: 1;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+
+  svg {
+    margin-right: 5px;
+    color: #ff5733;
+  }
+}
+
+.titleCard {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 8px 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #ffb400;
+
+  svg {
+    margin-right: 2px;
+  }
+
+  span {
+    color: #555;
+    margin-left: 6px;
+  }
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff5733;
+  align-self: flex-end;
+  margin-top: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  .paginationButton {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #0070f3;
+      color: #fff;
+    }
+  }
+
+  .pageNumber {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: #0070f3;
+      color: #fff;
+    }
+  }
+
+  .activePage {
+    background-color: #0070f3;
+    color: #fff;
+    font-weight: bold;
+  }
+}
