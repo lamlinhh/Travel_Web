@@ -1,5 +1,4 @@
 import Sidebar from "@/components/Sidebar";
-import Providers from "@/redux/providers/Providers";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

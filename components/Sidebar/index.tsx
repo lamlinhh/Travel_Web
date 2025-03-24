@@ -3,20 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./styles.module.scss";
+import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 
-const index = () => {
+const Index = () => {
   const pathname = usePathname();
 
   const menuItems = [
-    { name: "Dashboard", icon: "📊", path: "/admin" },
-    { name: "User", icon: "👤", path: "/admin/user" },
-    { name: "Product", icon: "🛒", path: "/admin/product" },
-    { name: "Sign in", icon: "🔒", path: "/signin" },
+    { name: "Dashboard", icon: <SpaceDashboardIcon />, path: "/admin" },
+    { name: "User", icon: <PersonIcon />, path: "/admin/user" },
+    { name: "Product", icon: <ShoppingCartIcon />, path: "/admin/product" },
   ];
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logo}>💠</div>
+      <div className={styles.logo}>Admin</div>
       <ul className={styles.menu}>
         {menuItems.map((item) => (
           <li
@@ -33,4 +35,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

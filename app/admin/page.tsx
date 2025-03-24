@@ -1,12 +1,7 @@
-import Admin from "@/screens/Admin";
 import React from "react";
 
 const page = () => {
-  return (
-    <>
-      <Admin />
-    </>
-  );
+  return <>admin</>;
 };
 
 export default page;

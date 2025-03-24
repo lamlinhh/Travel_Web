@@ -1,11 +1,10 @@
-import { Container } from "@/libs";
 import styles from "./styles.module.scss";
 
 import {
-  FaRegHandshake,
-  FaRegSmile,
   FaHandsHelping,
   FaRegClock,
+  FaRegHandshake,
+  FaRegSmile,
 } from "react-icons/fa";
 
 const benefits = [

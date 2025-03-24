@@ -4,6 +4,7 @@ import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Avatar, Button, Input, Table, Tag } from "antd";
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import { ColumnsType } from "antd/es/table";
 
 const index = () => {
   const [search, setSearch] = useState("");
@@ -11,69 +12,99 @@ const index = () => {
     {
       key: "1",
       name: "Adam Trantow",
-      company: "Mohr, Langworth and Hills",
-      role: "UI Designer",
-      verified: true,
+      img: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/cat2.webp",
+      price: "100.000.000",
       status: "Active",
     },
     {
       key: "2",
       name: "Angel Rolfson-Kulas",
-      company: "Koch and Sons",
-      role: "UI Designer",
-      verified: true,
+      img: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/cat3.webp",
+      price: "300.000.000",
       status: "Active",
     },
     {
       key: "3",
       name: "Betty Hammes",
-      company: "Waelchi – VonRueden",
-      role: "UI Designer",
-      verified: true,
+      img: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/cat4.webp",
+      price: "600.000.000",
       status: "Active",
     },
     {
       key: "4",
       name: "Billy Braun",
-      company: "White, Cassin and Goldner",
-      role: "UI Designer",
-      verified: false,
+      img: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/cat5.webp",
+      price: "700.000.000",
       status: "Banned",
     },
     {
       key: "5",
       name: "Billy Stoltenberg",
-      company: "Medhurst, Moore and Franey",
-      role: "Leader",
-      verified: true,
+      img: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/th.webp",
+      price: "100.000.000",
       status: "Banned",
     },
   ]);
 
-  const columns = [
+  const columns: ColumnsType<{
+    key: string;
+    name: string;
+    img: string;
+    price: string;
+    status: string;
+  }> = [
     {
-      title: "Name",
+      title: "Tên",
       dataIndex: "name",
       key: "name",
-      render: (text: any, record: any) => (
+      align: "center",
+      render: (text: any) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <Avatar>{text.charAt(0)}</Avatar>
           <span style={{ marginLeft: 8 }}>{text}</span>
         </div>
       ),
     },
-    { title: "Company", dataIndex: "company", key: "company" },
-    { title: "Role", dataIndex: "role", key: "role" },
     {
-      title: "Verified",
-      dataIndex: "verified",
-      key: "verified",
-      render: (verified: any) => (verified ? "✔️" : "-"),
+      title: "Ảnh",
+      dataIndex: "img",
+      key: "img",
+      width: 400,
+      align: "center",
+      render: (data: any) => (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          <img
+            src={data}
+            alt="product"
+            style={{
+              width: 140,
+              height: 140,
+              objectFit: "cover",
+              borderRadius: 8,
+            }}
+          />
+        </div>
+      ),
     },
     {
-      title: "Status",
+      title: "Giá",
+      width: 300,
+      align: "center",
+      dataIndex: "role",
+      key: "role",
+    },
+    {
+      title: "Số lượng",
       dataIndex: "status",
       key: "status",
+      align: "center",
+      width: 400,
+
       render: (status: any) => (
         <Tag color={status === "Active" ? "green" : "red"}>{status}</Tag>
       ),
@@ -82,7 +113,7 @@ const index = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Users</h2>
+      <h2>Sản phẩm</h2>
       <div
         style={{
           display: "flex",
@@ -97,7 +128,7 @@ const index = () => {
           style={{ width: 250 }}
         />
         <Button type="primary" icon={<PlusOutlined />}>
-          New User
+          Thêm
         </Button>
       </div>
       <Table

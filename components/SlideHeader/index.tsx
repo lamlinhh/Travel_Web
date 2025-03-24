@@ -11,7 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./styles.module.scss";
 
-const index = () => {
+const Index = () => {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState<Date | null>(new Date());
 
@@ -68,4 +68,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

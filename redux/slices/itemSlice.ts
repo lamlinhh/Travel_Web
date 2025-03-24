@@ -1,6 +1,5 @@
 import axiosInstance from "@/axios/axiosInstance";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface Item {
   name: string;

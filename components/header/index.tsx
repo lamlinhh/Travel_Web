@@ -1,10 +1,23 @@
 "use client";
+import { Container, Text, Yard } from "@/libs";
+import { Button } from "antd";
 import Link from "next/link";
-import styles from "./styles.module.scss";
-import { Container, Yard, Text } from "@/libs";
+import { usePathname } from "next/navigation";
 import { FaUserCircle } from "react-icons/fa";
+import styles from "./styles.module.scss";
 
 const Header = () => {
+  const pathname = usePathname();
+  const isAdminPage = pathname.startsWith("/admin");
+
+  const handleLogout = () => {
+    document.cookie = "token=; path=/; max-age=0";
+
+    localStorage.removeItem("user");
+
+    window.location.href = window.location.origin;
+  };
+
   return (
     <Container className={styles.container} center>
       <div className={styles.body}>
@@ -27,9 +40,15 @@ const Header = () => {
                 <Link href="/">Tour</Link>
               </li>
               <li>
-                <div className={styles.userIcon}>
-                  <FaUserCircle size={20} />{" "}
-                </div>
+                {isAdminPage ? (
+                  <Button type="default" onClick={handleLogout}>
+                    Logout
+                  </Button>
+                ) : (
+                  <div className={styles.userIcon}>
+                    <FaUserCircle size={20} />
+                  </div>
+                )}
               </li>
             </ul>
           </div>
