@@ -55,17 +55,17 @@ export const getReviewsByTourId = async (
 
 export const createReview = async (
     data: Partial<ReviewProps>,
-    token: string
+    // token: string
 ): Promise<ReviewProps> => {
     try {
         const response = await axios.post<ReviewProps>(
             `${BASE_URL}/CreateNewReview`,
             data,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            }
+            // {
+            //     headers: {
+            //         Authorization: `Bearer ${token}`,
+            //     },
+            // }
         );
         return response.data;
     } catch (error) {

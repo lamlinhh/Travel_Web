@@ -18,9 +18,9 @@ export const fetchReviews = createAsyncThunk(
 // Optional: Thunks cho create, update, delete cũng có thể viết ở đây
 export const createReviewThunk = createAsyncThunk(
   'reviews/createReview',
-  async ({ data, token }: { data: Partial<ReviewProps>; token: string }, thunkAPI) => {
+  async ({ data/*, token */}: { data: Partial<ReviewProps>/*; token: string */}, thunkAPI) => {
     try {
-      const newReview = await createReview(data, token);
+      const newReview = await createReview(data/*, token*/);
       return newReview;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.message);

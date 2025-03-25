@@ -73,8 +73,8 @@ const ReviewsForPageReviews = () => {
         <div className={styles.container}>
             <div className={styles.reviewGrid}>
                 {reviews.length > 0 ? (
-                    reviews.map((review) => (
-                        <ReviewCard key={review._id} {...review} />
+                    reviews.map((review, index) => (
+                        <ReviewCard key={review._id?.toString()} {...review} />
                     ))
                 ) : (
                     <div>No reviews found.</div>

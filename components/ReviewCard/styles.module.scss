@@ -4,6 +4,7 @@
   border-radius: 12px;
   padding: 20px;
   width: 300px;
+  min-height: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
 
@@ -48,8 +49,9 @@
   }
 
   .Comment {
-    font-size: 15px;
+    font-size: 1.1rem;
     color: #666;
+    min-height: calc(1.1rem * 3);
   }
 
   .BlockReadMore {
