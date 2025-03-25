@@ -7,6 +7,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "@/redux/providers/Providers";
 import { ConfigProvider } from "antd";
+import { ToastContainer } from "react-toastify";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <ToastContainer />
         <ConfigProvider>
           <Providers>
             {!isLoginPage && <Header />}

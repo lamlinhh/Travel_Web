@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axiosInstance from "@/axios/axiosInstance";
 import styles from "./styles.module.scss";
 import { isEqual } from "lodash";
+import { toast } from "react-toastify";
 
 const { Title } = Typography;
 
@@ -22,7 +23,14 @@ const Index = () => {
       const response = await axiosInstance.post("/Login", values);
 
       if (isEqual(response.data.errCode, 0)) {
-        const { token, user } = response.data;
+        const { token, user } = response?.data;
+
+        // Kiểm tra quyền hạn của user
+        if (user.Role !== "admin") {
+          message.error("Bạn không có quyền truy cập!");
+          toast.error("Tài khoản không có quyền truy cập!");
+          return;
+        }
 
         // Lưu token vào cookie
         document.cookie = `token=${token}; path=/; max-age=86400`;
@@ -33,10 +41,11 @@ const Index = () => {
         message.success("Đăng nhập thành công!");
         router.push("/admin/user");
       } else {
+        toast.error("Email hoặc mật khẩu không chính xác!");
         message.error(response.data.message || "Đăng nhập thất bại!");
       }
     } catch (error) {
-      message.error("Email hoặc mật khẩu không đúng!");
+      toast.error("Email hoặc mật khẩu không đúng!");
     } finally {
       setLoading(false);
     }

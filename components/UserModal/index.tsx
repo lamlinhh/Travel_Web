@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button, Modal, Form, Input, Select } from "antd";
 import axiosInstance from "@/axios/axiosInstance";
+import { Button, Form, Input, Modal, Select } from "antd";
 import { isEqual } from "lodash";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const { Option } = Select;
 
@@ -53,8 +53,6 @@ const UserModal: React.FC<UserModalProps> = ({ open, onClose, onSuccess }) => {
 
   return (
     <>
-      <ToastContainer />
-
       <Modal
         open={open}
         title="Thêm user"
