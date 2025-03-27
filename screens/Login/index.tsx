@@ -28,7 +28,9 @@ const Index = () => {
         // Kiểm tra quyền hạn của user
         if (user.Role !== "admin") {
           message.error("Bạn không có quyền truy cập!");
-          toast.error("Tài khoản không có quyền truy cập!");
+          toast.error("Tài khoản không có quyền truy cập!", {
+            style: { width: "340px", height: "80px", textAlign: "center" },
+          });
           return;
         }
 

@@ -13,7 +13,7 @@ const Index = () => {
   const menuItems = [
     { name: "Dashboard", icon: <SpaceDashboardIcon />, path: "/admin" },
     { name: "User", icon: <PersonIcon />, path: "/admin/user" },
-    { name: "Product", icon: <ShoppingCartIcon />, path: "/admin/product" },
+    { name: "Tour", icon: <ShoppingCartIcon />, path: "/admin/tour" },
   ];
 
   return (

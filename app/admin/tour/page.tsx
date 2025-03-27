@@ -1,10 +1,10 @@
-import Products from "@/screens/Products";
+import Tours from "@/screens/Tours";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <Products />
+      <Tours />
     </>
   );
 };
