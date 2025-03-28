@@ -1,24 +1,57 @@
 "use client";
 
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
-import { Avatar, Button, Input, Table, Tag } from "antd";
-import { useEffect, useState } from "react";
-import styles from "./styles.module.scss";
-import { ColumnsType } from "antd/es/table";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/redux/store";
+import TourModal from "@/modals/TourModal";
 import { fetchTours } from "@/redux/slices/tourSlice";
+import { AppDispatch, RootState } from "@/redux/store";
+import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Popconfirm, Table } from "antd";
+import { ColumnsType } from "antd/es/table";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./styles.module.scss";
+import moment from "moment";
+import { DeleteOutlined } from "@ant-design/icons";
+import axiosInstance from "@/axios/axiosInstance";
+import { toast } from "react-toastify";
 
 const index = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { tours } = useSelector((state: RootState) => state.tour);
   const [search, setSearch] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchTours());
   }, [dispatch]);
 
+  const handleDelete = async (tourID: string) => {
+    try {
+      await axiosInstance.delete(`DeleteTour/${tourID}`);
+      toast.success("Xoá thành công!");
+      dispatch(fetchTours());
+    } catch (error) {
+      toast.error("Xoá thất bại!");
+    }
+  };
+
   const columns: ColumnsType<{}> = [
+    {
+      title: "",
+      key: "action",
+      align: "center",
+      width: 30,
+      render: (_, record: any) => (
+        <Popconfirm
+          title="Bạn có chắc chắn muốn xóa tour này?"
+          onConfirm={() => handleDelete(record?._id)}
+          okText="Xóa"
+          cancelText="Hủy">
+          <DeleteOutlined
+            style={{ color: "red", cursor: "pointer", fontSize: "20px" }}
+          />
+        </Popconfirm>
+      ),
+    },
     {
       title: "Tên tour",
       dataIndex: "TourName",
@@ -56,21 +89,21 @@ const index = () => {
       align: "center",
     },
     {
-      title: "Địa điểm",
-      dataIndex: "TourLocation",
-      key: "TourLocation",
+      title: "Ngày tạo",
+      dataIndex: "createdAt",
+      key: "createdAt",
       align: "center",
-    },
-    {
-      title: "Địa điểm",
-      dataIndex: "TourLocation",
-      key: "TourLocation",
-      align: "center",
+      render: (data: any) => <>{moment(data).format("DD/MM/YYYY")}</>,
     },
   ];
 
   return (
     <div className={styles.container}>
+      <TourModal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        onSuccess={() => dispatch(fetchTours())}
+      />
       <h2>Tours</h2>
       <div
         style={{
@@ -85,14 +118,18 @@ const index = () => {
           onChange={(e) => setSearch(e.target.value)}
           style={{ width: 250 }}
         />
-        <Button type="primary" icon={<PlusOutlined />}>
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          onClick={() => setOpenModal(true)}>
           Thêm
         </Button>
       </div>
       <Table
+        bordered
         columns={columns}
-        dataSource={tours}
-        pagination={{ pageSize: 5 }}
+        dataSource={tours.map((tour: any) => ({ ...tour, key: tour?._id }))}
+        pagination={{ pageSize: 10 }}
       />
     </div>
   );

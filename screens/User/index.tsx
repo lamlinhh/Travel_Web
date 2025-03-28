@@ -1,7 +1,7 @@
 "use client";
 
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
-import { Avatar, Button, Input, Table } from "antd";
+import { Avatar, Button, Input, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,10 @@ import { fetchUsers } from "@/redux/slices/getUserSlice";
 import { User } from "@/types/user";
 import moment from "moment";
 import { ColumnsType } from "antd/es/table";
-import UserModal from "@/components/UserModal";
+import UserModal from "@/modals/UserModal";
+import { DeleteOutlined } from "@ant-design/icons";
+import axiosInstance from "@/axios/axiosInstance";
+import { toast } from "react-toastify";
 
 const UserPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +25,34 @@ const UserPage = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  const handleDelete = async (userID: string) => {
+    try {
+      await axiosInstance.delete(`DeleteUser/${userID}`);
+      toast.success("Xoá thành công!");
+      dispatch(fetchUsers());
+    } catch (error) {
+      toast.error("Xoá thất bại!");
+    }
+  };
+
   const columns: ColumnsType<User> = [
+    {
+      title: "",
+      key: "action",
+      align: "center",
+      width: 30,
+      render: (_, record: any) => (
+        <Popconfirm
+          title="Bạn có chắc chắn muốn xóa user này?"
+          onConfirm={() => handleDelete(record?._id)}
+          okText="Xóa"
+          cancelText="Hủy">
+          <DeleteOutlined
+            style={{ color: "red", cursor: "pointer", fontSize: "20px" }}
+          />
+        </Popconfirm>
+      ),
+    },
     {
       title: "UserName",
       dataIndex: "UserName",
@@ -76,6 +106,7 @@ const UserPage = () => {
         </Button>
       </div>
       <Table
+        bordered
         columns={columns}
         dataSource={users}
         pagination={{ pageSize: 10 }}

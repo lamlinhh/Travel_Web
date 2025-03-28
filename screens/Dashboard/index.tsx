@@ -5,7 +5,8 @@ import dynamic from "next/dynamic";
 import { useTheme } from "@mui/material/styles";
 import styles from "./styles.module.scss";
 import { ApexOptions } from "apexcharts";
-
+import SaleCard from "@/components/SaleCard";
+import PeopleIcon from "@mui/icons-material/People";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const dataUsers = [
@@ -59,19 +60,20 @@ const Index = () => {
       },
     },
   };
-
+  const chartData = {
+    series: [100, 200, 150, 250, 300, 350, 280],
+  };
   return (
     <div className={styles.dashboard}>
       <h2>Dashboard</h2>
       <div className={styles.cards}>
-        <div className={styles.card} style={{ background: "#f3f4f6" }}>
-          <h3>Total Users</h3>
-          <p>1.35M</p>
-        </div>
-        <div className={styles.card} style={{ background: "#fef3c7" }}>
-          <h3>Total Tours</h3>
-          <p>1.72M</p>
-        </div>
+        <SaleCard
+          icon={<PeopleIcon fontSize="large" />}
+          title="Tổng số user"
+          total={714}
+          percent={2.6}
+          chart={chartData}
+        />
       </div>
 
       <div className={styles.charts}>

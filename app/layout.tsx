@@ -8,6 +8,7 @@ import "./globals.css";
 import Providers from "@/redux/providers/Providers";
 import { ConfigProvider } from "antd";
 import { ToastContainer } from "react-toastify";
+import { isEqual } from "lodash";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
-  const isLoginPage = pathname === "/login";
+  const isLoginPage = isEqual(pathname, "/login");
 
   return (
     <html lang="en">

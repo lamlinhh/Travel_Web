@@ -6,9 +6,44 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url("/background.jpg") center/cover no-repeat;
+  overflow: hidden;
 }
 
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 600%;
+  height: 100%;
+  animation: slideBackground 50s infinite ease-in-out;
+  transition: transform 1.5s ease-in-out;
+}
+
+.imageWrapper img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes slideBackground {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100vw);
+  }
+  50% {
+    transform: translateX(-200vw);
+  }
+  75% {
+    transform: translateX(-300vw);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Overlay làm tối nền */
 .overlay {
   position: absolute;
   inset: 0;
