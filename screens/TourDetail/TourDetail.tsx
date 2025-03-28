@@ -6,7 +6,7 @@ import TourBooking from "@/components/TourBooking";
 import TourFeatures from "@/components/TourFeatures";
 import TourOverview from "@/components/TourOverview";
 import ReviewForm from "@/components/ReviewForm";
-import ReviewsForPageReviews from "@/components/ReviewsForPageReviews"
+import ReviewsForTour from "@/components/ReviewsForTour"
 import { Area, Yard, Section, Block } from "@/libs";
 
 const TourDetail = () => {
@@ -27,10 +27,10 @@ const TourDetail = () => {
             </Section>
             <Section className={styles.sectionbottom}>
                 <Block className={styles.blocktop}>
-                    <h1>All Tour Reviews</h1>
+                    <h1>Tour Reviews</h1>
                 </Block>
                 <Block className={styles.blockbottom}>
-                    <ReviewsForPageReviews />
+                    <ReviewsForTour tourId="67d04be19fa89cc86085404b" />
                 </Block>
             </Section>
         </div>

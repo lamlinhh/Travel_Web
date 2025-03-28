@@ -1,0 +1,67 @@
+.widgetCard {
+  width: 320px;
+  height: 160px;
+  position: relative;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.widgetIcon {
+  font-size: 40px;
+  color: #2563eb;
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  opacity: 0.8;
+  margin-left: 10px;
+}
+
+.trending {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1e40af;
+}
+
+.trending svg {
+  margin-right: 4px;
+}
+
+/* Nội dung */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+}
+
+/* Text */
+.text {
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 14px;
+  color: #1e3a8a;
+  margin-top: 14px;
+}
+
+.total {
+  font-size: 22px;
+  color: #1e3a8a;
+  align-items: flex-start;
+  display: flex;
+}
+
+/* Biểu đồ */
+.chart {
+  width: 90px;
+  height: 50px;
+  margin-bottom: 20px;
+}

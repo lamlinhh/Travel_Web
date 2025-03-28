@@ -1,5 +1,5 @@
 "use client";
-import { $Device } from "@/type/global";
+import { $Device } from "@/types/global";
 import { debounce } from "lodash";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";

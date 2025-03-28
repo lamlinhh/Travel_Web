@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import CardDetail from "@/type/CardDetail";
+import CardDetail from "@/types/CardDetail";
 
 const index = (props: CardDetail) => {
   const { name, location, desc, price, img, time, colors } = props;

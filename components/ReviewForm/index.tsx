@@ -46,7 +46,7 @@ const ReviewForm: React.FC = () => {
         Rating: rating,
       };
 
-      await dispatch(createReviewThunk({ data: newReview })).unwrap();
+      await dispatch(createReviewThunk(newReview)).unwrap();
 
       // Reset form sau khi gửi thành công
       setTitle('');
@@ -106,7 +106,10 @@ const ReviewForm: React.FC = () => {
         <textarea
           id="comment"
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={(e) => {
+            console.log(e.target.value.length); // Kiểm tra độ dài
+            setComment(e.target.value);
+          }}
           placeholder="Share your experience..."
           rows={4}
           className={styles.reviewForm__textarea}
