@@ -39,6 +39,9 @@ const Header = () => {
               <li>
                 <Link href="/">Tour</Link>
               </li>
+              <li><Link href="/Blog">Blog</Link></li> 
+              <li><Link href="/AboutUs">About Us</Link></li>
+              <li><Link href="/Destinations">Destinations</Link></li>
               <li>
                 {isAdminPage ? (
                   <Button type="default" onClick={handleLogout}>

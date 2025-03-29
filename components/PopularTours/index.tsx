@@ -64,8 +64,9 @@ const PopularTours = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Popular Tours</h2>
+      
       <a href="#" className={styles.viewAll}>
-        View all tours →
+        View all t →
       </a>
       <div className={styles.grid}>
         {tours.map((tour, index) => (
