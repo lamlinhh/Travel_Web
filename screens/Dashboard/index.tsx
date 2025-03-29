@@ -73,6 +73,7 @@ const Index = () => {
           total={714}
           percent={2.6}
           chart={chartData}
+          backgroundColor="#46b8da"
         />
       </div>
 
