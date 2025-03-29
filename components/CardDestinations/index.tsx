@@ -1,7 +1,7 @@
 import { Block, Section, Yard } from "@/libs";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import CardDestination from "@/type/CardDestination";
+import CardDestination from "@/types/CardDestination";
 
 const index = (props: CardDestination) => {
   const { img, name, desc } = props;

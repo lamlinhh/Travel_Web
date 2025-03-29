@@ -1,5 +1,5 @@
 import { Block, Section, Yard } from "@/libs";
-import CardImage from "@/type/CardImage";
+import CardImage from "@/types/CardImage";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { HomeOutlined } from "@ant-design/icons";

@@ -1,6 +1,6 @@
 import Magic from "@/libs/use/magic";
 import useDeviceType from "@/libs/use/useDeviceType";
-import { $Device } from "@/type/global";
+import { $Device } from "@/types/global";
 import cx from "classnames";
 import { eq } from "lodash";
 import React, { JSX } from "react";
