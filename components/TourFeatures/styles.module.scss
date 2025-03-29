@@ -1,0 +1,28 @@
+.features {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    .tourFeatures {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        gap: 18%;
+
+        .featureItem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #333;
+
+            .icon {
+                font-size: 1.3rem;
+                color: #ff8c00;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.Text {
+  height: auto;
+  vertical-align: middle;
+  line-height: initial;
+  background-color: transparent;
+  border: unset;
+  padding: 0;
+  word-break: break-word;
+  min-width: auto;
+  color: var(--text-primary);
+}
+
+.isClamp {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--line-clamp); /* Vendor-prefixed property */
+  overflow: hidden;
+  /* Dự phòng cho tương lai */
+  line-clamp: var(--line-clamp);
+  text-overflow: ellipsis;
+}
+
+.isDel {
+  text-decoration: line-through;
+}

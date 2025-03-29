@@ -1,0 +1,287 @@
+/* Tắt mã hoá cho tệp SCSS này */
+/*! unminified */
+
+.Magic {
+  list-style: none;
+  gap: var(--gap);
+  margin: 0;
+  display: var(--display, unset);
+  font-family: "Roboto";
+  position: relative;
+}
+
+.isFlex {
+  display: flex;
+}
+
+.flex {
+  flex: var(--flex);
+}
+
+.block {
+  display: block;
+}
+
+.hover {
+  transition: all 235ms ease-in-out;
+
+  &:hover {
+    // box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, -2px, 0);
+    background-color: var(--hoverBg, var(--name-background));
+  }
+
+  &:focus {
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+  }
+}
+
+.shadow {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.full {
+  width: 100%;
+}
+
+.alignItemCenter {
+  align-items: center;
+}
+
+.data_right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: unset;
+}
+
+.horizontal {
+  flex-direction: row;
+  align-items: unset;
+}
+
+.padding_hor {
+  padding-right: var(--pHor);
+  padding-left: var(--pHor);
+}
+
+.padding_ver {
+  padding-top: var(--pVer);
+  padding-bottom: var(--pVer);
+}
+
+.padding_top {
+  padding-top: var(--pTop);
+}
+
+.padding_bot {
+  padding-bottom: var(--pBot);
+}
+
+.padding_left {
+  padding-left: var(--pLeft);
+}
+
+.padding_right {
+  padding-top: var(--pRight);
+}
+
+.margin_hor {
+  margin-right: var(--mHor);
+  margin-left: var(--mHor);
+}
+
+.margin_ver {
+  margin-top: var(--mVer);
+  margin-bottom: var(--mVer);
+}
+
+.margin_top {
+  margin-top: var(--mTop);
+}
+
+.margin_bot {
+  margin-bottom: var(--mBot);
+}
+
+.margin_left {
+  margin-left: var(--mLeft);
+}
+
+.margin_right {
+  margin-right: var(--mRight);
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.fitWidth {
+  width: fit-content;
+}
+
+.container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  width: 100%;
+  flex: 1;
+
+  margin: 0 auto;
+}
+
+.fluid {
+  max-width: unset;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  right: 0;
+}
+
+// --------------> text
+
+.fontWeight {
+  font-weight: var(--fontWeight);
+}
+
+.letterSpacing {
+  letter-spacing: var(--letterSpacing);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.fontSize {
+  font-size: var(--fontSize);
+}
+
+.lineHeight {
+  line-height: var(--lineHeight);
+}
+
+.textAlign {
+  text-align: var(--textAlign);
+}
+
+.borderRadius {
+  border-radius: var(--borderRadius);
+}
+
+.justifyContent {
+  justify-content: var(--justifyContent);
+}
+
+.alignItems {
+  align-items: var(--alignItems);
+}
+
+.filter {
+  filter: drop-shadow(0px 5px 30px rgba(141, 150, 200, 0.2));
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.width {
+  width: var(--width);
+}
+
+.maxWidth {
+  max-width: var(--maxWidth);
+}
+
+.minWidth {
+  min-width: var(--minWidth);
+}
+
+.maxHeight {
+  max-height: var(--maxHeight);
+}
+
+.height {
+  height: var(--height);
+}
+
+.minHeight {
+  min-height: var(--minHeight);
+}
+
+.wordBreak {
+  word-break: var(--wordBreak);
+}
+
+.isBorderTop {
+  border-top: 0.5px solid var(--text-stroke);
+}
+
+.isBorderBottom {
+  border-bottom: 0.5px solid var(--text-stroke);
+}
+
+.isBorderRight {
+  border-right: 0.5px solid var(--text-stroke);
+}
+
+.isBorderLeft {
+  border-left: 2px solid var(--text-stroke);
+}
+
+.isBorder {
+  border: 0.5px solid var(--text-stroke);
+}
+
+.isScroll {
+  overflow: auto;
+}
+
+.overflow {
+  overflow: var(--overflow);
+}
+
+.position {
+  position: var(--position);
+}
+
+.cursor {
+  cursor: var(--cursor);
+}
+
+.isScrollPos {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: var(--overflow);
+  scroll-behavior: smooth;
+  margin: -5px !important;
+  padding: 5px !important;
+}
+
+.fullHeight {
+  height: 100%;
+}
