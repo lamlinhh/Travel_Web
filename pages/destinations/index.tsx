@@ -7,7 +7,7 @@ import TourList from "@/components/destinations/TourList";
 
 const AllToursPage = () => {
   const [selectedDestination, setSelectedDestination] = useState("Tokyo");
-
+//selectedDestination: Lưu địa điểm được chọn.
   return (
     <>
       <Header />

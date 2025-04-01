@@ -28,11 +28,11 @@ const BlogDetail = () => {
       setArticle(foundArticle || null);
     }
   }, [id]);
-
+//Lấy id bài viết từ URL.Tìm bài viết tương ứng trong danh sách articles.
   if (!article) {
     return <p className={styles.notFound}>Bài viết không tồn tại</p>;
   }
-
+//Nếu không tìm thấy, hiển thị thông báo lỗi.
   // Lọc bài viết liên quan
   const relatedArticles = articles.filter((item) => item.id !== article.id).slice(0, 2);
 

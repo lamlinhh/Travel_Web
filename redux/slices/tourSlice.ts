@@ -27,7 +27,7 @@ const initialState: TourState = {
   error: null,
 };
 
-// ✅ Giữ lại fetchTours để call API cho Destinations
+// Giữ lại fetchTours để call API cho Destinations
 export const fetchTours = createAsyncThunk(
   "tour/fetchTours",
   async (destination?: string) => {

@@ -13,7 +13,10 @@ const DestinationDetail = () => {
   const [tours, setTours] = useState<{ id: number; name: string; price: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+//slug: Lấy tên điểm đến từ URL.
+//tours: Lưu danh sách tour lấy từ API.
+//loading: Trạng thái tải dữ liệu.
+//error: Lưu thông báo lỗi nếu có.
   useEffect(() => {
     if (slug) {
       const fetchTours = async () => {
@@ -30,7 +33,8 @@ const DestinationDetail = () => {
       fetchTours();
     }
   }, [slug]);
-
+//fetchTours: Hàm gọi API để lấy danh sách tour theo điểm đến.
+//Nếu có lỗi xảy ra, cập nhật trạng thái lỗi và dừng tải dữ liệu.
   if (!slug) return <p>Loading...</p>;
 
   return (
