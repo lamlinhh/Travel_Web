@@ -37,7 +37,11 @@ const Header = () => {
                 <Link href="/">Account</Link>
               </li>
               <li>
+<<<<<<< HEAD
                 <Link href="/Tours">Tour</Link>
+=======
+                <Link href="/">Tour</Link>
+>>>>>>> 38ae0f2e7e9c5029da5b34db238a3d4841cb457d
               </li>
               <li>
                 {isAdminPage ? (
