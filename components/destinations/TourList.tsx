@@ -10,11 +10,11 @@ type TourListProps = {
   tours: { id: string; name: string; price: string }[];
 };
 
-
-
-const TourList: React.FC<TourListProps> = ({ destination }) => {
+const TourList: React.FC<TourListProps> = ({ destination }: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { tours, loading, error } = useSelector((state: RootState) => state.tour);
+  const { tours, loading, error } = useSelector(
+    (state: RootState) => state.tour,
+  );
 
   useEffect(() => {
     if (destination) {
@@ -27,19 +27,19 @@ const TourList: React.FC<TourListProps> = ({ destination }) => {
       <h1>{destination} Tours</h1>
 
       {loading && <p>Loading tours...</p>}
-      {error && <p style={{ color: "red" }}>Failed to fetch tours. Please try again.</p>}
+      {error && (
+        <p style={{ color: "red" }}>Failed to fetch tours. Please try again.</p>
+      )}
 
       <ul>
-        {tours.length > 0 ? (
-          tours.map((tour) => (
-            <li key={tour.id}>
-              <h3>{tour.TourName}</h3>
-              <p>Price: {tour.TourPrice} VND</p>
-            </li>
-          ))
-        ) : (
-          !loading && <li>No tours available.</li>
-        )}
+        {tours.length > 0
+          ? tours.map((tour: any) => (
+              <li key={tour.id}>
+                <h3>{tour.TourName}</h3>
+                <p>Price: {tour.TourPrice} VND</p>
+              </li>
+            ))
+          : !loading && <li>No tours available.</li>}
       </ul>
     </div>
   );

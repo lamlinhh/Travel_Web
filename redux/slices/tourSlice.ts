@@ -2,7 +2,6 @@ import axiosInstance from "@/axios/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export interface Tour {
-  id?: string;
   TourName?: string;
   CategoryName?: string;
   TourLocation?: string;
@@ -27,28 +26,10 @@ const initialState: TourState = {
   error: null,
 };
 
-// Giữ lại fetchTours để call API cho Destinations
-export const fetchTours = createAsyncThunk(
-  "tour/fetchTours",
-  async (destination?: string) => {
-    try {
-      const url = destination
-        ? `/GetAllTours?destination=${destination}`
-        : "/GetAllTours";
-      const response = await axiosInstance.get(url);
-
-      if (!Array.isArray(response.data.tours)) {
-        console.error("Expected an array but got:", response.data);
-        return [];
-      }
-
-      return response.data.tours;
-    } catch (error) {
-      console.error("Error fetching tours:", error);
-      throw new Error("Failed to fetch tours");
-    }
-  },
-);
+export const fetchTours = createAsyncThunk("tour/fetchTours", async () => {
+  const response = await axiosInstance.get("/GetAllTours");
+  return response.data.tours;
+});
 
 const tourSlice = createSlice({
   name: "tour",

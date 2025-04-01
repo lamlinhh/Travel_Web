@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviews } from '@/redux/slices/reviewsSlice';
-import { RootState, AppDispatch } from '@/redux/store';
-import styles from './styles.module.scss';
-import { createReviewThunk } from '@/redux/slices/reviewsSlice';
+import { createReviewThunk, fetchReviews } from "@/redux/slices/reviewsSlice";
+import { AppDispatch, RootState } from "@/redux/store";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./styles.module.scss";
 
 const defaultAvatars = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/th.webp",
@@ -25,9 +24,9 @@ const ReviewForm: React.FC = () => {
   const { currentPage } = useSelector((state: RootState) => state.review);
 
   const [randomAvatar, setRandomAvatar] = useState<string | null>(null);
-  const [userName, setUserName] = useState('QuangHau');
-  const [title, setTitle] = useState('');
-  const [comment, setComment] = useState('');
+  const [userName, setUserName] = useState("QuangHau");
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
   const [rating, setRating] = useState<number>(0);
 
   useEffect(() => {
@@ -49,15 +48,15 @@ const ReviewForm: React.FC = () => {
       await dispatch(createReviewThunk(newReview)).unwrap();
 
       // Reset form sau khi gửi thành công
-      setTitle('');
-      setComment('');
+      setTitle("");
+      setComment("");
       setRating(0);
 
       // Cập nhật danh sách review
       dispatch(fetchReviews(currentPage));
     } catch (err: any) {
-      console.error('Error creating review:', err);
-      alert(err.message || 'Failed to submit review!');
+      console.error("Error creating review:", err);
+      alert(err.message || "Failed to submit review!");
     }
   };
 
@@ -73,17 +72,18 @@ const ReviewForm: React.FC = () => {
           alt="Avatar"
           className={styles.reviewForm__avatar}
         />
-        <span><strong>{userName}</strong></span>
+        <span>
+          <strong>{userName}</strong>
+        </span>
       </div>
 
       <div className={styles.reviewForm__stars}>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
-            className={`${styles.star} ${star <= rating ? styles.active : ''}`}
+            className={`${styles.star} ${star <= rating ? styles.active : ""}`}
             onClick={() => setRating(star === rating ? star - 1 : star)}
-            style={{ cursor: 'pointer' }}
-          >
+            style={{ cursor: "pointer" }}>
             ★
           </span>
         ))}
@@ -119,8 +119,7 @@ const ReviewForm: React.FC = () => {
       <button
         type="button"
         onClick={handleSubmit}
-        className={styles.reviewForm__button}
-      >
+        className={styles.reviewForm__button}>
         Submit
       </button>
     </form>
