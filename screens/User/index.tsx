@@ -10,10 +10,10 @@ import { fetchUsers } from "@/redux/slices/getUserSlice";
 import { User } from "@/types/user";
 import moment from "moment";
 import { ColumnsType } from "antd/es/table";
-import UserModal from "@/modals/UserModal";
 import { DeleteOutlined } from "@ant-design/icons";
 import axiosInstance from "@/axios/axiosInstance";
 import { toast } from "react-toastify";
+import UserModal from "@/components/UserModal";
 
 const UserPage = () => {
   const dispatch = useDispatch<AppDispatch>();
