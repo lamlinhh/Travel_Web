@@ -1,5 +1,6 @@
 import Blog from "@/components/Blog";
-function App() {
+function BlogComponent
+() {
   return (
     <div>
       <Blog />
@@ -7,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default BlogComponent;

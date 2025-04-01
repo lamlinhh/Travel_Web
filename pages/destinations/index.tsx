@@ -1,41 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTours } from "@/redux/slices/tourSlice";
-import { RootState, AppDispatch } from "@/redux/store";
+import { useState } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import TourList from "@/components/destinations/TourList";
 
 const AllToursPage = () => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  const { tours, loading, error } = useSelector((state: RootState) => state.tour);
-
-  useEffect(() => {
-    dispatch(fetchTours());
-  }, [dispatch]);
-
-  console.log("Tours từ Redux store:", tours);
+  const [selectedDestination, setSelectedDestination] = useState("Tokyo");
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>All Tours</h1>
-      {loading && <p>Loading tours...</p>}
-      {error && <p>Error: {error}</p>}
-      {Array.isArray(tours) && tours.length > 0 ? (
-        <ul>
-          {tours.map((tour, index) => (
-            <li key={index}>
-              <h3>{tour.TourName || "No Name"}</h3>
-              <p>Price: {tour.TourPrice || "N/A"}</p>
-              <p>Location: {tour.TourLocation || "N/A"}</p>
-              <p>Difficulty: {tour.TourDifficulty || "N/A"}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No tours available.</p>
-      )}
-    </div>
+    <>
+      <Header />
+      <div style={{ padding: "20px" }}>
+        <h1>All Tours</h1>
+        
+        {/* Chọn địa điểm để lọc tour */}
+        <select onChange={(e) => setSelectedDestination(e.target.value)} value={selectedDestination}>
+          <option value="Tokyo">Tokyo</option>
+          <option value="Sydney">Sydney</option>
+          <option value="Moscow">Moscow</option>
+          <option value="Phuket">Phuket</option>
+          <option value="Singapore">Singapore</option>
+          <option value="Hoi An">Hoi An</option>
+        </select>
+
+        {/* Hiển thị danh sách tour dựa trên địa điểm đã chọn */}
+        <TourList destination={selectedDestination} tours={[]} />
+      </div>
+      <Footer />
+    </>
   );
 };
 

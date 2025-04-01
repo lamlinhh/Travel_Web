@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import "aos/dist/aos.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import PopularDestinations from "@/components/PopularDestinations";
+
 
 
 const destinations = [
@@ -87,10 +87,10 @@ const articles = [
 
 const Blog = () => {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); //currentPage: Lưu trạng thái trang hiện tại.
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(articles.length / itemsPerPage);
-
+  const totalPages = Math.ceil(articles.length / itemsPerPage);//tinh so trang dua tren tong bai viet
+//articlesPerPage:itemsPerPage- Số bài viết hiển thị trên một trang.
   const handlePageChange = (page: number) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
@@ -101,7 +101,7 @@ const Blog = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
+//Cắt danh sách articles để chỉ lấy bài viết thuộc trang hiện tại.
   return (
     <>
       <Header />
@@ -113,9 +113,9 @@ const Blog = () => {
         </header>
 
         {/* Popular Destinations */}
-        <PopularDestinations />
+        {/* <PopularDestinations /> */}
         <section className={styles.featuredDestinations}>
-          <h2>Popular Destinations</h2>
+          <h2>Blog</h2>
           <div className={styles.destinationGrid}>
             {destinations.flatMap((place) =>
               place.data.map((destination, index) => (
@@ -148,7 +148,9 @@ const Blog = () => {
                 </div>
               ))}
             </div>
-            {/* Pagination */}
+            {/* Pagination Nút điều hướng giữa các trang, chỉ cho phép nhấn khi còn trang tiếp theo.
+
+*/}
             <div className={styles.pagination}>
               <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                 {"<"}
