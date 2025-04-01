@@ -39,25 +39,16 @@
     "react-toastify": "^11.0.5",
     "recharts": "^2.15.1",
     "sass": "^1.85.1",
-<<<<<<< HEAD
     "scss": "^0.2.4",
     "swiper": "^11.2.6"
-=======
-    "scss": "^0.2.4"
->>>>>>> 38ae0f2e7e9c5029da5b34db238a3d4841cb457d
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.15",
     "@types/node": "^20.17.26",
-<<<<<<< HEAD
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.5",
-=======
     "@types/react": "18",
     "@types/react-dom": "18",
->>>>>>> 38ae0f2e7e9c5029da5b34db238a3d4841cb457d
     "eslint": "^9.21.0",
     "eslint-config-next": "15.1.7",
     "prettier": "^3.5.2",

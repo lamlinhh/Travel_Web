@@ -23,13 +23,8 @@ export default function RootLayout({
   const isLoginPage = isEqual(pathname, "/login");
 
   return (
-<<<<<<< HEAD
-    <html lang="en" suppressHydrationWarning>
-      <body className={roboto.className} suppressHydrationWarning>
-=======
     <html lang="en">
       <body className={roboto.className}>
->>>>>>> 38ae0f2e7e9c5029da5b34db238a3d4841cb457d
         <ToastContainer />
         <ConfigProvider>
           <Providers>

@@ -23,29 +23,50 @@ export const fetchReviews = createAsyncThunk(
   "reviews/fetchReviews",
   async (page: number = 1, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.get(`/GetAllReviews?page=${page}&limit=6`);
+      const { data } = await axiosInstance.get(
+        `/GetAllReviews?page=${page}&limit=6`,
+      );
       if (data.errCode !== 0) throw new Error(data.errMessage);
-      return { reviews: data.reviews, totalPages: data.totalPages, currentPage: page };
+      return {
+        reviews: data.reviews,
+        totalPages: data.totalPages,
+        currentPage: page,
+      };
     } catch (err: any) {
       return thunkAPI.rejectWithValue(
-        err.response?.data?.errMessage || err.message || "Something went wrong"
+        err.response?.data?.errMessage || err.message || "Something went wrong",
       );
     }
-  }
+  },
 );
 
 // Fetch reviews by tour ID with pagination
 export const fetchReviewsByTourId = createAsyncThunk(
   "reviews/fetchReviewsByTourId",
-  async ({ tourId, page = 1, limit = 6 }: { tourId: string; page: number; limit: number }, thunkAPI) => {
+  async (
+    {
+      tourId,
+      page = 1,
+      limit = 6,
+    }: { tourId: string; page: number; limit: number },
+    thunkAPI,
+  ) => {
     try {
-      const { data } = await axiosInstance.get(`/GetReviews/${tourId}?page=${page}&limit=${limit}`);
+      const { data } = await axiosInstance.get(
+        `/GetReviews/${tourId}?page=${page}&limit=${limit}`,
+      );
       if (data.errCode !== 0) throw new Error(data.errMessage);
-      return { reviews: data.reviews, totalPages: data.totalPages, currentPage: page };
+      return {
+        reviews: data.reviews,
+        totalPages: data.totalPages,
+        currentPage: page,
+      };
     } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response?.data?.errMessage || err.message);
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message,
+      );
     }
-  }
+  },
 );
 
 // Create a new review
@@ -53,25 +74,38 @@ export const createReviewThunk = createAsyncThunk(
   "reviews/createReview",
   async (data: Partial<ReviewProps>, thunkAPI) => {
     try {
-      const { data: response } = await axiosInstance.post("/CreateNewReview", data);
+      const { data: response } = await axiosInstance.post(
+        "/CreateNewReview",
+        data,
+      );
       return response.review; // Trả về dữ liệu review mới
     } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response?.data?.errMessage || err.message);
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message,
+      );
     }
-  }
+  },
 );
 
 // Update a review
 export const updateReviewThunk = createAsyncThunk(
   "reviews/updateReview",
-  async ({ id, data }: { id: string; data: Partial<ReviewProps> }, thunkAPI) => {
+  async (
+    { id, data }: { id: string; data: Partial<ReviewProps> },
+    thunkAPI,
+  ) => {
     try {
-      const { data: response } = await axiosInstance.put(`/UpdateReview/${id}`, data);
+      const { data: response } = await axiosInstance.put(
+        `/UpdateReview/${id}`,
+        data,
+      );
       return response;
     } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response?.data?.errMessage || err.message);
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message,
+      );
     }
-  }
+  },
 );
 
 // Delete a review
@@ -82,9 +116,11 @@ export const deleteReviewThunk = createAsyncThunk(
       const { data } = await axiosInstance.delete(`/DeleteReview/${id}`);
       return data;
     } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response?.data?.errMessage || err.message);
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message,
+      );
     }
-  }
+  },
 );
 
 const reviewsSlice = createSlice({
@@ -129,7 +165,9 @@ const reviewsSlice = createSlice({
         state.reviews.unshift(action.payload);
       })
       .addCase(deleteReviewThunk.fulfilled, (state, action) => {
-        state.reviews = state.reviews.filter((review) => review._id !== action.payload.id);
+        state.reviews = state.reviews.filter(
+          (review) => review?._id !== action.payload.id,
+        );
       });
   },
 });

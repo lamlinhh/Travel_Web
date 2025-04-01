@@ -13,7 +13,7 @@ interface ReviewsForTourProps {
 const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { reviews, loading, error, currentPage, totalPages } = useSelector(
-    (state: RootState) => state.review
+    (state: RootState) => state.review,
   );
 
   useEffect(() => {
@@ -51,7 +51,9 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
     <div className={styles.container}>
       <div className={styles.reviewGrid}>
         {reviews.length > 0 ? (
-          reviews.map((review) => <ReviewCard key={review._id?.toString()} {...review} />)
+          reviews.map((review) => (
+            <ReviewCard key={review._id?.toString()} {...review} />
+          ))
         ) : (
           <div>No reviews found.</div>
         )}
@@ -61,8 +63,7 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={styles.paginationButton}
-        >
+          className={styles.paginationButton}>
           <FaChevronLeft />
         </button>
 
@@ -71,8 +72,7 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
             key={index}
             onClick={() => typeof page === "number" && handlePageChange(page)}
             disabled={page === currentPage}
-            className={styles.paginationButton}
-          >
+            className={styles.paginationButton}>
             {page}
           </button>
         ))}
@@ -80,8 +80,7 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={styles.paginationButton}
-        >
+          className={styles.paginationButton}>
           <FaChevronRight />
         </button>
       </div>
