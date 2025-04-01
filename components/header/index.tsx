@@ -37,7 +37,7 @@ const Header = () => {
                 <Link href="/">Account</Link>
               </li>
               <li>
-                <Link href="/">Tour</Link>
+                <Link href="/Tours">Tour</Link>
               </li>
               <li>
                 {isAdminPage ? (

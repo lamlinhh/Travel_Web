@@ -7,7 +7,7 @@ import TourFeatures from "@/components/TourFeatures";
 import TourOverview from "@/components/TourOverview";
 import ReviewForm from "@/components/ReviewForm";
 import ReviewsForTour from "@/components/ReviewsForTour"
-import { Area, Yard, Section, Block } from "@/libs";
+import {  Section, Block } from "@/libs";
 
 const TourDetail = () => {
 
