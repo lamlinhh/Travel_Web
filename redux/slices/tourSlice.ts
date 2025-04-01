@@ -47,7 +47,7 @@ export const fetchTours = createAsyncThunk(
       console.error("Error fetching tours:", error);
       throw new Error("Failed to fetch tours");
     }
-  }
+  },
 );
 
 const tourSlice = createSlice({
