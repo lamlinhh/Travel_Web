@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 
 const Header = () => {
   const pathname = usePathname();
-  const isAdminPage = pathname.startsWith("/admin");
+  const isAdminPage = pathname?.startsWith("/admin") || false;
 
   const handleLogout = () => {
     document.cookie = "token=; path=/; max-age=0";
@@ -39,6 +39,9 @@ const Header = () => {
               <li>
                 <Link href="/">Tour</Link>
               </li>
+              <li><Link href="/blog">Blog</Link></li> 
+              <li><Link href="/AboutUs">About Us</Link></li>
+              <li><Link href="/DestinationsPage">Destinations</Link></li>
               <li>
                 {isAdminPage ? (
                   <Button type="default" onClick={handleLogout}>

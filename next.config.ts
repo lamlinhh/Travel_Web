@@ -8,3 +8,19 @@ module.exports = {
     ];
   },
 };
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "raw.githubusercontent.com",
+          pathname: "/lamlinhh/Travel_Web/**",
+        },
+      ],
+    },
+  };
+  
+  module.exports = nextConfig;
+  
