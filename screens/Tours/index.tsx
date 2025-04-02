@@ -10,12 +10,12 @@ import moment from "moment";
 import { DeleteOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import { AppDispatch, RootState } from "../../redux/store";
-import { fetchTours } from "../../redux/slices/tourSlice";
-import axiosInstance from "../../axios/axiosInstance";
 import React from "react";
-import TourModal from "../../modals/TourModal";
+import TourModal from "@/modals/TourModal";
+import axiosInstance from "@/axios/axiosInstance";
+import { fetchTours } from "@/redux/slices/tourSlice";
 
-const index = () => {
+const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { tours } = useSelector((state: RootState) => state.tour);
   const [search, setSearch] = useState("");
@@ -23,7 +23,7 @@ const index = () => {
 
   useEffect(() => {
     dispatch(fetchTours());
-  }, [dispatch]);
+  }, []);
 
   const handleDelete = async (tourID: string) => {
     try {
@@ -136,4 +136,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
