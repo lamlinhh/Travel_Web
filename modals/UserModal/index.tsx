@@ -1,10 +1,10 @@
 "use client";
 
-import axiosInstance from "@/axios/axiosInstance";
 import { Button, Form, Input, Modal, Select } from "antd";
 import { isEqual } from "lodash";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import axiosInstance from "../../axios/axiosInstance";
 
 const { Option } = Select;
 

@@ -1,7 +1,8 @@
 "use client";
-import { Area, Block, Text, Yard } from "@/libs";
+import { Area, Block, Yard, Text } from "@/libs";
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import React from "react";
 import TourFilter from "@/components/TourFilter";
 import CardTours from "@/components/CardTours";
 
