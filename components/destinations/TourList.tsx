@@ -2,8 +2,8 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTours } from "@/redux/slices/tourSlice";
-import { RootState, AppDispatch } from "@/redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
+import { fetchTours } from "../../redux/slices/tourSlice";
 
 type TourListProps = {
   destination: string;
