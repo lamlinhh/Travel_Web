@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
-import { FaStar, FaMapMarkerAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaStar,
+  FaMapMarkerAlt,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
+import React from "react";
 
 const tours = [
   {
@@ -65,7 +71,9 @@ const itemsPerPage = 3; // Tùy chỉnh số item mỗi trang
 
 const CardTour = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentTours, setCurrentTours] = useState(tours.slice(0, itemsPerPage));
+  const [currentTours, setCurrentTours] = useState(
+    tours.slice(0, itemsPerPage),
+  );
 
   const totalPages = Math.ceil(tours.length / itemsPerPage);
 
@@ -150,8 +158,7 @@ const CardTour = () => {
         <button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
-          className={styles.paginationButton}
-        >
+          className={styles.paginationButton}>
           <FaChevronLeft />
         </button>
 
@@ -160,8 +167,7 @@ const CardTour = () => {
             key={index}
             onClick={() => handlePageClick(page)}
             disabled={page === currentPage}
-            className={styles.paginationButton}
-          >
+            className={styles.paginationButton}>
             {page}
           </button>
         ))}
@@ -169,8 +175,7 @@ const CardTour = () => {
         <button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className={styles.paginationButton}
-        >
+          className={styles.paginationButton}>
           <FaChevronRight />
         </button>
       </div>

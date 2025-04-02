@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchReviews, setPage } from "@/redux/slices/reviewsSlice";
-import { RootState, AppDispatch } from "@/redux/store";
+import { fetchReviews, setPage } from "../../redux/slices/reviewsSlice";
+import { AppDispatch, RootState } from "../../redux/store";
 import ReviewCard from "../ReviewCard";
 import styles from "./styles.module.scss";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ReviewsForPageReviews = () => {
   const dispatch = useDispatch<AppDispatch>();
