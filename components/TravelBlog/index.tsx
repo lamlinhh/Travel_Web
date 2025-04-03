@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./styles.module.scss";
 
 const blogs = [
@@ -37,9 +38,9 @@ const TravelBlog = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Travel Blog</h2>
-      <a href="#" className={styles.viewAll}>
+      <Link href={"/post"} className={styles.viewAll}>
         View all posts →
-      </a>
+      </Link>
       <div className={styles.grid}>
         {blogs.map((blog, index) => (
           <div key={index} className={`${styles.card} ${styles[blog.size]}`}>

@@ -12,6 +12,7 @@ export interface Tour {
   DescribeTour?: string;
   createdAt?: string;
   updatedAt?: string;
+  Rating?: number;
 }
 
 interface TourState {

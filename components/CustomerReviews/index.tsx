@@ -6,6 +6,7 @@ import { fetchReviews } from "@/redux/slices/reviewsSlice";
 import { RootState, AppDispatch } from "@/redux/store";
 import ReviewCard from "../ReviewCard";
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 const CustomerReviews = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +15,7 @@ const CustomerReviews = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchReviews(1)); // Luôn lấy dữ liệu trang đầu tiên
+    dispatch(fetchReviews(1));
   }, [dispatch]);
 
   if (loading) return <div>Loading reviews...</div>;
@@ -23,9 +24,9 @@ const CustomerReviews = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Customer reviews</h2>
-      <a href="#" className={styles.viewAll}>
+      <Link href={"/Reviews"} className={styles.viewAll}>
         View all reviews →
-      </a>
+      </Link>
       <div className={styles.reviewGrid}>
         {reviews.map((review, index) => (
           <ReviewCard key={index} {...review} />
