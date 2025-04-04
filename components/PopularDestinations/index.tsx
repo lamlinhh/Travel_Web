@@ -1,8 +1,7 @@
 "use client";
 import { Container, Yard } from "@/libs";
 import styles from "./styles.module.scss";
-
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 const destinations = [
   {
