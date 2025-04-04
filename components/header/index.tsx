@@ -47,7 +47,7 @@ const Header = () => {
       <div className={styles.body}>
         <div className={styles.content}>
           <Yard center>
-            <Text fontSize={"30px"}>Next Travel</Text>
+            <Text fontSize={"30px"}>Travel</Text>
           </Yard>
           <div>
             <ul className={styles.ul}>

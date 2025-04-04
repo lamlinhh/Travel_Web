@@ -25,23 +25,20 @@ const Index = () => {
       if (isEqual(response.data.errCode, 0)) {
         const { token, user } = response?.data;
 
-        // Kiểm tra quyền hạn của user
-        if (user.Role !== "admin") {
-          message.error("Bạn không có quyền truy cập!");
-          toast.error("Tài khoản không có quyền truy cập!", {
-            style: { width: "340px", height: "80px", textAlign: "center" },
-          });
-          return;
-        }
+        // if (user.Role !== "admin") {
+        //   message.error("Bạn không có quyền truy cập!");
+        //   toast.error("Tài khoản không có quyền truy cập!", {
+        //     style: { width: "340px", height: "80px", textAlign: "center" },
+        //   });
+        //   return;
+        // }
 
-        // Lưu token vào cookie
         document.cookie = `token=${token}; path=/; max-age=86400`;
 
-        // Lưu thông tin user vào localStorage
         localStorage.setItem("user", JSON.stringify(user));
 
         message.success("Đăng nhập thành công!");
-        router.push("/admin/user");
+        router.push("/");
       } else {
         toast.error("Email hoặc mật khẩu không chính xác!");
         message.error(response.data.message || "Đăng nhập thất bại!");

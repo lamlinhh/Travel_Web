@@ -11,6 +11,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import moment from "moment";
 
 const images = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/honolulu_wut943.webp",
@@ -21,13 +24,14 @@ const images = [
 
 const TourBooking = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const { tourDetail } = useSelector((state: RootState) => state.tourDetail);
 
   const handleSetThumbsSwiper = (swiper: SwiperType) => {
     if (swiper && !swiper.destroyed) {
       setThumbsSwiper(swiper);
     }
   };
-
+  console.log("tourDetail", tourDetail);
   return (
     <Container className={styles.container}>
       <Yard className={styles.cannes}>
@@ -70,42 +74,34 @@ const TourBooking = () => {
           <Block className={styles.bookingCard}>
             <span className={styles.badge}>Likely to Sell Out</span>
             <Text fontSize={"20px"} bold>
-              From <span className={styles.price}>$60</span>
+              From{" "}
+              <span className={styles.price}>${tourDetail?.TourPrice}</span>
             </Text>
-            <Text fontSize={"20px"} bold>
-              Select Date and Travelers
+            <Text fontSize={"20px"}>
+              <span className={styles.spanTitle}>Địa điểm: </span>
+              {tourDetail?.TourLocation}
             </Text>
             <div className={styles.datePicker}>
-              <span className={styles.spanTitle}>Departure Date</span>
+              <span className={styles.spanTitle}>Ngày bắt đầu</span>
               <input
                 type="date"
-                defaultValue="2025-03-18"
+                defaultValue={
+                  tourDetail?.createdAt
+                    ? moment(tourDetail?.createdAt).format("YYYY-MM-DD")
+                    : ""
+                }
                 className={styles.inputField}
               />
             </div>
             <div className={styles.quantityAdults}>
-              <span className={styles.spanTitle}>Quantity Adults</span>
-              <input
-                type="number"
-                defaultValue="1"
-                min="1"
-                className={styles.inputField}
-              />
+              <span className={styles.spanTitle}>Tổng số ngày đi: </span>
+              <Text fontSize={"20px"}>{tourDetail?.TourTime}</Text>
             </div>
-            <div className={styles.quantityChildren}>
-              <span className={styles.spanTitle}>Quantity Children</span>
-              <input
-                type="number"
-                defaultValue="1"
-                min="1"
-                className={styles.inputField}
-              />
+            <div className={styles.quantityAdults}>
+              <span className={styles.spanTitle}>Mô tả: </span>
+              <Text fontSize={"20px"}>{tourDetail?.DescribeTour}</Text>
             </div>
             <button className={styles.bookBtn}>Book Tour</button>
-            <p className={styles.freeCancel}>Free Cancellation</p>
-            <p className={styles.reserveNow}>
-              Reserve Now - Secure your spot while staying flexible
-            </p>
           </Block>
         </Area>
       </Yard>

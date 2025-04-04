@@ -4,20 +4,31 @@ import { useEffect } from "react";
 import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 const CardTour = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { tours } = useSelector((state: RootState) => state.tour);
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(fetchTours());
   }, []);
 
+  const handleTourClick = (tourID: any) => {
+    router.push(`/TourDetail/${tourID}`);
+  };
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.grid}>
         {tours?.map((tour, index) => (
-          <div key={index} className={styles.card}>
+          <div
+            key={index}
+            className={styles.card}
+            onClick={() => {
+              handleTourClick(tour?._id);
+            }}>
             <div className={styles.imageContainer}>
               <img src={tour.image} alt={tour.title} className={styles.image} />
             </div>
