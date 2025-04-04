@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaUserCircle } from "react-icons/fa";
 import styles from "./styles.module.scss";
+import Image from "next/image";
 
 const getCookie = (name: string) => {
   const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
@@ -47,7 +48,16 @@ const Header = () => {
       <div className={styles.body}>
         <div className={styles.content}>
           <Yard center>
-            <Text fontSize={"30px"}>Travel</Text>
+            <Text fontSize={"30px"}>
+              <Image
+                src={
+                  "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/vu/assets/Images/logo.webp"
+                }
+                alt=""
+                width={"100"}
+                height={"100"}
+              />
+            </Text>
           </Yard>
           <div>
             <ul className={styles.ul}>
