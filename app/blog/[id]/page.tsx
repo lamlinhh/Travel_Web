@@ -5,6 +5,6 @@ export const metadata = {
   description: "Read the full blog article",
 };
 
-export default function BlogDetailPage({ params }: { params: { id: string } }) {
-  return <BlogDetail id={params.id} />;
+export default async function BlogDetailPage({ params }: { params: { id: string } }) {
+  return <BlogDetail id={await params.id} />;
 } 

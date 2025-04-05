@@ -1,10 +1,10 @@
-import DestinationsScreen from "@/app/screens/DestinationsScreen";
+import AllDestinations from "@/components/destinations/allDestinations";
 
 export const metadata = {
-  title: "Destinations",
-  description: "Explore our travel destinations",
+  title: "All Destinations",
+  description: "Explore all our amazing destinations",
 };
 
 export default function DestinationsPage() {
-  return <DestinationsScreen />;
+  return <AllDestinations />;
 } 

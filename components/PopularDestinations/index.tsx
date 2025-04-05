@@ -7,38 +7,32 @@ const destinations = [
   {
     name: "Sydney",
     tours: 10,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/sydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/sydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.webp",
   },
   {
     name: "Tokyo",
     tours: 20,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/japan-tokyo_wpvxra.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/japan-tokyo_wpvxra.webp",
   },
   {
     name: "Moscow",
     tours: 13,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/moscow_jr5bb4.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/moscow_jr5bb4.webp",
   },
   {
     name: "Phuket",
     tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/phuket_utqmlt.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/phuket_utqmlt.webp",
   },
   {
     name: "Singapore",
     tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/singapore_qihqqs_ehracs.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/singapore_qihqqs_ehracs.webp",
   },
   {
     name: "Hoi An",
     tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/peter-borter-ai_mpqLXBTc-unsplash_u2s6qy.webp",
+    image: "https://raw.githubusercontent.com/lamlinhh/Travel_Web/main/assets/Images/peter-borter-ai_mpqLXBTc-unsplash_u2s6qy.webp",
   },
 ];
 
@@ -65,7 +59,7 @@ const PopularDestinations = () => {
           <div
             key={index}
             className={styles.card}
-            onClick={() => router.push(`/destinations/${destination.name}`)}
+            onClick={() => router.push(`/destinations/${destination.name.toLowerCase().replace(/\s+/g, '-')}`)}
             style={{ cursor: "pointer" }}
           >
             <img src={destination.image} alt={destination.name} />
