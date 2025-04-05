@@ -20,7 +20,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
-  const isLoginPage = isEqual(pathname, "/login");
+  const isAuthPage =
+    isEqual(pathname, "/login") || isEqual(pathname, "/register");
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -28,9 +29,9 @@ export default function RootLayout({
         <ToastContainer />
         <ConfigProvider>
           <Providers>
-            {!isLoginPage && <Header />}
+            {!isAuthPage && <Header />}
             {children}
-            {!isLoginPage && <Footer />}
+            {!isAuthPage && <Footer />}
           </Providers>
         </ConfigProvider>
       </body>

@@ -1,9 +1,10 @@
 "use client";
 import * as React from "react";
-import { useState } from "react";
 import { createBookTour } from '@/redux/slices/bookTourSlice';
 import { RootState, AppDispatch } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
@@ -22,32 +23,41 @@ const images = [
 
 const TourBooking = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [departureDate, setDepartureDate] = useState("2025-03-18");
-  const [adults, setAdults] = useState(0);
+  const [departureDate, setDepartureDate] = useState("2025-05-18");
+  const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
 
   const dispatch = useDispatch<AppDispatch>();
   const { loading, error, bookTour } = useSelector((state: RootState) => state.bookTour);
 
-  const handleBooking = () => {
-    try {
-      const newBooking = {
-        TourId: "67efb56855121a3862121cd4",
-        UserId: "67d81b9dab7c48f921c70973",
-        DepartureDate: departureDate,
-        QuantityAdults: adults,
-        QuantityChildren: children,
-      };
+  const params = useParams();
+  const tourId = params?.id as string;
 
-      dispatch(createBookTour(newBooking));
+  const [userId, setUserId] = useState<string | null>(null);
 
-      setAdults(0);
-      setChildren(0);
-
-    } catch (err: any) {
-      console.error('Error creating Booking:', err);
-      alert(err.message || 'Failed to submit Booking!');
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUserId(parsedUser._id); 
     }
+  }, []);
+
+
+  const handleBooking = () => {
+    if (!tourId || !userId) return;
+
+    const newBooking = {
+      TourId: tourId,
+      UserId: userId,
+      DepartureDate: departureDate,
+      QuantityAdults: adults,
+      QuantityChildren: children,
+    };
+
+    dispatch(createBookTour(newBooking));
+
+
   };
 
   return (
@@ -90,11 +100,10 @@ const TourBooking = () => {
         {/* Booking Section */}
         <Area className={styles.bookingSection}>
           <Block className={styles.bookingCard}>
+            {loading ? <p>Loading...</p> : error && <p>{error}</p>}
             <span className={styles.badge}>Likely to Sell Out</span>
-            <Text fontSize="20px" bold>
-              From <span className={styles.price}>$60</span>
-            </Text>
-            <Text fontSize="20px" bold>Select Date and Travelers</Text>
+
+            <Text fontSize="30px" bold>Select Date and Travelers</Text>
 
             <div className={styles.datePicker}>
               <label className={styles.spanTitle}>Departure Date</label>

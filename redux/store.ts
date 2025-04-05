@@ -2,9 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import itemReducer from "./slices/itemSlice";
 import userReducer from "./slices/getUserSlice";
 import tourReducer from "./slices/tourSlice";
-import reviewsReducer from "@/redux/slices/reviewsSlice";
-import bookTourReducer from "@/redux/slices/bookTourSlice";
-import tourDetailReducer from "@/redux/slices/tourDetailSlice"
+import reviewsReducer from "./slices/reviewsSlice";
+import tourDetailReducer from "./slices/tourDetailSlice";
+import bookTourReducer from "@/redux/slices/bookTourSlice"
 
 export const store = configureStore({
   reducer: {
@@ -12,8 +12,8 @@ export const store = configureStore({
     user: userReducer,
     tour: tourReducer,
     review: reviewsReducer,
-    bookTour: bookTourReducer,
     tourDetail: tourDetailReducer,
+    bookTour: bookTourReducer,
   },
 });
 

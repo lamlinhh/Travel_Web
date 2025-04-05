@@ -1,7 +1,9 @@
 import axiosInstance from "@/axios/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export interface Tour {
+export interface TourDetail {
+  Rating?: number;
+  _id?: string;
   TourName?: string;
   CategoryName?: string;
   TourLocation?: string;
@@ -12,43 +14,43 @@ export interface Tour {
   DescribeTour?: string;
   createdAt?: string;
   updatedAt?: string;
-  Rating?: number;
-  image?:string;
-  _id?: string;
 }
 
-interface TourState {
-  tours: Tour[];
+interface TourDetailState {
+  tourDetail: TourDetail | null;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: TourState = {
-  tours: [],
+const initialState: TourDetailState = {
+  tourDetail: null,
   loading: false,
   error: null,
 };
 
-export const fetchTours = createAsyncThunk("tour/fetchTours", async () => {
-  const response = await axiosInstance.get("/GetAllTours");
-  return response.data.tours;
-});
+export const fetchTourDetail = createAsyncThunk(
+  "tourDetail/fetchTourDetail",
+  async (tourId: string) => {
+    const response = await axiosInstance.get(`/GetTour/${tourId}`);
+    return response.data.tour;
+  },
+);
 
 const tourSlice = createSlice({
-  name: "tour",
+  name: "tourDetail",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTours.pending, (state) => {
+      .addCase(fetchTourDetail.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchTours.fulfilled, (state, action) => {
+      .addCase(fetchTourDetail.fulfilled, (state, action) => {
         state.loading = false;
-        state.tours = action.payload;
+        state.tourDetail = action.payload;
       })
-      .addCase(fetchTours.rejected, (state, action) => {
+      .addCase(fetchTourDetail.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch tours";
       });

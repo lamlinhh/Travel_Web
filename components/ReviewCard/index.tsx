@@ -1,12 +1,8 @@
 "use client";
 
 import { useState } from "react";
-"use client";
-
-import { useState } from "react";
 import { ReviewProps } from "@/types/ReviewProps";
 import styles from "./styles.module.scss";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 const ReviewCard = ({
