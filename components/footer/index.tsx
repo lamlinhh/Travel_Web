@@ -34,9 +34,9 @@ const Footer = () => {
           </div>
           <div className={styles.contact}>
             <h3>Contact</h3>
-            <Button type="primary" className={styles.emailButton}>
-              <a href="mailto:info@travel.com">info@travel.com</a>
-            </Button>
+            <a href="mailto:info@travel.com" className={styles.emailLink}>
+              info@travel.com
+            </a>
             <p>+84 944 373 809</p>
           </div>
         </div>

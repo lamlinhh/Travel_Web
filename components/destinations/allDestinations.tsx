@@ -1,85 +1,47 @@
 "use client";
-import { Container, Yard } from "@/libs";
-import styles from "./styles.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { destinations } from './destinations';
+import styles from './allDestinations.module.scss';
 
-import { useRouter } from "next/navigation"; 
-
-const destinations = [
-  {
-    name: "Sydney",
-    tours: 10,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/sydney-opera-house-near-body-of-water-during-daytime-1_fbgqyc.webp",
-  },
-  {
-    name: "Tokyo",
-    tours: 20,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/japan-tokyo_wpvxra.webp",
-  },
-  {
-    name: "Moscow",
-    tours: 13,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/moscow_jr5bb4.webp",
-  },
-  {
-    name: "Phuket",
-    tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/phuket_utqmlt.webp",
-  },
-  {
-    name: "Singapore",
-    tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/singapore_qihqqs_ehracs.webp",
-  },
-  {
-    name: "Hoi An",
-    tours: 19,
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/peter-borter-ai_mpqLXBTc-unsplash_u2s6qy.webp",
-  },
-];
-
-const PopularDestinations = () => {
-  const router = useRouter();
-
+const AllDestinations = () => {
   return (
-    <Container className={styles.container}>
-      {/* Tiêu đề & Nút "View all destinations" */}
-      <Yard className={styles.header}>
-        <h2>Popular Destinations</h2>
-        <a
-          onClick={() => router.push("/destinations")}
-          className={styles.viewAll}
-          style={{ cursor: "pointer" }}
-        >
-          View all destinations →
-        </a>
-      </Yard>
-
-      {/* Hiển thị danh sách địa điểm */}
-      <Yard className={styles.grid}>
-        {destinations.map((destination, index) => (
-          <div
-            key={index}
-            className={styles.card}
-            onClick={() => router.push(`/destinations/${destination.name}`)}
-            style={{ cursor: "pointer" }}
-          >
-            <img src={destination.image} alt={destination.name} />
-            <div className={styles.overlay}></div>
-            <div className={styles.text}>
-              <h3>{destination.name}</h3>
-              <p>{destination.tours} tours</p>
-            </div>
-          </div>
-        ))}
-      </Yard>
-    </Container>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.textWrapper}>
+          <h1 className={styles.title}>All Destinations</h1>
+          <p className={styles.subtitle}>Discover amazing places around the world</p>
+        </div>
+      </div>
+      
+      <div className={styles.content}>
+        <div className={styles.grid}>
+          {destinations.map((destination) => (
+            <Link key={destination.id} href={`/destinations/${destination.id}`}>
+              <div className={styles.card}>
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={destination.image}
+                    alt={destination.title}
+                    fill
+                    className={styles.image}
+                    priority={destination.id === 'sydney'}
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className={styles.overlay}>
+                    <h2>{destination.title}</h2>
+                    <p>{destination.description}</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default PopularDestinations;
+export default AllDestinations;

@@ -1,14 +1,7 @@
-"use client";
-
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import { usePathname } from "next/navigation";
+import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Providers from "@/redux/providers/Providers";
-import { ConfigProvider } from "antd";
-import { ToastContainer } from "react-toastify";
-import { isEqual } from "lodash";
+import ClientLayout from "@/components/ClientLayout";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -16,24 +9,21 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
+export const metadata: Metadata = {
+  title: "Travel Website",
+  description: "Your ultimate travel companion",
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const pathname = usePathname();
-  const isLoginPage = isEqual(pathname, "/login");
-
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ToastContainer />
-        <ConfigProvider>
-          <Providers>
-            {!isLoginPage && <Header />}
-            {children}
-            {!isLoginPage && <Footer />}
-          </Providers>
-        </ConfigProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
-}
+} 

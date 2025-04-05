@@ -41,16 +41,16 @@ const Header = () => {
               </li>
               <li><Link href="/blog">Blog</Link></li> 
               <li><Link href="/AboutUs">About Us</Link></li>
-              <li><Link href="/DestinationsPage">Destinations</Link></li>
+              <li><Link href="/destinations">Destinations</Link></li>
               <li>
                 {isAdminPage ? (
                   <Button type="default" onClick={handleLogout}>
                     Logout
                   </Button>
                 ) : (
-                  <div className={styles.userIcon}>
-                    <FaUserCircle size={20} />
-                  </div>
+                  <Link href="/login">
+                    <FaUserCircle size={24} />
+                  </Link>
                 )}
               </li>
             </ul>
