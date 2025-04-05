@@ -10,9 +10,10 @@ const AnalyticsWidgetSummary = ({
   total,
   percent,
   chart,
+  backgroundColor,
 }: any) => {
   return (
-    <Card className={styles.widgetCard}>
+    <Card className={styles.widgetCard} style={{ backgroundColor }}>
       {/* Icon */}
       <div className={styles.widgetIcon}>{icon}</div>
 

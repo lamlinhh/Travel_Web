@@ -1,7 +1,28 @@
 "use client";
 import { Area, Block, Text, Yard } from "@/libs";
-import { HiOutlineInformationCircle, HiOutlineTrendingUp, HiOutlineUser } from "react-icons/hi";
+import {
+    HiOutlineInformationCircle,
+    HiOutlineTrendingUp,
+    HiOutlineUser,
+    HiOutlineGlobeAlt,
+    HiOutlineCheckCircle,
+    HiOutlineLocationMarker,
+    HiOutlineCalendar,
+} from "react-icons/hi";
 import styles from "./styles.module.scss";
+import Link from "next/link";
+
+const tourData = {
+    difficulty: "Medium",
+    minAge: 10,
+    experience: "Explore the crystal-clear blue sea and white sandy beaches of Phu Quoc.",
+    services: "Round-trip airfare, 4-star hotel, meals, and island tour.",
+    location: "https://goo.gl/maps/abcxyz123",
+    itinerary: [
+        { day: 1, description: "Guest pickup - Visit Vinpearl." },
+        { day: 2, description: "Scuba diving - Relax at the resort." },
+    ],
+};
 
 const TourOverview = () => {
     return (
@@ -13,10 +34,9 @@ const TourOverview = () => {
                             <HiOutlineTrendingUp size={24} color="#ffa500" />
                             <h1>Difficulty</h1>
                         </div>
-
                         <div className={styles.difficultyLevels}>
                             <div className={`${styles.levelBox} ${styles.easy}`}>Easy</div>
-                            <div className={`${styles.levelBox} ${styles.active} ${styles.medium}`}>Medium</div>
+                            <div className={`${styles.levelBox} ${styles.active} ${styles.medium}`}>{tourData.difficulty}</div>
                             <div className={`${styles.levelBox} ${styles.hard}`}>Hard</div>
                         </div>
                     </div>
@@ -26,25 +46,62 @@ const TourOverview = () => {
                             <HiOutlineUser size={24} color="#ffa500" />
                             <h1>Min Age</h1>
                         </div>
-                        <Text className={styles.text}>
-                            10 Age
-                        </Text>
+                        <Text className={styles.text}>{tourData.minAge} Age</Text>
                     </div>
                 </Block>
-                
+
                 <Block className={styles.tourIntro}>
                     <div className={styles.overviewContent}>
                         <div className={styles.iconAndTitle}>
-                            <HiOutlineInformationCircle size={24} color="#ffa500" />
-                            <h1>Overview</h1>
+                            <HiOutlineGlobeAlt size={24} color="#ffa500" />
+                            <h1>Travel Experience:</h1>
+                        </div>
+                        <Text className={styles.overviewText}>{tourData.experience}</Text>
+                    </div>
+                </Block>
+
+                <Block className={styles.tourIntro}>
+                    <div className={styles.overviewContent}>
+                        <div className={styles.iconAndTitle}>
+                            <HiOutlineCheckCircle size={24} color="#ffa500" />
+                            <h1>Included Services:</h1>
+                        </div>
+                        <Text className={styles.overviewText}>{tourData.services}</Text>
+                    </div>
+                </Block>
+
+                <Block className={styles.tourIntro}>
+                    <div className={styles.overviewContent}>
+                        <div className={styles.iconAndTitle}>
+                            <HiOutlineLocationMarker size={24} color="#ffa500" />
+                            <h1>Location Map:</h1>
                         </div>
                         <Text className={styles.overviewText}>
-                            Canada is a vast and diverse country offering an unforgettable tour experience for travelers seeking natural beauty, vibrant cities, and rich cultural heritage. From the majestic Rocky Mountains in Alberta to the breathtaking Niagara Falls in Ontario, Canada’s landscapes are truly awe-inspiring. Visitors can explore cosmopolitan cities like Toronto, Vancouver, and Montreal, each known for its unique charm, culinary scene, and multicultural atmosphere. Outdoor enthusiasts can enjoy activities such as hiking, skiing, kayaking, and wildlife watching in pristine national parks. A Canada tour also offers opportunities to experience indigenous cultures, historic sites, and the magical Northern Lights in the Yukon or Northwest Territories. Whether you’re an adventure seeker or a leisure traveler, Canada promises a journey filled with wonder and discovery.
+                            <Link href={tourData.location} target="_blank" rel="noopener noreferrer">Google Maps Link</Link>
                         </Text>
+                    </div>
+                </Block>
+
+                <Block className={styles.tourIntro}>
+                    <div className={styles.overviewContent}>
+                        <div className={styles.iconAndTitle}>
+                            <HiOutlineCalendar size={24} color="#ffa500" />
+                            <h1>Trip Itinerary:</h1>
+                        </div>
+                        <div className={styles.overviewText}>
+                            <ul>
+                                {tourData.itinerary.map((item, index) => (
+                                    <li key={index}>
+                                        <strong>Day {item.day}:</strong> {item.description}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </Block>
             </Area>
         </Yard>
-    )
-}
+    );
+};
+
 export default TourOverview;

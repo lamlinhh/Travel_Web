@@ -11,7 +11,7 @@ const Tour = () => {
       <Yard className={styles.banner}>
         <h1 className={styles.title}>Paris Tours and Activities</h1>
         <img
-          src="https://github.com/lamlinhh/Travel_Web/blob/Linh/assets/Images/pexels-jarod-17350906_wqirdn.jpg?raw=true"
+          src="https://github.com/lamlinhh/Travel_Web/blob/main/assets/Images/pexels-jarod-17350906_wqirdn.jpg?raw=true"
           alt="Paris"
         />
       </Yard>

@@ -7,7 +7,7 @@ import TourFeatures from "@/components/TourFeatures";
 import TourOverview from "@/components/TourOverview";
 import ReviewForm from "@/components/ReviewForm";
 import ReviewsForTour from "@/components/ReviewsForTour"
-import { Area, Yard, Section, Block } from "@/libs";
+import { Section, Block } from "@/libs";
 
 const TourDetail = () => {
 
@@ -30,7 +30,7 @@ const TourDetail = () => {
                     <h1>Tour Reviews</h1>
                 </Block>
                 <Block className={styles.blockbottom}>
-                    <ReviewsForTour tourId="67d04be19fa89cc86085404b" />
+                    <ReviewsForTour tourId="67efb56855121a3862121cd4" />
                 </Block>
             </Section>
         </div>

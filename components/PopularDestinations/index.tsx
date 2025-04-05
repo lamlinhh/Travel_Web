@@ -1,5 +1,8 @@
+"use client";
 import { Container, Yard } from "@/libs";
 import styles from "./styles.module.scss";
+
+import { useRouter } from "next/navigation"; 
 
 const destinations = [
   {
@@ -40,19 +43,32 @@ const destinations = [
   },
 ];
 
-const index = () => {
+const PopularDestinations = () => {
+  const router = useRouter();
+
   return (
     <Container className={styles.container}>
+      {/* Tiêu đề & Nút "View all destinations" */}
       <Yard className={styles.header}>
         <h2>Popular Destinations</h2>
-        <a href="#" className={styles.viewAll}>
+        <a
+          onClick={() => router.push("/destinations")}
+          className={styles.viewAll}
+          style={{ cursor: "pointer" }}
+        >
           View all destinations →
         </a>
       </Yard>
 
+      {/* Hiển thị danh sách địa điểm */}
       <Yard className={styles.grid}>
         {destinations.map((destination, index) => (
-          <div key={index} className={styles.card}>
+          <div
+            key={index}
+            className={styles.card}
+            onClick={() => router.push(`/destinations/${destination.name}`)}
+            style={{ cursor: "pointer" }}
+          >
             <img src={destination.image} alt={destination.name} />
             <div className={styles.overlay}></div>
             <div className={styles.text}>
@@ -66,4 +82,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default PopularDestinations;
