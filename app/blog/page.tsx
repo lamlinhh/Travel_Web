@@ -1,4 +1,4 @@
-import BlogScreen from "@/app/screens/BlogScreen";
+import BlogScreen from "@/screens/Blog/BlogScreen";
 
 export const metadata = {
   title: "Blog",
