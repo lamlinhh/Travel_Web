@@ -54,7 +54,7 @@ const Index = () => {
         </Title>
         <Form layout="vertical" onFinish={handleRegister}>
           <Form.Item
-            label="UserName"
+            label="Tài khoản"
             name="UserName"
             rules={[{ required: true, message: "Vui lòng nhập UserName!" }]}>
             <Input placeholder="Nhập tên người dùng" />
@@ -80,7 +80,7 @@ const Index = () => {
           </Form.Item>
 
           <Form.Item
-            label="Phone"
+            label="Số điện thoại"
             name="Phone"
             rules={[
               { required: true, message: "Vui lòng nhập số điện thoại!" },

@@ -1,5 +1,7 @@
 "use client";
 
+import "@ant-design/v5-patch-for-react-19";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { usePathname } from "next/navigation";
@@ -9,7 +11,6 @@ import Providers from "@/redux/providers/Providers";
 import { ConfigProvider } from "antd";
 import { ToastContainer } from "react-toastify";
 import { isEqual } from "lodash";
-
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -26,14 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ToastContainer />
-        <ConfigProvider>
-          <Providers>
-            {!isAuthPage && <Header />}
-            {children}
-            {!isAuthPage && <Footer />}
-          </Providers>
-        </ConfigProvider>
+        <AntdRegistry>
+          <ToastContainer />
+          <ConfigProvider>
+            <Providers>
+              {!isAuthPage && <Header />}
+              {children}
+              {!isAuthPage && <Footer />}
+            </Providers>
+          </ConfigProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

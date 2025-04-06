@@ -15,7 +15,7 @@ const getCookie = (name: string) => {
 
 const Header = () => {
   const pathname = usePathname();
-  const isAdminPage = pathname?.startsWith("/admin") || false;
+  // const isAdminPage = pathname?.startsWith("/admin") || false;
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -54,8 +54,8 @@ const Header = () => {
                   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/vu/assets/Images/logo.webp"
                 }
                 alt=""
-                width={"100"}
-                height={"100"}
+                width={"80"}
+                height={"60"}
               />
             </Text>
           </Yard>
