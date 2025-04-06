@@ -4535,7 +4535,11 @@ toggle-selection@^1.0.6:
     sass "^1.86.0"
     scss "^0.2.4"
     swiper "^11.2.6"
+<<<<<<< HEAD
     travelweb "file:../../../Library/Caches/Yarn/v6/npm-travelweb-0.1.0-829d2646-cb33-481f-b6d1-2d0c5995c41b-1743818849710/node_modules/travelweb"
+=======
+    travelweb "file:../../../../Users/HP/AppData/Local/Yarn/Cache/v6/npm-travelweb-0.1.0-ac33c11a-d0cc-43dd-822b-430dfa0aad95-1743844688262/node_modules/travelweb"
+>>>>>>> 932fb7e22ad39d427e4e5b902aa48c86d00d991f
 
 ts-api-utils@^2.0.1:
   version "2.1.0"

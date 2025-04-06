@@ -1,21 +1,28 @@
 "use client";
 
-import "@ant-design/v5-patch-for-react-19";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { usePathname } from "next/navigation";
-import { Roboto } from "next/font/google";
-import "./globals.css";
 import Providers from "@/redux/providers/Providers";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "@ant-design/v5-patch-for-react-19";
 import { ConfigProvider } from "antd";
-import { ToastContainer } from "react-toastify";
 import { isEqual } from "lodash";
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import { usePathname } from "next/navigation";
+import { ToastContainer } from "react-toastify";
+import "./globals.css";
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-roboto",
 });
+
+export const metadata: Metadata = {
+  title: "Travel Website",
+  description: "Your ultimate travel companion",
+};
 
 export default function RootLayout({
   children,
