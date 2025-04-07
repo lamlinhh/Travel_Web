@@ -9,11 +9,7 @@ import { RootState, AppDispatch } from "@/redux/store";
 import { fetchBookTour } from "@/redux/slices/bookTourSlice";
 import { fetchTour } from "@/redux/slices/tourSlice";
 import Modal from "@/components/ModalNotification";
-
-// Ant Design Icons
 import { UserOutlined, MailOutlined, PhoneOutlined, DollarOutlined, ProfileOutlined, CreditCardOutlined } from "@ant-design/icons";
-
-// Framer motion
 import { motion } from "framer-motion";
 
 const PaymentForm = () => {

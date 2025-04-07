@@ -14,7 +14,6 @@ const initialState: TourDetailState = {
     error: null,
 };
 
-// === Thunk ===
 export const fetchTourDetailByTourId = createAsyncThunk(
     "tourDetail/fetchByTourId",
     async (tourId: string, thunkAPI) => {
@@ -38,7 +37,6 @@ export const fetchTourDetailByTourId = createAsyncThunk(
     }
 );
 
-// === Slice ===
 const tourDetailSlice = createSlice({
     name: "tourDetail",
     initialState,
