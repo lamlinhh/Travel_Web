@@ -139,32 +139,32 @@ const PaymentForm = () => {
       {error && <p style={{ color: "red" }}>Có lỗi xảy ra: {error}</p>}
 
       <div className={styles.row}>
-        <span className={styles.label}><UserOutlined /> Username:</span>
+        <span className={styles.label}><UserOutlined style={{ color: '#e65c2e' }} /> Username:</span>
         <span className={styles.value}>{userDetails?.UserName || "Loading..."}</span>
       </div>
 
       <div className={styles.row}>
-        <span className={styles.label}><MailOutlined /> Email:</span>
+        <span className={styles.label}><MailOutlined style={{ color: '#e65c2e' }} /> Email:</span>
         <span className={styles.value}>{userDetails?.Email || "Loading..."}</span>
       </div>
 
       <div className={styles.row}>
-        <span className={styles.label}><PhoneOutlined /> Phone:</span>
+        <span className={styles.label}><PhoneOutlined style={{ color: '#e65c2e' }} /> Phone:</span>
         <span className={styles.value}>{userDetails?.Phone || "Loading..."}</span>
       </div>
 
       <div className={styles.row}>
-        <span className={styles.label}><ProfileOutlined /> Tên tour:</span>
+        <span className={styles.label}><ProfileOutlined style={{ color: '#e65c2e' }} /> Tên tour:</span>
         <span className={styles.value}>{tour ? tour.TourName : "Loading..."}</span>
       </div>
 
       <div className={styles.row}>
-        <span className={styles.label}><DollarOutlined /> Số tiền:</span>
+        <span className={styles.label}><DollarOutlined style={{ color: '#e65c2e' }} /> Số tiền:</span>
         <span className={styles.value}>{bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}</span>
       </div>
 
       <div className={styles.row}>
-        <span className={styles.label}><CreditCardOutlined /> Hình thức thanh toán:</span>
+        <span className={styles.label}><CreditCardOutlined style={{ color: '#e65c2e' }} /> Hình thức thanh toán:</span>
         <select
           className={styles.select}
           value={paymentMethod}

@@ -75,13 +75,14 @@
   transition: border 0.3s;
 
   &:hover {
-    border-color: #e65c2e;
+    border-color: #d1d1d1;
+    cursor: pointer;
   }
 
   &:focus {
     outline: none;
-    border-color: #e65c2e;
-    box-shadow: 0 0 0 3px rgba(230, 92, 46, 0.2);
+    border-color: #d1d1d1;
+    box-shadow: 0 0 0 3px rgba(209, 209, 209, 0.2);
   }
 }
 
@@ -102,7 +103,7 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #8e44ad;
+    background-color: #f5a16f;
     transform: translateY(-2px);
   }
 
