@@ -124,10 +124,8 @@ const PaymentForm = () => {
       <div className={styles.banner}>
         <div className={styles.blockImage}>
           <Image
-            src={
-              "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/vu/assets/Images/logo.webp"
-            }
-            alt="Logo"
+            src="https://raw.githubusercontent.com/lamlinhh/Travel_Web/hau/assets/Images/banner_payment.jpeg"
+            alt="Banner Payment"
             fill
             style={{ objectFit: "cover" }}
           />
