@@ -7,6 +7,8 @@ import { RootState, AppDispatch } from '@/redux/store';
 import styles from './styles.module.scss';
 import { createReviewThunk } from '@/redux/slices/reviewsSlice';
 import { useParams } from "next/navigation";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 const defaultAvatars = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/th.webp",
@@ -33,13 +35,13 @@ const ReviewForm: React.FC = () => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    console.log("Stored User:", storedUser); 
+    console.log("Stored User:", storedUser);
 
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      console.log("Parsed User:", parsedUser); 
-      setUserId(parsedUser._id); 
-      setUserName(parsedUser.UserName || "Anonymous"); 
+      console.log("Parsed User:", parsedUser);
+      setUserId(parsedUser._id);
+      setUserName(parsedUser.UserName || "Anonymous");
     }
   }, []);
 
@@ -73,13 +75,14 @@ const ReviewForm: React.FC = () => {
       setRating(0);
 
       dispatch(fetchReviews(currentPage));
+      toast.success("Đánh giá đã được gửi thành công!");
     } catch (err: any) {
       console.error('Error creating review:', err);
-      alert(err.message || 'Failed to submit review!');
+      toast.error("Gửi đánh giá thất bại! Vui lòng thử lại.");
     }
   };
 
-  if (!randomAvatar) return null; 
+  if (!randomAvatar) return null;
 
   return (
     <form className={styles.reviewForm}>
@@ -91,7 +94,7 @@ const ReviewForm: React.FC = () => {
           alt="Avatar"
           className={styles.reviewForm__avatar}
         />
-        <span><strong>{userName}</strong></span> 
+        <span><strong>{userName}</strong></span>
       </div>
 
       <div className={styles.reviewForm__stars}>

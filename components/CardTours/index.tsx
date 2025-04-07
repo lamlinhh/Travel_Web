@@ -30,7 +30,7 @@ const CardTour = () => {
               handleTourClick(tour?._id);
             }}>
             <div className={styles.imageContainer}>
-              <img src={tour.image} alt={tour.TourName} className={styles.image} />
+              <img src={tour.Image} alt={tour.TourName} className={styles.image} />
             </div>
             <div className={styles.content}>
               <p className={styles.location}>

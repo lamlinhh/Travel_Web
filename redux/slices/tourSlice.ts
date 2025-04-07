@@ -13,26 +13,38 @@ export interface Tour {
   createdAt?: string;
   updatedAt?: string;
   Rating?: number;
-  image?:string;
+  Image?: string;
   _id?: string;
 }
 
 interface TourState {
   tours: Tour[];
+  selectedTour: Tour | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: TourState = {
   tours: [],
+  selectedTour: null, // Thêm state cho tour được chọn
   loading: false,
   error: null,
 };
 
+// Fetch tất cả các tour
 export const fetchTours = createAsyncThunk("tour/fetchTours", async () => {
   const response = await axiosInstance.get("/GetAllTours");
   return response.data.tours;
 });
+
+// Fetch tour theo ID
+export const fetchTour = createAsyncThunk(
+  "tour/fetchTour",
+  async (id: string) => {
+    const response = await axiosInstance.get(`/GetTour/${id}`);
+    return response.data; // Giả sử API trả về thông tin tour dưới dạng đối tượng
+  }
+);
 
 const tourSlice = createSlice({
   name: "tour",
@@ -51,6 +63,19 @@ const tourSlice = createSlice({
       .addCase(fetchTours.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch tours";
+      })
+      // Xử lý fetchTour
+      .addCase(fetchTour.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchTour.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedTour = action.payload; // Cập nhật selectedTour khi thành công
+      })
+      .addCase(fetchTour.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Failed to fetch tour";
       });
   },
 });

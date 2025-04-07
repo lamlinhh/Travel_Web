@@ -4,5 +4,6 @@ export interface BookTourProps {
     UserId: string;
     DepartureDate: string | Date;
     QuantityAdults: number;
-    QuantityChildren: number
+    QuantityChildren: number;
+    TotalPrice?: number;
 }

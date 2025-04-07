@@ -45,6 +45,8 @@ const bookTourSlice = createSlice({
     name: "bookTour",
     initialState,
     reducers: {
+        resetBookTour: (state) => {
+        },
     },
     extraReducers: (builder) => {
         builder

@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import TourFilter from "@/components/TourFilter";
 import CardTours from "@/components/CardTours";
+import { useEffect, useState } from "react";
 
 const Tour = () => {
   return (

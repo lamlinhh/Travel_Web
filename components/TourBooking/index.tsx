@@ -10,11 +10,14 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import { Area, Block, Container, Text, Yard } from "@/libs";
 import { Image } from "antd";
+import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const images = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/honolulu_wut943.webp",
@@ -39,10 +42,9 @@ const TourBooking = () => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      setUserId(parsedUser._id); 
+      setUserId(parsedUser._id);
     }
   }, []);
-
 
   const handleBooking = () => {
     if (!tourId || !userId) return;
@@ -57,8 +59,21 @@ const TourBooking = () => {
 
     dispatch(createBookTour(newBooking));
 
-
+    toast.info("Processing your booking...");
   };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (bookTour && bookTour._id) {
+      toast.success("Tour booked successfully!");
+      router.push(`/Payment?tourId=${tourId}&bookTourId=${bookTour._id}`);
+
+      if (error) {
+        toast.error(`Booking failed: ${error}`);
+      }
+    }
+  }, [bookTour, router, tourId]);
 
   return (
     <Container className={styles.container}>
@@ -137,7 +152,10 @@ const TourBooking = () => {
               />
             </div>
 
-            <button className={styles.bookBtn} onClick={handleBooking}>Book Tour</button>
+            {/* Book Tour Button */}
+            <button className={styles.bookBtn} onClick={handleBooking}>
+              Book Tour
+            </button>
             <p className={styles.freeCancel}>Free Cancellation</p>
             <p className={styles.reserveNow}>Reserve Now - Secure your spot while staying flexible</p>
           </Block>
