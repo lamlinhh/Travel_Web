@@ -3,7 +3,7 @@
   margin: 60px auto;
   padding: 40px;
   background: linear-gradient(135deg, #fdfbfb, #ebedee);
-  border-left: 8px solid #9b59b6;
+  border-left: 8px solid #e65c2e;
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", sans-serif;
@@ -11,12 +11,28 @@
   transition: all 0.3s ease-in-out;
 }
 
-.title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: #6a1b9a;
-  margin-bottom: 32px;
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+
+  .blockImage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+  }
+
+  .blockTitle {
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #e65c2e;
+      margin-bottom: 32px;
+    }
+  }
 }
 
 .row {
@@ -49,7 +65,7 @@
   transition: border 0.3s;
 
   &:hover {
-    border-color: #9b59b6;
+    border-color: #e65c2e;
   }
 
   &:focus {
@@ -66,7 +82,7 @@
 
 .payButton {
   padding: 12px 28px;
-  background-color: #9b59b6;
+  background-color: #e65c2e;
   color: #fff;
   font-size: 16px;
   font-weight: 600;

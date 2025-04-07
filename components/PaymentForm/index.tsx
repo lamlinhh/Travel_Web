@@ -11,6 +11,7 @@ import { fetchTour } from "@/redux/slices/tourSlice";
 import Modal from "@/components/ModalNotification";
 import { UserOutlined, MailOutlined, PhoneOutlined, DollarOutlined, ProfileOutlined, CreditCardOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const PaymentForm = () => {
   const searchParams = useSearchParams();
@@ -120,7 +121,21 @@ const PaymentForm = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <h2 className={styles.title}>Thanh Toán</h2>
+      <div className={styles.banner}>
+        <div className={styles.blockImage}>
+          <Image
+            src={
+              "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/vu/assets/Images/logo.webp"
+            }
+            alt="Logo"
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className={styles.blockTitle}>
+          <h2 className={styles.title}>Thanh Toán</h2>
+        </div>
+      </div>
 
       {loading && <p>Đang tải...</p>}
       {error && <p style={{ color: "red" }}>Có lỗi xảy ra: {error}</p>}
