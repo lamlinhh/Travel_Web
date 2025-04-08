@@ -1,5 +1,5 @@
-import PaymentForm from "@/components/PaymentForm"
-import styles from "@/screens/Payment/styles.module.scss"
+import PaymentForm from "@/components/PaymentForm";
+import styles from "@/screens/Payment/styles.module.scss";
 const Payment = () => {
   return (
     <div className={styles.container}>
