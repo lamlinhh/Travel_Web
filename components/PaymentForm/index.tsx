@@ -115,86 +115,90 @@ const PaymentForm = () => {
   };
 
   return (
-    <motion.div
-      className={styles.container}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      <div className={styles.banner}>
-        <div className={styles.blockImage}>
-          <Image
-            src="https://raw.githubusercontent.com/lamlinhh/Travel_Web/hau/assets/Images/banner_payment.jpeg"
-            alt="Banner Payment"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-        <div className={styles.blockTitle}>
-          <h2 className={styles.title}>Thanh Toán</h2>
-        </div>
-      </div>
-
-      {loading && <p>Đang tải...</p>}
-      {error && <p style={{ color: "red" }}>Có lỗi xảy ra: {error}</p>}
-
-      <div className={styles.row}>
-        <span className={styles.label}><UserOutlined style={{ color: '#e65c2e' }} /> Username:</span>
-        <span className={styles.value}>{userDetails?.UserName || "Loading..."}</span>
-      </div>
-
-      <div className={styles.row}>
-        <span className={styles.label}><MailOutlined style={{ color: '#e65c2e' }} /> Email:</span>
-        <span className={styles.value}>{userDetails?.Email || "Loading..."}</span>
-      </div>
-
-      <div className={styles.row}>
-        <span className={styles.label}><PhoneOutlined style={{ color: '#e65c2e' }} /> Phone:</span>
-        <span className={styles.value}>{userDetails?.Phone || "Loading..."}</span>
-      </div>
-
-      <div className={styles.row}>
-        <span className={styles.label}><ProfileOutlined style={{ color: '#e65c2e' }} /> Tên tour:</span>
-        <span className={styles.value}>{tour ? tour.TourName : "Loading..."}</span>
-      </div>
-
-      <div className={styles.row}>
-        <span className={styles.label}><DollarOutlined style={{ color: '#e65c2e' }} /> Số tiền:</span>
-        <span className={styles.value}>{bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}</span>
-      </div>
-
-      <div className={styles.row}>
-        <span className={styles.label}><CreditCardOutlined style={{ color: '#e65c2e' }} /> Hình thức thanh toán:</span>
-        <select
-          className={styles.select}
-          value={paymentMethod}
-          onChange={(e) => setPaymentMethod(e.target.value)}
+    <div className={styles.container}>
+      <div className={styles.yard}>
+        <motion.div
+          className={styles.area}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <option value="MOMO">MOMO</option>
-          <option value="OFFLINE">Thanh toán tại quầy</option>
-        </select>
-      </div>
+          <div className={styles.banner}>
+            <div className={styles.blockImage}>
+              <Image
+                src="https://raw.githubusercontent.com/lamlinhh/Travel_Web/hau/assets/Images/banner_payment.jpeg"
+                alt="Banner Payment"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.blockTitle}>
+              <h2 className={styles.title}>Thanh Toán</h2>
+            </div>
+          </div>
 
-      <div className={styles.row}>
-        <span className={styles.label}>Trạng thái:</span>
-        <span className={styles.value}>{paymentStatus ? "Đã thanh toán" : "Chưa thanh toán"}</span>
-      </div>
+          {loading && <p>Đang tải...</p>}
+          {error && <p style={{ color: "red" }}>Có lỗi xảy ra: {error}</p>}
 
-      <div className={styles.paymentButtons}>
-        <motion.button
-          className={styles.payButton}
-          onClick={handleCreatePayment}
-          disabled={loading || !userId || !bookTourId || !tour || !bookTourData}
-          whileTap={{ scale: 0.95 }}
-          whileHover={{ scale: 1.03 }}
-        >
-          {loading ? "Đang xử lý..." : "Thanh Toán"}
-        </motion.button>
-      </div>
+          <div className={styles.row}>
+            <span className={styles.label}><UserOutlined style={{ color: '#e65c2e' }} /> Username:</span>
+            <span className={styles.value}>{userDetails?.UserName || "Loading..."}</span>
+          </div>
 
-      {/* Modal for notifications */}
-      {showModal && <Modal message={modalMessage} onClose={() => setShowModal(false)} onConfirm={() => setShowModal(false)} />}
-    </motion.div>
+          <div className={styles.row}>
+            <span className={styles.label}><MailOutlined style={{ color: '#e65c2e' }} /> Email:</span>
+            <span className={styles.value}>{userDetails?.Email || "Loading..."}</span>
+          </div>
+
+          <div className={styles.row}>
+            <span className={styles.label}><PhoneOutlined style={{ color: '#e65c2e' }} /> Phone:</span>
+            <span className={styles.value}>{userDetails?.Phone || "Loading..."}</span>
+          </div>
+
+          <div className={styles.row}>
+            <span className={styles.label}><ProfileOutlined style={{ color: '#e65c2e' }} /> Tên tour:</span>
+            <span className={styles.value}>{tour ? tour.TourName : "Loading..."}</span>
+          </div>
+
+          <div className={styles.row}>
+            <span className={styles.label}><DollarOutlined style={{ color: '#e65c2e' }} /> Số tiền:</span>
+            <span className={styles.value}>{bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}</span>
+          </div>
+
+          <div className={styles.row}>
+            <span className={styles.label}><CreditCardOutlined style={{ color: '#e65c2e' }} /> Hình thức thanh toán:</span>
+            <select
+              className={styles.select}
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            >
+              <option value="MOMO">MOMO</option>
+              <option value="OFFLINE">Thanh toán tại quầy</option>
+            </select>
+          </div>
+
+          <div className={styles.row}>
+            <span className={styles.label}>Trạng thái:</span>
+            <span className={styles.value}>{paymentStatus ? "Đã thanh toán" : "Chưa thanh toán"}</span>
+          </div>
+
+          <div className={styles.paymentButtons}>
+            <motion.button
+              className={styles.payButton}
+              onClick={handleCreatePayment}
+              disabled={loading || !userId || !bookTourId || !tour || !bookTourData}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              {loading ? "Đang xử lý..." : "Thanh Toán"}
+            </motion.button>
+          </div>
+
+          {/* Modal for notifications */}
+          {showModal && <Modal message={modalMessage} onClose={() => setShowModal(false)} onConfirm={() => setShowModal(false)} />}
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
