@@ -19,11 +19,6 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export const metadata: Metadata = {
-  title: "Travel Website",
-  description: "Your ultimate travel companion",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

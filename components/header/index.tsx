@@ -48,7 +48,7 @@ const Header = () => {
       <div className={styles.body}>
         <div className={styles.content}>
           <Yard center>
-            <Text fontSize={"30px"}>
+            <Link href={"/"}>
               <Image
                 src={
                   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/vu/assets/Images/logo.webp"
@@ -57,7 +57,7 @@ const Header = () => {
                 width={"80"}
                 height={"60"}
               />
-            </Text>
+            </Link>
           </Yard>
           <div>
             <ul className={styles.ul}>
