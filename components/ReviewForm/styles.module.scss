@@ -1,5 +1,6 @@
 .reviewForm {
   width: 75%;
+  height: 480px;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -15,13 +16,13 @@
     .star {
       font-size: 2rem;
       cursor: pointer;
-      color: #e4e5e9; 
+      color: #e4e5e9;
       margin-right: 5px;
       transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 
       &:hover {
-        color: #ffeb3b; 
-        transform: scale(1.2); 
+        color: #ffeb3b;
+        transform: scale(1.2);
       }
 
       &.active {
@@ -29,12 +30,12 @@
         transform: scale(1.1);
 
         &:hover {
-          color: #ff9800; 
+          color: #ff9800;
         }
       }
 
       &:active {
-        transform: scale(0.9); 
+        transform: scale(0.9);
       }
     }
   }

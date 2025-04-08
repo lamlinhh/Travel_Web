@@ -10,9 +10,7 @@ import Link from "next/link";
 
 const CustomerReviews = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { reviews, loading, error } = useSelector(
-    (state: RootState) => state.review,
-  );
+  const { reviews, loading, error } = useSelector((state: RootState) => state.review);
 
   useEffect(() => {
     dispatch(fetchReviews(1));
@@ -28,9 +26,13 @@ const CustomerReviews = () => {
         View all reviews →
       </Link>
       <div className={styles.reviewGrid}>
-        {reviews.map((review, index) => (
-          <ReviewCard key={index} {...review} />
-        ))}
+        {reviews.length > 0 ? (
+          reviews.slice(0, 3).map((review) => (
+            <ReviewCard key={review._id?.toString()} {...review} />
+          ))
+        ) : (
+          <div>No reviews found.</div>
+        )}
       </div>
     </div>
   );
