@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { createBookTour } from '@/redux/slices/bookTourSlice';
+import { createBookTour, resetBookTour } from '@/redux/slices/bookTourSlice';
 import { RootState, AppDispatch } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
@@ -37,6 +37,11 @@ const TourBooking = () => {
   const tourId = params?.id as string;
 
   const [userId, setUserId] = useState<string | null>(null);
+  const [hasBooked, setHasBooked] = useState(false);
+
+  useEffect(() => {
+    dispatch(resetBookTour());
+  }, [dispatch]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -57,6 +62,7 @@ const TourBooking = () => {
       QuantityChildren: children,
     };
 
+    setHasBooked(true);
     dispatch(createBookTour(newBooking));
 
     toast.info("Processing your booking...");
@@ -65,15 +71,12 @@ const TourBooking = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (bookTour && bookTour._id) {
+    if (hasBooked && bookTour && bookTour._id) {
       toast.success("Tour booked successfully!");
       router.push(`/Payment?tourId=${tourId}&bookTourId=${bookTour._id}`);
-
-      if (error) {
-        toast.error(`Booking failed: ${error}`);
-      }
+      dispatch(resetBookTour());
     }
-  }, [bookTour, router, tourId]);
+  }, [hasBooked, bookTour, router, tourId]);
 
   return (
     <Container className={styles.container}>

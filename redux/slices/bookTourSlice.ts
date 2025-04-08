@@ -46,6 +46,9 @@ const bookTourSlice = createSlice({
     initialState,
     reducers: {
         resetBookTour: (state) => {
+            state.bookTour = null;
+            state.loading = false;
+            state.error = null;
         },
     },
     extraReducers: (builder) => {
@@ -77,4 +80,5 @@ const bookTourSlice = createSlice({
     },
 });
 
+export const { resetBookTour } = bookTourSlice.actions;
 export default bookTourSlice.reducer;
