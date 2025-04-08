@@ -12,7 +12,7 @@ export interface Tour {
   DescribeTour?: string;
   createdAt?: string;
   updatedAt?: string;
-  Rating?: number;
+  TotalRating?: number;
   Image?: string;
   _id?: string;
 }
@@ -37,12 +37,11 @@ export const fetchTours = createAsyncThunk("tour/fetchTours", async () => {
   return response.data.tours;
 });
 
-// Fetch tour theo ID
 export const fetchTour = createAsyncThunk(
   "tour/fetchTour",
   async (id: string) => {
     const response = await axiosInstance.get(`/GetTour/${id}`);
-    return response.data; // Giả sử API trả về thông tin tour dưới dạng đối tượng
+    return response.data.tour;
   }
 );
 
