@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviews } from '@/redux/slices/reviewsSlice';
+import { fetchReviewsByTourId } from '@/redux/slices/reviewsSlice';
 import { RootState, AppDispatch } from '@/redux/store';
 import styles from './styles.module.scss';
 import { createReviewThunk } from '@/redux/slices/reviewsSlice';
@@ -74,7 +74,7 @@ const ReviewForm: React.FC = () => {
       setComment('');
       setRating(0);
 
-      dispatch(fetchReviews(currentPage));
+      dispatch(fetchReviewsByTourId({ tourId, page: currentPage, limit: 6 }));
       toast.success("Đánh giá đã được gửi thành công!");
     } catch (err: any) {
       console.error('Error creating review:', err);
