@@ -52,6 +52,9 @@ const TourInfo = () => {
             <div className={styles.nameCard}>
               <h3 className={styles.titleCard}>{selectedTour.TourName}</h3>
             </div>
+            <div className={styles.namePrice}>
+              <h3 className={styles.titlePrice}>${selectedTour.TourPrice} / Person</h3>
+            </div>
           </>
         )}
       </div>

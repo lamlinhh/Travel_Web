@@ -9,7 +9,14 @@ import { RootState, AppDispatch } from "@/redux/store";
 import { fetchBookTour } from "@/redux/slices/bookTourSlice";
 import { fetchTour } from "@/redux/slices/tourSlice";
 import Modal from "@/components/ModalNotification";
-import { UserOutlined, MailOutlined, PhoneOutlined, DollarOutlined, ProfileOutlined, CreditCardOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  DollarOutlined,
+  ProfileOutlined,
+  CreditCardOutlined,
+} from "@ant-design/icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -50,7 +57,7 @@ const PaymentForm = () => {
 
   const handleMomoPayment = async () => {
     if (!userId || !bookTourId) {
-      setModalMessage("Thiếu thông tin thanh toán MOMO.");
+      setModalMessage("Missing MOMO payment information.");
       setShowModal(true);
       return;
     }
@@ -62,18 +69,18 @@ const PaymentForm = () => {
       if (momoResult?.payload?.payUrl) {
         window.location.href = momoResult.payload.payUrl;
       } else {
-        setModalMessage("Không nhận được đường dẫn thanh toán MOMO.");
+        setModalMessage("Could not retrieve MOMO payment URL.");
         setShowModal(true);
       }
     } catch (error) {
-      setModalMessage("Có lỗi xảy ra khi xử lý thanh toán MOMO.");
+      setModalMessage("An error occurred while processing MOMO payment.");
       setShowModal(true);
     }
   };
 
   const handleOfflinePayment = async () => {
     if (!userId || !bookTourId || !tour || !bookTourData) {
-      setModalMessage("Thiếu thông tin thanh toán OFFLINE.");
+      setModalMessage("Missing OFFLINE payment information.");
       setShowModal(true);
       return;
     }
@@ -92,13 +99,13 @@ const PaymentForm = () => {
     try {
       const result = await dispatch(createPayment(paymentData));
       if (result?.payload?.errCode === 0) {
-        setModalMessage("Thanh toán tại quầy đã được ghi nhận. Vui lòng đến quầy để hoàn tất.");
+        setModalMessage("Your offline payment has been recorded. Please complete payment at the counter.");
       } else {
-        setModalMessage("Có lỗi xảy ra khi tạo thanh toán OFFLINE.");
+        setModalMessage("An error occurred while creating the offline payment.");
       }
       setShowModal(true);
     } catch (error) {
-      setModalMessage("Có lỗi xảy ra khi xử lý thanh toán OFFLINE.");
+      setModalMessage("An error occurred while processing offline payment.");
       setShowModal(true);
     }
   };
@@ -109,7 +116,7 @@ const PaymentForm = () => {
     } else if (paymentMethod === "OFFLINE") {
       handleOfflinePayment();
     } else {
-      setModalMessage("Vui lòng chọn hình thức thanh toán hợp lệ.");
+      setModalMessage("Please select a valid payment method.");
       setShowModal(true);
     }
   };
@@ -127,59 +134,73 @@ const PaymentForm = () => {
             <div className={styles.blockImage}>
               <Image
                 src="https://raw.githubusercontent.com/lamlinhh/Travel_Web/hau/assets/Images/banner_payment.jpeg"
-                alt="Banner Payment"
+                alt="Payment Banner"
                 fill
                 style={{ objectFit: "cover" }}
               />
             </div>
             <div className={styles.blockTitle}>
-              <h2 className={styles.title}>Thanh Toán</h2>
+              <h2 className={styles.title}>PAYMENT FOR TOUR</h2>
             </div>
           </div>
 
-          {loading && <p>Đang tải...</p>}
-          {error && <p style={{ color: "red" }}>Có lỗi xảy ra: {error}</p>}
+          {loading && <p>Loading...</p>}
+          {error && <p style={{ color: "red" }}>Error: {error}</p>}
 
           <div className={styles.row}>
-            <span className={styles.label}><UserOutlined style={{ color: '#e65c2e' }} /> Username:</span>
+            <span className={styles.label}>
+              <UserOutlined style={{ color: "#e65c2e" }} /> Username:
+            </span>
             <span className={styles.value}>{userDetails?.UserName || "Loading..."}</span>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}><MailOutlined style={{ color: '#e65c2e' }} /> Email:</span>
+            <span className={styles.label}>
+              <MailOutlined style={{ color: "#e65c2e" }} /> Email:
+            </span>
             <span className={styles.value}>{userDetails?.Email || "Loading..."}</span>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}><PhoneOutlined style={{ color: '#e65c2e' }} /> Phone:</span>
+            <span className={styles.label}>
+              <PhoneOutlined style={{ color: "#e65c2e" }} /> Phone:
+            </span>
             <span className={styles.value}>{userDetails?.Phone || "Loading..."}</span>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}><ProfileOutlined style={{ color: '#e65c2e' }} /> Tên tour:</span>
+            <span className={styles.label}>
+              <ProfileOutlined style={{ color: "#e65c2e" }} /> Tour Name:
+            </span>
             <span className={styles.value}>{tour ? tour.TourName : "Loading..."}</span>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}><DollarOutlined style={{ color: '#e65c2e' }} /> Số tiền:</span>
-            <span className={styles.value}>{bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}</span>
+            <span className={styles.label}>
+              <DollarOutlined style={{ color: "#e65c2e" }} /> Amount:
+            </span>
+            <span className={styles.value}>
+              {bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}
+            </span>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}><CreditCardOutlined style={{ color: '#e65c2e' }} /> Hình thức thanh toán:</span>
+            <span className={styles.label}>
+              <CreditCardOutlined style={{ color: "#e65c2e" }} /> Payment Method:
+            </span>
             <select
               className={styles.select}
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
             >
               <option value="MOMO">MOMO</option>
-              <option value="OFFLINE">Thanh toán tại quầy</option>
+              <option value="OFFLINE">Pay at Counter</option>
             </select>
           </div>
 
           <div className={styles.row}>
-            <span className={styles.label}>Trạng thái:</span>
-            <span className={styles.value}>{paymentStatus ? "Đã thanh toán" : "Chưa thanh toán"}</span>
+            <span className={styles.label}>Status:</span>
+            <span className={styles.value}>{paymentStatus ? "Paid" : "Unpaid"}</span>
           </div>
 
           <div className={styles.paymentButtons}>
@@ -190,12 +211,17 @@ const PaymentForm = () => {
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.03 }}
             >
-              {loading ? "Đang xử lý..." : "Thanh Toán"}
+              {loading ? "Processing..." : "Pay Now"}
             </motion.button>
           </div>
 
-          {/* Modal for notifications */}
-          {showModal && <Modal message={modalMessage} onClose={() => setShowModal(false)} onConfirm={() => setShowModal(false)} />}
+          {showModal && (
+            <Modal
+              message={modalMessage}
+              onClose={() => setShowModal(false)}
+              onConfirm={() => setShowModal(false)}
+            />
+          )}
         </motion.div>
       </div>
     </div>

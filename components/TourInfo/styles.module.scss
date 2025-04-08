@@ -1,11 +1,11 @@
 .cardContainer {
-  width: 100%; // full width màn hình
+  width: 100%;
 
   .grid {
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center; // để nameCard ở giữa
+    justify-content: center;
     align-items: center;
     padding: 2rem 0;
 
@@ -68,6 +68,21 @@
         font-size: 2.5rem;
         font-weight: 550;
         text-align: center;
+      }
+    }
+
+    .namePrice {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 2rem;
+
+      .titlePrice {
+        font-size: 1.5rem;
+        font-weight: 550;
+        text-align: center;
+        color: #ff5733;
       }
     }
   }
