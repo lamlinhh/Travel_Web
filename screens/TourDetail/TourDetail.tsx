@@ -1,9 +1,9 @@
 "use client";
-import styles from "./styles.module.scss";
-import BreadcrumbHeader from "@/components/BreadcrumbHeader";
-import TourInfo from "@/components/TourInfo";
+import ReviewForm from "@/components/ReviewForm";
+import ReviewsForTour from "@/components/ReviewsForTour";
 import TourBooking from "@/components/TourBooking";
 import TourFeatures from "@/components/TourFeatures";
+import TourInfo from "@/components/TourInfo";
 import TourOverview from "@/components/TourOverview";
 import ReviewForm from "@/components/ReviewForm";
 import ReviewsForTour from "@/components/ReviewsForTour"

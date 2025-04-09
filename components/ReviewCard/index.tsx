@@ -48,7 +48,9 @@ const ReviewCard = ({
 
       <h4 className={styles.Title}>{Title}</h4>
 
-      <div className={styles.Rating}>{"⭐".repeat(Rating || 0)}</div>
+      <div className={styles.Rating}>
+        {"⭐".repeat(Rating || 0)}
+      </div>
 
       <p className={styles.Comment}>
         {isExpanded

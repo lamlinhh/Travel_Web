@@ -1,4 +1,7 @@
-module.exports = {
+import path from "path";
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   async rewrites() {
     return [
       {
@@ -7,20 +10,23 @@ module.exports = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/lamlinhh/Travel_Web/**",
+      },
+    ],
+  },
+  experimental: {
+    tsconfigPaths: true,
+  },
+  webpack(config: any) {
+    config.resolve.alias["@"] = path.join(__dirname);
+    config.resolve.alias["@components"] = path.join(__dirname, "components");
+    return config;
+  },
 };
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    images: {
-      remotePatterns: [
-        {
-          protocol: "https",
-          hostname: "raw.githubusercontent.com",
-          pathname: "/lamlinhh/Travel_Web/**",
-        },
-      ],
-    },
-  };
-  
-  module.exports = nextConfig;
-  
+export default nextConfig;

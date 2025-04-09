@@ -1,4 +1,4 @@
-import Tour from "@/screens/Tour/Tour";
+import Tour from "@/screens/Tour";
 import React from "react";
 
 const page = () => {

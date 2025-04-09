@@ -4,9 +4,9 @@
   border-radius: 12px;
   padding: 20px;
   width: 300px;
-  min-height: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
+
 
   &:hover {
     scale: 1.05;
@@ -40,6 +40,10 @@
     color: #524f4f;
     margin: 5px 0;
     min-height: calc(1.3rem * 2);
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
   }
 
   .Rating {

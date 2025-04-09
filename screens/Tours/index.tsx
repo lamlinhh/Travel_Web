@@ -1,8 +1,5 @@
 "use client";
 
-import TourModal from "@/modals/TourModal";
-import { fetchTours } from "@/redux/slices/tourSlice";
-import { AppDispatch, RootState } from "@/redux/store";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Popconfirm, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
@@ -11,10 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 import moment from "moment";
 import { DeleteOutlined } from "@ant-design/icons";
-import axiosInstance from "@/axios/axiosInstance";
 import { toast } from "react-toastify";
+import { AppDispatch, RootState } from "../../redux/store";
+import React from "react";
+import TourModal from "@/modals/TourModal";
+import axiosInstance from "@/axios/axiosInstance";
+import { fetchTours } from "@/redux/slices/tourSlice";
 
-const index = () => {
+const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { tours } = useSelector((state: RootState) => state.tour);
   const [search, setSearch] = useState("");
@@ -22,7 +23,7 @@ const index = () => {
 
   useEffect(() => {
     dispatch(fetchTours());
-  }, [dispatch]);
+  }, []);
 
   const handleDelete = async (tourID: string) => {
     try {
@@ -135,4 +136,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
