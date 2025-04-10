@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 import axiosInstance from "@/axios/axiosInstance";
 import { PaymentProps } from "@/types/PaymentProps";
 
@@ -16,6 +17,11 @@ const initialState: PaymentState = {
   searchResult: [],
   loading: false,
 };
+
+export const fetchAllPayments = createAsyncThunk("payment/fetchAllPayments", async () => {
+  const response = await axios.get("https://travel-website-service.onrender.com/GetAllPayments");
+  return response.data.data; // Trả về danh sách các thanh toán
+});
 
 export const fetchPayments = createAsyncThunk("payment/fetchAll", async () => {
   const res = await axiosInstance.get("/GetAllPayments");
@@ -75,6 +81,19 @@ const paymentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllPayments.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllPayments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.payments = action.payload;
+      })
+      .addCase(fetchAllPayments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
       .addCase(fetchPayments.pending, (state) => {
         state.loading = true;
       })

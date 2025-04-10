@@ -1,0 +1,53 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 100px; 
+}
+
+.title {
+  text-align: center;
+  color: #e65c2e;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.tourList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tourItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tourItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tourItem p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.tourItem p strong {
+  color: #e65c2e;
+}
+
+.tourItem:last-child {
+  margin-bottom: 0;
+}
