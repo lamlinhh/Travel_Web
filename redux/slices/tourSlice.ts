@@ -20,22 +20,40 @@ export interface Tour {
 interface TourState {
   tours: Tour[];
   selectedTour: Tour | null;
+  currentPage: number;
+  totalPages: number;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: TourState = {
   tours: [],
-  selectedTour: null, // Thêm state cho tour được chọn
+  selectedTour: null,
+  currentPage: 1,
+  totalPages: 1,
   loading: false,
   error: null,
 };
 
 // Fetch tất cả các tour
-export const fetchTours = createAsyncThunk("tour/fetchTours", async () => {
-  const response = await axiosInstance.get("/GetAllTours");
-  return response.data.tours;
-});
+export const fetchTours = createAsyncThunk("tour/fetchTours",
+  async (page: number = 1, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(
+        `/GetAllTours?page=${page}&limit=3`,
+      );
+      if (data.errCode !== 0) throw new Error(data.errMessage);
+      return {
+        tours: data.tours,
+        totalPages: data.pagination?.pages || 1,
+        currentPage: page,
+      };
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message || "Something went wrong",
+      );
+    }
+  });
 
 export const fetchTour = createAsyncThunk(
   "tour/fetchTour",
@@ -48,7 +66,11 @@ export const fetchTour = createAsyncThunk(
 const tourSlice = createSlice({
   name: "tour",
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTours.pending, (state) => {
@@ -56,13 +78,16 @@ const tourSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchTours.fulfilled, (state, action) => {
+        state.tours = action.payload.tours; // Ghi đè dữ liệu thay vì "load more"
+        state.totalPages = action.payload.totalPages;
+        state.currentPage = action.payload.currentPage;
         state.loading = false;
-        state.tours = action.payload;
       })
       .addCase(fetchTours.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to fetch tours";
+        state.error = action.payload as string;
       })
+
       // Xử lý fetchTour
       .addCase(fetchTour.pending, (state) => {
         state.loading = true;
@@ -79,4 +104,5 @@ const tourSlice = createSlice({
   },
 });
 
+export const { setPage } = tourSlice.actions;
 export default tourSlice.reducer;
