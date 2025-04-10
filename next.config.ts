@@ -18,9 +18,10 @@ const nextConfig = {
         pathname: "/lamlinhh/Travel_Web/**",
       },
     ],
+    domains: ['raw.githubusercontent.com'],
   },
   experimental: {
-    tsconfigPaths: true,
+    serverActions: true,
   },
   webpack(config: any) {
     config.resolve.alias["@"] = path.join(__dirname);

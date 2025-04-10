@@ -1,0 +1,326 @@
+.wrapper {
+  width: 100%;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  .bannerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 8s ease;
+  }
+
+  &:hover .bannerImage {
+    transform: scale(1.1);
+  }
+
+  .bannerOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    p {
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #3498db, #2ecc71);
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+    .cardImage img {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .cardOverlay {
+      opacity: 1;
+      backdrop-filter: blur(3px);
+    }
+
+    .cardOverlayContent {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+  opacity: 0;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardOverlayContent {
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.cardContent {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.viewButton {
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  span {
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+
+  i {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(45deg, #2ecc71, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+
+    span {
+      transform: translateX(-10px);
+    }
+
+    i {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+// ... existing code for loading, error states etc ...
+
+@media (max-width: 768px) {
+  .banner {
+    height: 400px;
+
+    .bannerOverlay {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    h2 {
+      font-size: 2rem;
+
+      &:after {
+        width: 60px;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cardImage {
+    height: 250px;
+  }
+
+  .cardOverlayContent {
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .viewButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.card {
+  // ... existing code ...
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+    .cardImage img {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .cardOverlay {
+      opacity: 1;
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+    }
+
+    .cardOverlayContent {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
