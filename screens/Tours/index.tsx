@@ -14,6 +14,7 @@ import React from "react";
 import TourModal from "@/modals/TourModal";
 import axiosInstance from "@/axios/axiosInstance";
 import { fetchTours } from "@/redux/slices/tourSlice";
+import { fetchcategori } from "@/redux/slices/categoriesSlice";
 
 const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +24,7 @@ const Index = () => {
 
   useEffect(() => {
     dispatch(fetchTours());
+    dispatch(fetchcategori());
   }, []);
 
   const handleDelete = async (tourID: string) => {

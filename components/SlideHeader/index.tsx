@@ -72,7 +72,6 @@ const Index = () => {
           <div className={styles.inputGroup}>
             <FaMapMarkerAlt color="orange" />
             <div style={{ marginLeft: "8px" }}>
-              <label>Where to ?</label>
               <input
                 type="text"
                 placeholder="Search for a place or activity"

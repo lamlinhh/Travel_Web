@@ -78,7 +78,8 @@ const Index = () => {
       key: "PaymentStatus",
       align: "center",
       render: (data: any) => {
-        const isPaid = isEqual(data, 1);
+        console.log("data", data);
+        const isPaid = isEqual(data, true);
         return (
           <Tag color={isPaid ? "green" : "red"}>
             {isPaid ? "Đã thanh toán" : "Chưa thanh toán"}
@@ -146,6 +147,7 @@ const Index = () => {
         onClose={() => setOpenModal(false)}
         onSuccess={() => dispatch(fetchTours())}
       />
+
       <div
         style={{
           display: "flex",

@@ -24,11 +24,11 @@ const Index = () => {
       <ul className={styles.menu}>
         {menuItems.map((item) => (
           <li
-            key={item.path}
+            key={item?.path}
             className={pathname === item.path ? styles.active : ""}>
-            <Link href={item.path}>
-              <span className={styles.icon}>{item.icon}</span>
-              {item.name}
+            <Link href={item?.path}>
+              <span className={styles.icon}>{item?.icon}</span>
+              {item?.name}
             </Link>
           </li>
         ))}
