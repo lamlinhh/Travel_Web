@@ -14,7 +14,7 @@ const PopularTours = () => {
 
   useEffect(() => {
     dispatch(fetchTours());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>
@@ -24,10 +24,10 @@ const PopularTours = () => {
         View all tour →
       </Link>
       <div className={styles.grid}>
-        {tours.slice(0, 6).map((tour, index) => (
+        {tours?.slice(0, 6).map((tour, index) => (
           <div key={index} className={styles.card}>
             <div className={styles.imageContainer}>
-              <img src={tour.image} alt={tour.title} className={styles.image} />
+              <img src={tour.Image} alt={tour.TourName} className={styles.image} />
             </div>
             <div className={styles.content}>
               <p className={styles.location}>
@@ -35,7 +35,7 @@ const PopularTours = () => {
               </p>
               <h3 className={styles.titleCard}>{tour?.TourName}</h3>
               <div className={styles.rating}>
-                {Array.from({ length: tour?.Rating ?? 0 }, (_, i) => (
+                {Array.from({ length: tour?.TotalRating ?? 0 }, (_, i) => (
                   <FaStar key={i} />
                 ))}
               </div>
