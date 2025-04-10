@@ -1,10 +1,14 @@
 "use client";
 
-import { createReviewThunk, fetchReviews } from "@/redux/slices/reviewsSlice";
-import { AppDispatch, RootState } from "@/redux/store";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles.module.scss";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReviewsByTourId } from '@/redux/slices/reviewsSlice';
+import { RootState, AppDispatch } from '@/redux/store';
+import styles from './styles.module.scss';
+import { createReviewThunk } from '@/redux/slices/reviewsSlice';
+import { useParams } from "next/navigation";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 const defaultAvatars = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/th.webp",
@@ -23,10 +27,27 @@ const ReviewForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { currentPage } = useSelector((state: RootState) => state.review);
 
+  const params = useParams();
+  const tourId = params?.id as string;
+
+  const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>("");
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    console.log("Stored User:", storedUser);
+
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      console.log("Parsed User:", parsedUser);
+      setUserId(parsedUser._id);
+      setUserName(parsedUser.UserName || "Anonymous");
+    }
+  }, []);
+
   const [randomAvatar, setRandomAvatar] = useState<string | null>(null);
-  const [userName, setUserName] = useState("QuangHau");
-  const [title, setTitle] = useState("");
-  const [comment, setComment] = useState("");
+  const [title, setTitle] = useState('');
+  const [comment, setComment] = useState('');
   const [rating, setRating] = useState<number>(0);
 
   useEffect(() => {
@@ -34,10 +55,12 @@ const ReviewForm: React.FC = () => {
   }, []);
 
   const handleSubmit = async () => {
+    if (!tourId || !userId) return;
+
     try {
       const newReview = {
-        TourId: "67d04be19fa89cc86085404b",
-        UserId: "67d81b9dab7c48f921c70973",
+        TourId: tourId,
+        UserId: userId,
         UserName: userName,
         avatar: randomAvatar || undefined,
         Title: title,
@@ -47,20 +70,19 @@ const ReviewForm: React.FC = () => {
 
       await dispatch(createReviewThunk(newReview)).unwrap();
 
-      // Reset form sau khi gửi thành công
-      setTitle("");
-      setComment("");
+      setTitle('');
+      setComment('');
       setRating(0);
 
-      // Cập nhật danh sách review
-      dispatch(fetchReviews(currentPage));
+      dispatch(fetchReviewsByTourId({ tourId, page: currentPage, limit: 6 }));
+      toast.success("Đánh giá đã được gửi thành công!");
     } catch (err: any) {
-      console.error("Error creating review:", err);
-      alert(err.message || "Failed to submit review!");
+      console.error('Error creating review:', err);
+      toast.error("Gửi đánh giá thất bại! Vui lòng thử lại.");
     }
   };
 
-  if (!randomAvatar) return null; // loading avatar
+  if (!randomAvatar) return null;
 
   return (
     <form className={styles.reviewForm}>
@@ -72,18 +94,17 @@ const ReviewForm: React.FC = () => {
           alt="Avatar"
           className={styles.reviewForm__avatar}
         />
-        <span>
-          <strong>{userName}</strong>
-        </span>
+        <span><strong>{userName}</strong></span>
       </div>
 
       <div className={styles.reviewForm__stars}>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
-            className={`${styles.star} ${star <= rating ? styles.active : ""}`}
+            className={`${styles.star} ${star <= rating ? styles.active : ''}`}
             onClick={() => setRating(star === rating ? star - 1 : star)}
-            style={{ cursor: "pointer" }}>
+            style={{ cursor: 'pointer' }}
+          >
             ★
           </span>
         ))}
@@ -106,10 +127,7 @@ const ReviewForm: React.FC = () => {
         <textarea
           id="comment"
           value={comment}
-          onChange={(e) => {
-            console.log(e.target.value.length); // Kiểm tra độ dài
-            setComment(e.target.value);
-          }}
+          onChange={(e) => setComment(e.target.value)}
           placeholder="Share your experience..."
           rows={4}
           className={styles.reviewForm__textarea}
@@ -119,7 +137,8 @@ const ReviewForm: React.FC = () => {
       <button
         type="button"
         onClick={handleSubmit}
-        className={styles.reviewForm__button}>
+        className={styles.reviewForm__button}
+      >
         Submit
       </button>
     </form>

@@ -5,15 +5,16 @@ import { Avatar, Button, Input, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/redux/store";
-import { fetchUsers } from "@/redux/slices/getUserSlice";
-import { User } from "@/types/user";
 import moment from "moment";
 import { ColumnsType } from "antd/es/table";
 import { DeleteOutlined } from "@ant-design/icons";
-import axiosInstance from "@/axios/axiosInstance";
 import { toast } from "react-toastify";
-import UserModal from "@/components/UserModal";
+import React from "react";
+import { AppDispatch, RootState } from "../../redux/store";
+import { fetchUsers } from "../../redux/slices/getUserSlice";
+import axiosInstance from "../../axios/axiosInstance";
+import { User } from "../../types/user";
+import UserModal from "../../modals/UserModal";
 
 const UserPage = () => {
   const dispatch = useDispatch<AppDispatch>();

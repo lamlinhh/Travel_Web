@@ -2,37 +2,40 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { usePathname } from "next/navigation";
-import { Roboto } from "next/font/google";
-import "./globals.css";
 import Providers from "@/redux/providers/Providers";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "@ant-design/v5-patch-for-react-19";
 import { ConfigProvider } from "antd";
+import { usePathname } from "next/navigation";
 import { ToastContainer } from "react-toastify";
-import { isEqual } from "lodash";
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto",
-});
+import "./globals.css";
+import { roboto } from './fonts';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
-  const isLoginPage = isEqual(pathname, "/login");
+  const isAuthPage =
+    pathname === "/auth/login" ||
+    pathname === "/auth/register" ||
+    pathname === "/auth/forgot-password";
 
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        <ToastContainer />
-        <ConfigProvider>
-          <Providers>
-            {!isLoginPage && <Header />}
-            {children}
-            {!isLoginPage && <Footer />}
-          </Providers>
-        </ConfigProvider>
+    <html lang="en" className={roboto.className}>
+      <body>
+        <AntdRegistry>
+          <ToastContainer />
+          <ConfigProvider>
+            <Providers>
+              {!isAuthPage && <Header />}
+              {children}
+              {!isAuthPage && <Footer />}
+            </Providers>
+          </ConfigProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

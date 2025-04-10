@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { FaStar, FaMapMarkerAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -61,7 +62,7 @@ const tours = [
   },
 ];
 
-const itemsPerPage = 3; // Tùy chỉnh số item mỗi trang
+const itemsPerPage = 3;
 
 const CardTour = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -134,13 +135,15 @@ const CardTour = () => {
                 <FaMapMarkerAlt /> {tour.location}
               </p>
               <h3 className={styles.titleCard}>{tour.title}</h3>
-              <div className={styles.rating}>
-                {Array.from({ length: tour.rating }, (_, i) => (
-                  <FaStar key={i} />
-                ))}
-                <span> {tour.reviews}</span>
+              <div className={styles.ratingAndPrice}>
+                <div className={styles.rating}>
+                  {Array.from({ length: tour.rating }, (_, i) => (
+                    <FaStar key={i} />
+                  ))}
+                  <span> {tour.reviews}</span>
+                </div>
+                <p className={styles.price}>from {tour.price}</p>
               </div>
-              <p className={styles.price}>from {tour.price}</p>
             </div>
           </div>
         ))}
@@ -151,6 +154,7 @@ const CardTour = () => {
           onClick={handlePrevPage}
           disabled={currentPage === 1}
           className={styles.paginationButton}
+          title="Previous page"
         >
           <FaChevronLeft />
         </button>
@@ -170,6 +174,7 @@ const CardTour = () => {
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
           className={styles.paginationButton}
+          title="Next page"
         >
           <FaChevronRight />
         </button>
