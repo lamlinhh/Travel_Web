@@ -1,5 +1,5 @@
 import CustomerReviews from "@/components/CustomerReviews";
-import PopularDestinations from "@/components/PopularDestinations";
+import PopularDestinations from "@/components/PopularCategories";
 import PopularTours from "@/components/PopularTours";
 import SlideHeader from "@/components/SlideHeader";
 import TravelBlog from "@/components/TravelBlog";

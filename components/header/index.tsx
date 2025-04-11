@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Container,  Yard } from "@/libs";
+import { Container, Yard } from "@/libs";
 import { Button, Popover } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -65,7 +65,7 @@ const Header = () => {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/DestinationsPage">Destinations</Link>
+                <Link href="/Categories">Categories</Link>
               </li>
               <li>
                 <Link href="/Tours">Tour</Link>

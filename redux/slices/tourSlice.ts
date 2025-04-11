@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export interface Tour {
   TourName?: string;
-  CategoryName?: string;
+  CategoryId?: string;
   TourLocation?: string;
   TourTime?: number;
   TourPrice?: number;
@@ -20,6 +20,7 @@ export interface Tour {
 interface TourState {
   tours: Tour[];
   selectedTour: Tour | null;
+  selectedCategoryId: string | null;
   currentPage: number;
   totalPages: number;
   loading: boolean;
@@ -29,6 +30,7 @@ interface TourState {
 const initialState: TourState = {
   tours: [],
   selectedTour: null,
+  selectedCategoryId: null,
   currentPage: 1,
   totalPages: 1,
   loading: false,
@@ -63,12 +65,40 @@ export const fetchTour = createAsyncThunk(
   }
 );
 
+export const fetchToursByCategory = createAsyncThunk<
+  { tours: Tour[]; totalPages: number; currentPage: number },
+  { categoryId: string; page?: number; limit?: number },
+  { rejectValue: string }
+>(
+  "tour/fetchToursByCategory",
+  async ({ categoryId, page = 1, limit = 3 }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(
+        `/category/${categoryId}/tours?page=${page}&limit=${limit}`
+      );
+      if (data.errCode !== 0) throw new Error(data.errMessage);
+      return {
+        tours: data.tours,
+        totalPages: data.pagination?.pages || 1,
+        currentPage: page,
+      };
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.errMessage || err.message || "Failed to fetch tours by category"
+      );
+    }
+  }
+);
+
 const tourSlice = createSlice({
   name: "tour",
   initialState,
   reducers: {
     setPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setCategoryId: (state, action) => {
+      state.selectedCategoryId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -100,9 +130,25 @@ const tourSlice = createSlice({
       .addCase(fetchTour.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch tour";
+      })
+
+      .addCase(fetchToursByCategory.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchToursByCategory.fulfilled, (state, action) => {
+        state.tours = action.payload.tours;
+        state.totalPages = action.payload.totalPages;
+        state.currentPage = action.payload.currentPage;
+        state.selectedCategoryId = action.meta.arg.categoryId; // << thêm dòng này
+        state.loading = false;
+      })
+      .addCase(fetchToursByCategory.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });
 
-export const { setPage } = tourSlice.actions;
+export const { setPage, setCategoryId } = tourSlice.actions;
 export default tourSlice.reducer;
