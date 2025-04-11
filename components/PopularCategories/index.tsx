@@ -27,8 +27,8 @@ const PopularCategories = () => {
   return (
     <Container className={styles.container}>
       <Yard className={styles.header}>
-        <h2>Popular Destinations</h2>
-        <Link href="/Destinations" className={styles.viewAll}>
+        <h2>Popular Categories</h2>
+        <Link href="/Categories" className={styles.viewAll}>
           View all tour →
         </Link>
       </Yard>
