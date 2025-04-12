@@ -14,6 +14,15 @@ import {
   PhoneOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+// Remove unused imports since they're not being used in this component
+
+export interface CategoryProps {
+  _id: string;
+  categoryName: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const About = () => {
   return (
