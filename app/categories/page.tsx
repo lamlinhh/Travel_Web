@@ -1,7 +1,12 @@
-'use client';
+import Categories from "@/screens/Categories";
+import React from "react";
 
-import Categories from '@/screens/Categories';
+const page = () => {
+    return (
+        <div>
+            <Categories />
+        </div>
+    );
+};
 
-export default function CategoriesPage() {
-  return <Categories />;
-} 
+export default page;
