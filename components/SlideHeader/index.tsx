@@ -86,7 +86,6 @@ const Index = () => {
           <div className={styles.inputGroup}>
             <FaRegCalendarAlt color="orange" />
             <div style={{ marginLeft: "8px" }}>
-              <label>When</label>
               <DatePicker
                 selected={date}
                 onChange={(d) => setDate(d)}
