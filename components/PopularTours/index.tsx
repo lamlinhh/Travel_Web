@@ -6,14 +6,20 @@ import { useEffect } from "react";
 import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const PopularTours = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { tours } = useSelector((state: RootState) => state.tour);
+  const router = useRouter();
+
+  const handleTourClick = (tourID: any) => {
+    router.push(`/TourDetail/${tourID}`);
+  };
 
   useEffect(() => {
-    dispatch(fetchTours());
+    dispatch(fetchTours(1));
   }, [dispatch]);
 
   return (
@@ -23,9 +29,14 @@ const PopularTours = () => {
       <Link href="/Tours" className={styles.viewAll}>
         View all tour →
       </Link>
+
       <div className={styles.grid}>
         {tours?.slice(0, 6).map((tour, index) => (
-          <div key={index} className={styles.card}>
+          <div
+            key={index}
+            className={styles.card}
+            onClick={() => handleTourClick(tour._id)}
+          >
             <div className={styles.imageContainer}>
               <img src={tour.Image} alt={tour.TourName} className={styles.image} />
             </div>
