@@ -38,7 +38,8 @@ const initialState: TourState = {
 };
 
 // Fetch tất cả các tour
-export const fetchTours = createAsyncThunk("tour/fetchTours",
+export const fetchTours = createAsyncThunk(
+  "tour/fetchTours",
   async (page: number = 1, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
@@ -55,14 +56,15 @@ export const fetchTours = createAsyncThunk("tour/fetchTours",
         err.response?.data?.errMessage || err.message || "Something went wrong",
       );
     }
-  });
+  },
+);
 
 export const fetchTour = createAsyncThunk(
   "tour/fetchTour",
   async (id: string) => {
     const response = await axiosInstance.get(`/GetTour/${id}`);
     return response.data.tour;
-  }
+  },
 );
 
 export const fetchToursByCategory = createAsyncThunk<
@@ -74,7 +76,7 @@ export const fetchToursByCategory = createAsyncThunk<
   async ({ categoryId, page = 1, limit = 3 }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
-        `/category/${categoryId}/tours?page=${page}&limit=${limit}`
+        `/category/${categoryId}/tours?page=${page}&limit=${limit}`,
       );
       if (data.errCode !== 0) throw new Error(data.errMessage);
       return {
@@ -84,10 +86,12 @@ export const fetchToursByCategory = createAsyncThunk<
       };
     } catch (err: any) {
       return thunkAPI.rejectWithValue(
-        err.response?.data?.errMessage || err.message || "Failed to fetch tours by category"
+        err.response?.data?.errMessage ||
+          err.message ||
+          "Failed to fetch tours by category",
       );
     }
-  }
+  },
 );
 
 const tourSlice = createSlice({
