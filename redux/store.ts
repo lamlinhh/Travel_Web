@@ -6,7 +6,7 @@ import reviewsReducer from "./slices/reviewsSlice";
 import tourDetailReducer from "./slices/tourDetailSlice";
 import bookTourReducer from "@/redux/slices/bookTourSlice";
 import paymentReducer from "@/redux/slices/paymentSlice";
-import categoryReducer from "./slices/categorySlice";
+
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +17,7 @@ export const store = configureStore({
     tourDetail: tourDetailReducer,
     bookTour: bookTourReducer,
     payment: paymentReducer,
-    category: categoryReducer,
+  
   },
 });
 
