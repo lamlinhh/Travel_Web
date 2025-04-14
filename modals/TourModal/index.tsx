@@ -1,8 +1,10 @@
 "use client";
 
+import { RootState } from "@/redux/store";
 import { Button, Form, Input, Modal, Select } from "antd";
 import { isEqual } from "lodash";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axiosInstance from "../../axios/axiosInstance";
 
@@ -15,6 +17,7 @@ interface TourModalProps {
 }
 
 interface TourFormValues {
+  CategoryId: string;
   TourName: string;
   CategoryName: string;
   TourLocation: string;
@@ -23,16 +26,22 @@ interface TourFormValues {
   TourDifficulty: string;
   TourMinAge: number;
   DescribeTour: string;
+  Image: string;
+  Rating: number;
 }
 
 const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm<TourFormValues>();
-
+  const { categori } = useSelector((state: RootState) => state.categorie);
+  const { tourDifficulty } = useSelector(
+    (state: RootState) => state.tourDifficulty,
+  );
+  console.log("categori", categori);
   const handleSubmit = () => {
     form.submit();
   };
-
+  console.log("tourDifficulty", tourDifficulty);
   const onFinish = async (values: TourFormValues) => {
     setLoading(true);
     try {
@@ -82,11 +91,22 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
 
           <Form.Item
             label="CategoryName"
-            name="CategoryName"
+            name="CategoryId"
             rules={[
-              { required: true, message: "Vui lòng nhập CategoryName!" },
+              { required: true, message: "Vui lòng chọn CategoryName!" },
             ]}>
-            <Input placeholder="Nhập CategoryName" />
+            <Select
+              showSearch
+              placeholder="CategoryName"
+              optionFilterProp="children">
+              {(categori as Array<{ _id: string; CategoryName: string }>)?.map(
+                (item: any) => (
+                  <Option key={item?._id} value={item?._id}>
+                    {item?.CategoryName}
+                  </Option>
+                ),
+              )}
+            </Select>
           </Form.Item>
 
           <Form.Item
@@ -117,8 +137,11 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
             name="TourDifficulty"
             rules={[{ required: true, message: "Vui lòng chọn mức độ!" }]}>
             <Select placeholder="Chọn mức độ">
-              <Option value="Low">Low</Option>
-              <Option value="High">High</Option>
+              {tourDifficulty?.map((item) => (
+                <Option key={item?._id} value={item?.DifficultyLabel}>
+                  {item?.DifficultyLabel}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 
@@ -136,6 +159,20 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
               { required: true, message: "Vui lòng nhập DescribeTour!" },
             ]}>
             <Input placeholder="Nhập DescribeTour" />
+          </Form.Item>
+
+          <Form.Item
+            label="Rating"
+            name="Rating"
+            rules={[{ required: true, message: "Vui lòng nhập Rating!" }]}>
+            <Input placeholder="Nhập Rating" />
+          </Form.Item>
+
+          <Form.Item
+            label="Image"
+            name="Image"
+            rules={[{ required: true, message: "Vui lòng nhập Image!" }]}>
+            <Input placeholder="Nhập Image" />
           </Form.Item>
         </Form>
       </Modal>

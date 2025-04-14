@@ -8,7 +8,9 @@ import styles from "./styles.module.scss";
 
 const MyTours = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { payments, loading, error } = useSelector((state: RootState) => state.payment);
+  const { payments, loading, error } = useSelector(
+    (state: RootState) => state.payment,
+  );
 
   useEffect(() => {
     dispatch(fetchAllPayments());
@@ -27,13 +29,34 @@ const MyTours = () => {
           {Array.isArray(payments) &&
             payments.map((payment) => (
               <li key={payment._id} className={styles.tourItem}>
-                <p><strong>Tên tour:</strong> {payment.BookTourId.TourId.TourName}</p>
-                <p><strong>Ngày khởi hành:</strong> {new Date(payment.BookTourId.DepartureDate).toLocaleDateString()}</p>
-                <p><strong>Số người lớn:</strong> {payment.BookTourId.QuantityAdults}</p>
-                <p><strong>Số trẻ em:</strong> {payment.BookTourId.QuantityChildren}</p>
-                <p><strong>Tổng tiền:</strong> {payment.Amount} VNĐ</p>
-                <p><strong>Hình thức thanh toán:</strong> {payment.PaymentMethod}</p>
-                <p><strong>Trạng thái:</strong> {payment.PaymentStatus ? "Đã thanh toán" : "Chưa thanh toán"}</p>
+                <p>
+                  <strong>Tên tour:</strong>{" "}
+                  {payment.BookTourId.TourId.TourName}
+                </p>
+                <p>
+                  <strong>Ngày khởi hành:</strong>{" "}
+                  {new Date(
+                    payment.BookTourId.DepartureDate,
+                  ).toLocaleDateString()}
+                </p>
+                <p>
+                  <strong>Số người lớn:</strong>{" "}
+                  {payment.BookTourId.QuantityAdults}
+                </p>
+                <p>
+                  <strong>Số trẻ em:</strong>{" "}
+                  {payment.BookTourId.QuantityChildren}
+                </p>
+                <p>
+                  <strong>Tổng tiền:</strong> {payment.Amount} VNĐ
+                </p>
+                <p>
+                  <strong>Hình thức thanh toán:</strong> {payment.PaymentMethod}
+                </p>
+                <p>
+                  <strong>Trạng thái:</strong>{" "}
+                  {payment.PaymentStatus ? "Đã thanh toán" : "Chưa thanh toán"}
+                </p>
               </li>
             ))}
         </ul>

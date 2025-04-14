@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviewsByTourId } from '@/redux/slices/reviewsSlice';
-import { RootState, AppDispatch } from '@/redux/store';
-import styles from './styles.module.scss';
-import { createReviewThunk } from '@/redux/slices/reviewsSlice';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchReviewsByTourId } from "@/redux/slices/reviewsSlice";
+import { RootState, AppDispatch } from "@/redux/store";
+import styles from "./styles.module.scss";
+import { createReviewThunk } from "@/redux/slices/reviewsSlice";
 import { useParams } from "next/navigation";
-import { toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const defaultAvatars = [
   "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/th.webp",
@@ -35,19 +35,17 @@ const ReviewForm: React.FC = () => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    console.log("Stored User:", storedUser);
 
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      console.log("Parsed User:", parsedUser);
       setUserId(parsedUser._id);
       setUserName(parsedUser.UserName || "Anonymous");
     }
   }, []);
 
   const [randomAvatar, setRandomAvatar] = useState<string | null>(null);
-  const [title, setTitle] = useState('');
-  const [comment, setComment] = useState('');
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
   const [rating, setRating] = useState<number>(0);
 
   useEffect(() => {
@@ -70,14 +68,14 @@ const ReviewForm: React.FC = () => {
 
       await dispatch(createReviewThunk(newReview)).unwrap();
 
-      setTitle('');
-      setComment('');
+      setTitle("");
+      setComment("");
       setRating(0);
 
       dispatch(fetchReviewsByTourId({ tourId, page: currentPage, limit: 6 }));
       toast.success("Đánh giá đã được gửi thành công!");
     } catch (err: any) {
-      console.error('Error creating review:', err);
+      console.error("Error creating review:", err);
       toast.error("Gửi đánh giá thất bại! Vui lòng thử lại.");
     }
   };
@@ -94,17 +92,18 @@ const ReviewForm: React.FC = () => {
           alt="Avatar"
           className={styles.reviewForm__avatar}
         />
-        <span><strong>{userName}</strong></span>
+        <span>
+          <strong>{userName}</strong>
+        </span>
       </div>
 
       <div className={styles.reviewForm__stars}>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
-            className={`${styles.star} ${star <= rating ? styles.active : ''}`}
+            className={`${styles.star} ${star <= rating ? styles.active : ""}`}
             onClick={() => setRating(star === rating ? star - 1 : star)}
-            style={{ cursor: 'pointer' }}
-          >
+            style={{ cursor: "pointer" }}>
             ★
           </span>
         ))}
@@ -137,8 +136,7 @@ const ReviewForm: React.FC = () => {
       <button
         type="button"
         onClick={handleSubmit}
-        className={styles.reviewForm__button}
-      >
+        className={styles.reviewForm__button}>
         Submit
       </button>
     </form>

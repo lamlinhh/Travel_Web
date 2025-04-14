@@ -18,16 +18,18 @@ const nextConfig = {
         pathname: "/lamlinhh/Travel_Web/**",
       },
     ],
-    domains: ['raw.githubusercontent.com'],
+    domains: ["raw.githubusercontent.com"],
   },
   experimental: {
-    serverActions: true,
+    serverActions: {
+      enable: true,
+    },
   },
-  webpack(config: any) {
-    config.resolve.alias["@"] = path.join(__dirname);
-    config.resolve.alias["@components"] = path.join(__dirname, "components");
-    return config;
-  },
+  // webpack(config: any) {
+  //   config.resolve.alias["@"] = path.join(__dirname);
+  //   config.resolve.alias["@components"] = path.join(__dirname, "components");
+  //   return config;
+  // },
 };
 
 export default nextConfig;
