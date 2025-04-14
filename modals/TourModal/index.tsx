@@ -41,7 +41,6 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
   const handleSubmit = () => {
     form.submit();
   };
-  console.log("tourDifficulty", tourDifficulty);
   const onFinish = async (values: TourFormValues) => {
     setLoading(true);
     try {

@@ -1,6 +1,6 @@
 import axiosInstance from "@/axios/axiosInstance";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CategoryProps } from "@/types/CategoryProps";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface CategoryState {
   categories: CategoryProps[];

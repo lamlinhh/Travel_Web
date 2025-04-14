@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/redux/store';
-import { fetchCategoryById } from '@/redux/slices/categorySlice';
-import { use } from 'react';
-import styles from './styles.module.scss';
-import { format } from 'date-fns';
-import { vi } from 'date-fns/locale';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchCategoryById } from "@/redux/slices/categorySlice";
+import { use } from "react";
+import styles from "./styles.module.scss";
+import { format } from "date-fns";
+import { vi } from "date-fns/locale";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -15,7 +15,9 @@ interface PageProps {
 
 const CategoryDetail = ({ params }: PageProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { currentCategory, loading, error } = useSelector((state: RootState) => state.category);
+  const { currentCategory, loading, error } = useSelector(
+    (state: RootState) => state.category,
+  );
   const resolvedParams = use(params);
 
   useEffect(() => {
@@ -35,7 +37,9 @@ const CategoryDetail = ({ params }: PageProps) => {
     return (
       <div className={styles.error}>
         <p>{error}</p>
-        <button onClick={() => dispatch(fetchCategoryById(resolvedParams.id))} className={styles.retryButton}>
+        <button
+          onClick={() => dispatch(fetchCategoryById(resolvedParams.id))}
+          className={styles.retryButton}>
           Thử lại
         </button>
       </div>
@@ -43,7 +47,9 @@ const CategoryDetail = ({ params }: PageProps) => {
   }
 
   if (!currentCategory) {
-    return <div className={styles.error}>Không tìm thấy thông tin danh mục.</div>;
+    return (
+      <div className={styles.error}>Không tìm thấy thông tin danh mục.</div>
+    );
   }
 
   const createdDate = new Date(currentCategory.createdAt);
@@ -69,11 +75,11 @@ const CategoryDetail = ({ params }: PageProps) => {
             </div>
             <div className={styles.field}>
               <label>Ngày tạo</label>
-              <p>{format(createdDate, 'dd MMMM yyyy', { locale: vi })}</p>
+              <p>{format(createdDate, "dd MMMM yyyy", { locale: vi })}</p>
             </div>
             <div className={styles.field}>
               <label>Cập nhật lần cuối</label>
-              <p>{format(updatedDate, 'dd MMMM yyyy', { locale: vi })}</p>
+              <p>{format(updatedDate, "dd MMMM yyyy", { locale: vi })}</p>
             </div>
           </div>
         </div>
@@ -82,4 +88,4 @@ const CategoryDetail = ({ params }: PageProps) => {
   );
 };
 
-export default CategoryDetail; 
+export default CategoryDetail;
