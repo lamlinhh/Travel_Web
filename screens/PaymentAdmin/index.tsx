@@ -9,9 +9,9 @@ import { Button, Input, Table, Tag } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { isEqual } from "lodash";
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import styles from "./styles.module.scss";
 
 const Index = () => {
@@ -20,6 +20,7 @@ const Index = () => {
   const [itemSearch, setItemSearch] = useState<any[]>([]);
   const [openModal, setOpenModal] = useState(false);
   const searchRef = useRef("");
+  const { currentPage } = useSelector((state: RootState) => state?.tour);
 
   const handleSearch = async () => {
     try {
@@ -145,7 +146,7 @@ const Index = () => {
       <TourModal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        onSuccess={() => dispatch(fetchTours())}
+        onSuccess={() => dispatch(fetchTours(currentPage))}
       />
 
       <div

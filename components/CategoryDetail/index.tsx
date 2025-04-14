@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/redux/store';
-import { fetchCategoryById } from '@/redux/slices/categorySlice';
-import styles from './styles.module.scss';
-import { Container } from '@/libs';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchCategory } from "@/redux/slices/categorySlice";
+import styles from "./styles.module.scss";
+import { Container } from "@/libs";
 
 interface Props {
   id: string;
@@ -14,12 +14,12 @@ interface Props {
 const CategoryDetail = ({ id }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const { currentCategory, loading, error } = useSelector(
-    (state: RootState) => state.category
+    (state: RootState) => state.category,
   );
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchCategoryById(id));
+      dispatch(fetchCategory(id));
     }
   }, [dispatch, id]);
 
@@ -43,12 +43,17 @@ const CategoryDetail = ({ id }: Props) => {
       <div className={styles.content}>
         <p>{currentCategory.description}</p>
         <div className={styles.metadata}>
-          <p>Created: {new Date(currentCategory.createdAt).toLocaleDateString()}</p>
-          <p>Last Updated: {new Date(currentCategory.updatedAt).toLocaleDateString()}</p>
+          <p>
+            Created: {new Date(currentCategory.createdAt).toLocaleDateString()}
+          </p>
+          <p>
+            Last Updated:{" "}
+            {new Date(currentCategory.updatedAt).toLocaleDateString()}
+          </p>
         </div>
       </div>
     </Container>
   );
 };
 
-export default CategoryDetail; 
+export default CategoryDetail;

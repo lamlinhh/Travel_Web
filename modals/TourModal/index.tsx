@@ -34,19 +34,19 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm<TourFormValues>();
   const { categori } = useSelector((state: RootState) => state.categorie);
-
+  const { tourDifficulty } = useSelector(
+    (state: RootState) => state.tourDifficulty,
+  );
+  console.log("categori", categori);
   const handleSubmit = () => {
     form.submit();
   };
-
+  console.log("tourDifficulty", tourDifficulty);
   const onFinish = async (values: TourFormValues) => {
-    console.log("values", values);
     setLoading(true);
     try {
       const response = await axiosInstance.post("CreateNewTour", values);
       if (isEqual(response.data.errCode, 0)) {
-        console.log("Check>>");
-
         form.resetFields();
         onClose();
         toast.success("Thêm mới thành công!");
@@ -137,8 +137,11 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
             name="TourDifficulty"
             rules={[{ required: true, message: "Vui lòng chọn mức độ!" }]}>
             <Select placeholder="Chọn mức độ">
-              <Option value="Low">Low</Option>
-              <Option value="High">High</Option>
+              {tourDifficulty?.map((item) => (
+                <Option key={item?._id} value={item?.DifficultyLabel}>
+                  {item?.DifficultyLabel}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 

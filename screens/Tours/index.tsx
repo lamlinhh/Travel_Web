@@ -1,37 +1,41 @@
 "use client";
 
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import axiosInstance from "@/axios/axiosInstance";
+import TourModal from "@/modals/TourModal";
+import { fetchcategori } from "@/redux/slices/categoriesSlice";
+import { fetchTourDifficulty } from "@/redux/slices/tourDifficultySlice";
+import { fetchTours } from "@/redux/slices/tourSlice";
+import {
+  DeleteOutlined,
+  PlusOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { Button, Input, Popconfirm, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles.module.scss";
-import moment from "moment";
-import { DeleteOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import { AppDispatch, RootState } from "../../redux/store";
-import React from "react";
-import TourModal from "@/modals/TourModal";
-import axiosInstance from "@/axios/axiosInstance";
-import { fetchTours } from "@/redux/slices/tourSlice";
-import { fetchcategori } from "@/redux/slices/categoriesSlice";
+import styles from "./styles.module.scss";
 
 const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { tours } = useSelector((state: RootState) => state.tour);
+  const { tours, currentPage } = useSelector((state: RootState) => state.tour);
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchTours());
+    dispatch(fetchTours(currentPage));
     dispatch(fetchcategori());
+    dispatch(fetchTourDifficulty());
   }, []);
 
   const handleDelete = async (tourID: string) => {
     try {
       await axiosInstance.delete(`DeleteTour/${tourID}`);
       toast.success("Xoá thành công!");
-      dispatch(fetchTours());
+      dispatch(fetchTours(currentPage));
     } catch (error) {
       toast.error("Xoá thất bại!");
     }
@@ -99,13 +103,12 @@ const Index = () => {
       render: (data: any) => <>{moment(data).format("DD/MM/YYYY")}</>,
     },
   ];
-
   return (
     <div className={styles.container}>
       <TourModal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        onSuccess={() => dispatch(fetchTours())}
+        onSuccess={() => dispatch(fetchTours(currentPage))}
       />
       <h2>Tours</h2>
       <div

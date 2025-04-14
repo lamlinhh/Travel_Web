@@ -1,16 +1,15 @@
 import { fetchTours, setPage } from "@/redux/slices/tourSlice";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
-import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles.module.scss";
 import {
-  FaStar,
-  FaMapMarkerAlt,
   FaChevronLeft,
   FaChevronRight,
+  FaMapMarkerAlt,
+  FaStar,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 const tours = [
   {
@@ -70,8 +69,6 @@ const tours = [
     price: "$35",
   },
 ];
-
-const itemsPerPage = 3;
 
 const CardTour = () => {
   const dispatch = useDispatch<AppDispatch>();

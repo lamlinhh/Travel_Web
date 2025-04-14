@@ -8,6 +8,7 @@ import itemReducer from "./slices/itemSlice";
 import reviewsReducer from "./slices/reviewsSlice";
 import tourDetailReducer from "./slices/tourDetailSlice";
 import tourReducer from "./slices/tourSlice";
+import tourDifficultyReducer from "./slices/tourDifficultySlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     bookTour: bookTourReducer,
     payment: paymentReducer,
     categorie: categoriesReducer,
+    tourDifficulty: tourDifficultyReducer,
   },
 });
 

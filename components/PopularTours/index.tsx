@@ -35,10 +35,13 @@ const PopularTours = () => {
           <div
             key={index}
             className={styles.card}
-            onClick={() => handleTourClick(tour._id)}
-          >
+            onClick={() => handleTourClick(tour._id)}>
             <div className={styles.imageContainer}>
-              <img src={tour.Image} alt={tour.TourName} className={styles.image} />
+              <img
+                src={tour.Image}
+                alt={tour.TourName}
+                className={styles.image}
+              />
             </div>
             <div className={styles.content}>
               <p className={styles.location}>
