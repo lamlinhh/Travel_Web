@@ -37,7 +37,7 @@ const UserModal: React.FC<TourModalProps> = ({ open, onClose, onSuccess }) => {
   const { tourDifficulty } = useSelector(
     (state: RootState) => state.tourDifficulty,
   );
-  console.log("categori", categori);
+
   const handleSubmit = () => {
     form.submit();
   };
