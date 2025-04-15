@@ -1,15 +1,6 @@
-export interface BookTourProps {
-  TourId: {
-    TourName: string;
-  };
-  DepartureDate: string;
-  QuantityAdults?: number;
-  QuantityChildren?: number;
-}
-
 export interface PaymentProps {
   _id: string;
-  BookTourId: BookTourProps;
+  BookTourId: string;        // hoặc BookTourProps nếu populate
   UserId: string;
   tourName?: string;
   PaymentMethod?: string;
@@ -18,5 +9,4 @@ export interface PaymentProps {
   PaymentStatus?: boolean;
   createdAt?: string | Date;
   updatedAt?: string | Date;
-  TourId: string;
 }
