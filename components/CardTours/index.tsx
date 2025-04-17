@@ -1,80 +1,15 @@
 import { fetchTours, setPage } from "@/redux/slices/tourSlice";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
-import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaMapMarkerAlt,
-  FaStar,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 
-const tours = [
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/red-telephone-booth_lt9tej.webp",
-    location: "Paris, France",
-    title: "Cannes and Antibes Night Tour",
-    rating: 4,
-    reviews: 6,
-    price: "$60",
-    tag: "Likely to Sell Out",
-  },
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/Venice_cldsgh.webp",
-    location: "Venice, Italy",
-    title: "Vinecy and Toul Night Tour",
-    rating: 5,
-    reviews: 9,
-    price: "$215",
-  },
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/aquairum_f72yqn.webp",
-    location: "Nha Trang, Vietnam",
-    title: "Discover Nha Trang Diving Tour",
-    rating: 3,
-    reviews: 6,
-    price: "$125",
-    tag: "Likely to Sell Out",
-  },
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/dubai_xgjtjo.webp",
-    location: "Dubai, United Arab Emirates",
-    title: "Dubai full day city tour",
-    rating: 5,
-    reviews: 6,
-    price: "$35",
-  },
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/honolulu_wut943.webp",
-    location: "Honolulu, Hawaii",
-    title: "Honolulu City Highlights Tour",
-    rating: 5,
-    reviews: 6,
-    price: "$35",
-  },
-  {
-    image:
-      "https://raw.githubusercontent.com/lamlinhh/Travel_Web/refs/heads/main/assets/Images/safari_tour_ktychp.webp",
-    location: "Arusha, Tanzania",
-    title: "Safari Adventure Tour",
-    rating: 5,
-    reviews: 6,
-    price: "$35",
-  },
-];
-
 const CardTour = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { tours, loading, error, currentPage, totalPages } = useSelector(
-    (state: RootState) => state.tour,
-  );
+  const { tours, loading, error, currentPage, totalPages } = useSelector((state: RootState) => state.tour);
   const router = useRouter();
 
   const handleTourClick = (tourID: any) => {
@@ -120,13 +55,10 @@ const CardTour = () => {
             <div
               key={tour._id}
               className={styles.card}
-              onClick={() => handleTourClick(tour._id)}>
+              onClick={() => handleTourClick(tour._id)}
+            >
               <div className={styles.imageContainer}>
-                <img
-                  src={tour.Image}
-                  alt={tour.TourName}
-                  className={styles.image}
-                />
+                <img src={tour.Image} alt={tour.TourName} className={styles.image} />
               </div>
               <div className={styles.content}>
                 <p className={styles.location}>
@@ -148,11 +80,13 @@ const CardTour = () => {
         )}
       </div>
 
+
       <div className={styles.pagination}>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={styles.paginationButton}>
+          className={styles.paginationButton}
+        >
           <FaChevronLeft />
         </button>
 
@@ -161,7 +95,8 @@ const CardTour = () => {
             key={index}
             onClick={() => typeof page === "number" && handlePageChange(page)}
             disabled={page === currentPage}
-            className={styles.paginationButton}>
+            className={styles.paginationButton}
+          >
             {page}
           </button>
         ))}
@@ -169,35 +104,8 @@ const CardTour = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={styles.paginationButton}>
-          <FaChevronRight />
-        </button>
-      </div>
-
-      <div className={styles.pagination}>
-        <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
           className={styles.paginationButton}
-          title="Previous page">
-          <FaChevronLeft />
-        </button>
-
-        {getPageNumbers().map((page, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageClick(page)}
-            disabled={page === currentPage}
-            className={styles.paginationButton}>
-            {page}
-          </button>
-        ))}
-
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className={styles.paginationButton}
-          title="Next page">
+        >
           <FaChevronRight />
         </button>
       </div>
