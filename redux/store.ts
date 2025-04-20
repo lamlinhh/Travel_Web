@@ -10,6 +10,7 @@ import tourDetailReducer from "./slices/tourDetailSlice";
 import tourReducer from "./slices/tourSlice";
 import tourDifficultyReducer from "./slices/tourDifficultySlice";
 
+import myToursReducer from "./slices/myToursSlice";
 export const store = configureStore({
   reducer: {
     item: itemReducer,
@@ -22,6 +23,7 @@ export const store = configureStore({
     payment: paymentReducer,
     categorie: categoriesReducer,
     tourDifficulty: tourDifficultyReducer,
+    myTours: myToursReducer,
   },
 });
 

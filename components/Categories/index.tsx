@@ -46,6 +46,7 @@ const Categories = () => {
                   width={400}
                   height={250}
                   className={styles.image}
+                  style={{ objectFit: "cover" }}
                 />
                 <div className={styles.overlay}></div>
               </div>

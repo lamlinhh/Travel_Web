@@ -100,9 +100,13 @@ const PaymentForm = () => {
     try {
       const result = await dispatch(createPayment(paymentData));
       if (result?.payload?.errCode === 0) {
-        setModalMessage("Your offline payment has been recorded. Please complete payment at the counter.");
+        setModalMessage(
+          "Your offline payment has been recorded. Please complete payment at the counter.",
+        );
       } else {
-        setModalMessage("An error occurred while creating the offline payment.");
+        setModalMessage(
+          "An error occurred while creating the offline payment.",
+        );
       }
       setShowModal(true);
     } catch (error) {
@@ -129,8 +133,7 @@ const PaymentForm = () => {
           className={styles.area}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
+          transition={{ duration: 0.5, ease: "easeOut" }}>
           <div className={styles.banner}>
             <div className={styles.blockImage}>
               <Image
@@ -152,28 +155,36 @@ const PaymentForm = () => {
             <span className={styles.label}>
               <UserOutlined style={{ color: "#e65c2e" }} /> Username:
             </span>
-            <span className={styles.value}>{userDetails?.UserName || "Loading..."}</span>
+            <span className={styles.value}>
+              {userDetails?.UserName || "Loading..."}
+            </span>
           </div>
 
           <div className={styles.row}>
             <span className={styles.label}>
               <MailOutlined style={{ color: "#e65c2e" }} /> Email:
             </span>
-            <span className={styles.value}>{userDetails?.Email || "Loading..."}</span>
+            <span className={styles.value}>
+              {userDetails?.Email || "Loading..."}
+            </span>
           </div>
 
           <div className={styles.row}>
             <span className={styles.label}>
               <PhoneOutlined style={{ color: "#e65c2e" }} /> Phone:
             </span>
-            <span className={styles.value}>{userDetails?.Phone || "Loading..."}</span>
+            <span className={styles.value}>
+              {userDetails?.Phone || "Loading..."}
+            </span>
           </div>
 
           <div className={styles.row}>
             <span className={styles.label}>
               <ProfileOutlined style={{ color: "#e65c2e" }} /> Tour Name:
             </span>
-            <span className={styles.value}>{tour ? tour.TourName : "Loading..."}</span>
+            <span className={styles.value}>
+              {tour ? tour.TourName : "Loading..."}
+            </span>
           </div>
 
           <div className={styles.row}>
@@ -181,19 +192,21 @@ const PaymentForm = () => {
               <DollarOutlined style={{ color: "#e65c2e" }} /> Amount:
             </span>
             <span className={styles.value}>
-              {bookTourData?.TotalPrice ? `${bookTourData.TotalPrice} $` : "Loading..."}
+              {bookTourData?.TotalPrice
+                ? `${bookTourData.TotalPrice} $`
+                : "Loading..."}
             </span>
           </div>
 
           <div className={styles.row}>
             <span className={styles.label}>
-              <CreditCardOutlined style={{ color: "#e65c2e" }} /> Payment Method:
+              <CreditCardOutlined style={{ color: "#e65c2e" }} /> Payment
+              Method:
             </span>
             <select
               className={styles.select}
               value={paymentMethod}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            >
+              onChange={(e) => setPaymentMethod(e.target.value)}>
               <option value="MOMO">MOMO</option>
               <option value="OFFLINE">Pay at Counter</option>
             </select>
@@ -201,17 +214,20 @@ const PaymentForm = () => {
 
           <div className={styles.row}>
             <span className={styles.label}>Status:</span>
-            <span className={styles.value}>{paymentStatus ? "Paid" : "Unpaid"}</span>
+            <span className={styles.value}>
+              {paymentStatus ? "Paid" : "Unpaid"}
+            </span>
           </div>
 
           <div className={styles.paymentButtons}>
             <motion.button
               className={styles.payButton}
               onClick={handleCreatePayment}
-              disabled={loading || !userId || !bookTourId || !tour || !bookTourData}
+              disabled={
+                loading || !userId || !bookTourId || !tour || !bookTourData
+              }
               whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.03 }}
-            >
+              whileHover={{ scale: 1.03 }}>
               {loading ? "Processing..." : "Pay Now"}
             </motion.button>
           </div>

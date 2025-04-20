@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "@mui/material/styles";
 import styles from "./styles.module.scss";
 import { ApexOptions } from "apexcharts";
 import SaleCard from "@/components/SaleCard";
 import PeopleIcon from "@mui/icons-material/People";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchUsers } from "@/redux/slices/getUserSlice";
+import { fetchTours } from "@/redux/slices/tourSlice";
+
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const dataUsers = [
@@ -29,7 +35,17 @@ const dataTours = [
 ];
 
 const Index = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { users } = useSelector((state: RootState) => state.user);
+  const { totalItem, currentPage } = useSelector(
+    (state: RootState) => state.tour,
+  );
   const theme = useTheme();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+    dispatch(fetchTours(currentPage));
+  }, [dispatch]);
 
   const chartColors = [
     theme.palette.primary.main,
@@ -69,11 +85,19 @@ const Index = () => {
       <div className={styles.cards}>
         <SaleCard
           icon={<PeopleIcon fontSize="large" />}
-          title="Tổng số user"
-          total={714}
+          title="Tổng số User"
+          total={users?.length}
           percent={2.6}
           chart={chartData}
           backgroundColor="#46b8da"
+        />
+        <SaleCard
+          icon={<ShoppingCartIcon fontSize="large" />}
+          title="Tổng số Tours"
+          total={totalItem}
+          percent={3}
+          chart={chartData}
+          backgroundColor="#eb9234"
         />
       </div>
 

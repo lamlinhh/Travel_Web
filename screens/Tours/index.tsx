@@ -21,7 +21,11 @@ import styles from "./styles.module.scss";
 
 const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { tours, currentPage } = useSelector((state: RootState) => state.tour);
+  const { tours, currentPage, totalItem } = useSelector(
+    (state: RootState) => state.tour,
+  );
+  console.log("currentPage", currentPage);
+  console.log("totalPages", totalItem);
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
@@ -135,7 +139,15 @@ const Index = () => {
         bordered
         columns={columns}
         dataSource={tours.map((tour: any) => ({ ...tour, key: tour?._id }))}
-        pagination={{ pageSize: 10 }}
+        pagination={{
+          current: currentPage,
+          pageSize: 3,
+          total: totalItem,
+          showSizeChanger: false,
+          onChange: (page) => {
+            dispatch(fetchTours(page));
+          },
+        }}
       />
     </div>
   );

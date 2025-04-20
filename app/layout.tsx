@@ -9,7 +9,7 @@ import { ConfigProvider } from "antd";
 import { usePathname } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
-import { roboto } from './fonts';
+import { roboto } from "./fonts";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({
@@ -19,9 +19,9 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   const isAuthPage =
-    pathname === "/auth/login" ||
-    pathname === "/auth/register" ||
-    pathname === "/auth/forgot-password";
+    pathname === "/login" ||
+    pathname === "register" ||
+    pathname === "forgot-password";
 
   return (
     <html lang="en" className={roboto.className}>

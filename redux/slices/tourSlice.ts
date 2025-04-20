@@ -23,6 +23,7 @@ interface TourState {
   selectedCategoryId: string | null;
   currentPage: number;
   totalPages: number;
+  totalItem: number;
   loading: boolean;
   error: string | null;
 }
@@ -33,6 +34,7 @@ const initialState: TourState = {
   selectedCategoryId: null,
   currentPage: 1,
   totalPages: 1,
+  totalItem: 1,
   loading: false,
   error: null,
 };
@@ -48,8 +50,9 @@ export const fetchTours = createAsyncThunk(
       if (data.errCode !== 0) throw new Error(data.errMessage);
       return {
         tours: data.tours,
-        totalPages: data.pagination?.pages || 1,
+        totalPages: data.pagination?.pages,
         currentPage: page,
+        totalItems: data.pagination?.total,
       };
     } catch (err: any) {
       return thunkAPI.rejectWithValue(
@@ -115,6 +118,7 @@ const tourSlice = createSlice({
         state.tours = action.payload.tours; // Ghi đè dữ liệu thay vì "load more"
         state.totalPages = action.payload.totalPages;
         state.currentPage = action.payload.currentPage;
+        state.totalItem = action.payload.totalItems;
         state.loading = false;
       })
       .addCase(fetchTours.rejected, (state, action) => {
