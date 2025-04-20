@@ -1,6 +1,6 @@
 export interface PaymentProps {
   _id: string;
-  BookTourId: string;        // hoặc BookTourProps nếu populate
+  BookTourId: string; // hoặc BookTourProps nếu populate
   UserId: string;
   tourName?: string;
   PaymentMethod?: string;

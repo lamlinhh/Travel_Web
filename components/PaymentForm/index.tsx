@@ -94,6 +94,7 @@ const PaymentForm = () => {
       PaymentStatus: paymentStatus,
       tourName: tour.TourName,
       Amount: amount,
+      TourId: tourId,
     };
 
     try {
