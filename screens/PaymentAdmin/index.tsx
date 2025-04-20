@@ -79,7 +79,6 @@ const Index = () => {
       key: "PaymentStatus",
       align: "center",
       render: (data: any) => {
-        console.log("data", data);
         const isPaid = isEqual(data, true);
         return (
           <Tag color={isPaid ? "green" : "red"}>
@@ -93,7 +92,6 @@ const Index = () => {
       key: "action",
       align: "center",
       render: (record: any) => {
-        console.log("record", record);
         const isPaid = isEqual(record?.PaymentStatus, 1);
 
         const handleConfirmPayment = async () => {

@@ -8,14 +8,15 @@ import styles from "./styles.module.scss";
 
 const MyTours = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { tours, loading, error } = useSelector((state: RootState) => state.myTours);
+  const { tours, loading, error } = useSelector(
+    (state: RootState) => state.myTours,
+  );
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user"); 
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); 
-      console.log("User ID:", parsedUser._id); 
-      dispatch(fetchToursByUserId(parsedUser._id)); 
+      const parsedUser = JSON.parse(storedUser);
+      dispatch(fetchToursByUserId(parsedUser._id));
     }
   }, [dispatch]);
 
@@ -42,7 +43,9 @@ const MyTours = () => {
               <p>
                 <strong>Ngày khởi hành:</strong>{" "}
                 {payment.BookTourId?.DepartureDate
-                  ? new Date(payment.BookTourId.DepartureDate).toLocaleDateString()
+                  ? new Date(
+                      payment.BookTourId.DepartureDate,
+                    ).toLocaleDateString()
                   : "Không có ngày"}
               </p>
               <p>

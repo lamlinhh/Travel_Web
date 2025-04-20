@@ -35,9 +35,9 @@ const Tour = () => {
         </Area>
 
         <Area className={styles.main}>
-          <Block className={styles.filter}>
+          {/* <Block className={styles.filter}>
             <TourFilter />
-          </Block>
+          </Block> */}
 
           <Block className={styles.results}>
             <div className={styles.header}>

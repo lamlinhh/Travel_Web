@@ -24,8 +24,6 @@ const Index = () => {
   const { tours, currentPage, totalItem } = useSelector(
     (state: RootState) => state.tour,
   );
-  console.log("currentPage", currentPage);
-  console.log("totalPages", totalItem);
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
