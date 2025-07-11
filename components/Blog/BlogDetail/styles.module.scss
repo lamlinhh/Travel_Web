@@ -1,0 +1,287 @@
+.blogDetailContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mainContent {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+
+  .articleImage {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    }
+  }
+
+  .articleContent {
+    padding: 2rem;
+
+    .metaInfo {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #666;
+      font-size: 0.875rem;
+
+      .date, .author {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #ff6b6b;
+      line-height: 1.3;
+    }
+
+    .description {
+      font-size: 1.25rem;
+      color: #666;
+      margin-bottom: 2rem;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .content {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #333;
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+
+      .tag {
+        background-color: #f0f0f0;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        color: #666;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #ff6b6b;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.authorSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+
+  .authorImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ff6b6b;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .authorInfo {
+    flex: 1;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #ff6b6b;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
+
+.relatedArticles {
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ff6b6b;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: #ff6b6b;
+      border-radius: 3px;
+    }
+  }
+
+  .relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .relatedCard {
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .relatedImage {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .relatedContent {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #ff6b6b;
+      }
+
+      .metaInfo {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.75rem;
+        color: #666;
+
+        .date, .author {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+        }
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .tag {
+          background-color: #f0f0f0;
+          padding: 0.25rem 0.75rem;
+          border-radius: 1rem;
+          font-size: 0.75rem;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .blogDetailContainer {
+    padding: 1rem;
+  }
+
+  .mainContent {
+    .articleImage {
+      height: 300px;
+    }
+
+    .articleContent {
+      padding: 1.5rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .description {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .authorSection {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+
+    .authorImage {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .relatedArticles {
+    .relatedGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.notFound {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  margin: 4rem 0;
+} 

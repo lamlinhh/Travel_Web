@@ -3,18 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchReviewsByTourId, setPage } from "@/redux/slices/reviewsSlice";
 import { RootState, AppDispatch } from "@/redux/store";
 import ReviewCard from "../ReviewCard";
+import { useParams } from "next/navigation";
 import styles from "./styles.module.scss";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-interface ReviewsForTourProps {
-  tourId: string;
-}
 
-const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
+const ReviewsForTour = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { reviews, loading, error, currentPage, totalPages } = useSelector(
-    (state: RootState) => state.review,
+    (state: RootState) => state.review
   );
+
+  const params = useParams();
+  const tourId = params?.id as string;
 
   useEffect(() => {
     dispatch(fetchReviewsByTourId({ tourId, page: currentPage, limit: 6 }));
@@ -51,9 +52,7 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
     <div className={styles.container}>
       <div className={styles.reviewGrid}>
         {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <ReviewCard key={review._id?.toString()} {...review} />
-          ))
+          reviews.map((review) => <ReviewCard key={review._id?.toString()} {...review} />)
         ) : (
           <div>No reviews found.</div>
         )}
@@ -63,7 +62,8 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={styles.paginationButton}>
+          className={styles.paginationButton}
+        >
           <FaChevronLeft />
         </button>
 
@@ -72,7 +72,8 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
             key={index}
             onClick={() => typeof page === "number" && handlePageChange(page)}
             disabled={page === currentPage}
-            className={styles.paginationButton}>
+            className={styles.paginationButton}
+          >
             {page}
           </button>
         ))}
@@ -80,7 +81,8 @@ const ReviewsForTour = ({ tourId }: ReviewsForTourProps) => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={styles.paginationButton}>
+          className={styles.paginationButton}
+        >
           <FaChevronRight />
         </button>
       </div>

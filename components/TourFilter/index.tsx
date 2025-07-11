@@ -4,7 +4,8 @@ import styles from "./styles.module.scss";
 import { FaRegCalendarAlt, FaStar } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import { Block, Yard } from "@/libs";
-import { FaCaretLeft, FaCaretRight } from 'react-icons/fa';
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+import React from "react";
 
 const TourFilter = () => {
   const [date, setDate] = useState<Date | null>(new Date());
@@ -27,36 +28,29 @@ const TourFilter = () => {
                 decreaseMonth,
                 increaseMonth,
                 prevMonthButtonDisabled,
-                nextMonthButtonDisabled
+                nextMonthButtonDisabled,
               }) => (
                 <div className={styles.customHeader}>
                   {/* Nút Previous */}
                   <button
                     onClick={decreaseMonth}
                     disabled={prevMonthButtonDisabled}
-                    className={styles.navButton}
-                  >
-                    <FaCaretLeft
-                      size={30}
-                      className={styles.icon}
-                    />
+                    className={styles.navButton}>
+                    <FaCaretLeft size={30} className={styles.icon} />
                   </button>
 
                   {/* Tháng và năm */}
                   <div className={styles.monthYear}>
-                    {date.toLocaleString('default', { month: 'long' })} {date.getFullYear()}
+                    {date.toLocaleString("default", { month: "long" })}{" "}
+                    {date.getFullYear()}
                   </div>
 
                   {/* Nút Next */}
                   <button
                     onClick={increaseMonth}
                     disabled={nextMonthButtonDisabled}
-                    className={styles.navButton}
-                  >
-                    <FaCaretRight
-                      size={30}
-                      className={styles.icon}
-                    />
+                    className={styles.navButton}>
+                    <FaCaretRight size={30} className={styles.icon} />
                   </button>
                 </div>
               )}
@@ -79,7 +73,7 @@ const TourFilter = () => {
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             style={{
-              background: `linear-gradient(to right, orange ${price / 5}%, #ddd ${price / 5}%)`
+              background: `linear-gradient(to right, orange ${price / 5}%, #ddd ${price / 5}%)`,
             }}
           />
         </Block>

@@ -22,29 +22,18 @@ const Index = () => {
     try {
       const response = await axiosInstance.post("/Login", values);
 
-      if (isEqual(response.data.errCode, 0)) {
+      if (isEqual(response?.data?.errCode, 0)) {
         const { token, user } = response?.data;
 
-        // Kiểm tra quyền hạn của user
-        if (user.Role !== "admin") {
-          message.error("Bạn không có quyền truy cập!");
-          toast.error("Tài khoản không có quyền truy cập!", {
-            style: { width: "340px", height: "80px", textAlign: "center" },
-          });
-          return;
-        }
-
-        // Lưu token vào cookie
-        document.cookie = `token=${token}; path=/; max-age=86400`;
-
-        // Lưu thông tin user vào localStorage
+        // Lưu thông tin người dùng vào localStorage
         localStorage.setItem("user", JSON.stringify(user));
+        document.cookie = `token=${token}; path=/; max-age=86400`;
+        toast.success("Đăng nhập thành công!");
 
-        message.success("Đăng nhập thành công!");
-        router.push("/admin/user");
+        // Chuyển hướng tới trang chủ
+        router.push("/");
       } else {
         toast.error("Email hoặc mật khẩu không chính xác!");
-        message.error(response.data.message || "Đăng nhập thất bại!");
       }
     } catch (error) {
       toast.error("Email hoặc mật khẩu không đúng!");

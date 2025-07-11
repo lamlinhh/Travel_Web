@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import PaymentIcon from "@mui/icons-material/Payment";
 
 const Index = () => {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ const Index = () => {
     { name: "Dashboard", icon: <SpaceDashboardIcon />, path: "/admin" },
     { name: "User", icon: <PersonIcon />, path: "/admin/user" },
     { name: "Tour", icon: <ShoppingCartIcon />, path: "/admin/tour" },
+    { name: "Payment", icon: <PaymentIcon />, path: "/admin/payment" },
   ];
 
   return (
@@ -22,11 +24,11 @@ const Index = () => {
       <ul className={styles.menu}>
         {menuItems.map((item) => (
           <li
-            key={item.path}
+            key={item?.path}
             className={pathname === item.path ? styles.active : ""}>
-            <Link href={item.path}>
-              <span className={styles.icon}>{item.icon}</span>
-              {item.name}
+            <Link href={item?.path}>
+              <span className={styles.icon}>{item?.icon}</span>
+              {item?.name}
             </Link>
           </li>
         ))}

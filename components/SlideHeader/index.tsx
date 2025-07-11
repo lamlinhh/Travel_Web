@@ -72,7 +72,6 @@ const Index = () => {
           <div className={styles.inputGroup}>
             <FaMapMarkerAlt color="orange" />
             <div style={{ marginLeft: "8px" }}>
-              <label>Where to ?</label>
               <input
                 type="text"
                 placeholder="Search for a place or activity"
@@ -87,7 +86,6 @@ const Index = () => {
           <div className={styles.inputGroup}>
             <FaRegCalendarAlt color="orange" />
             <div style={{ marginLeft: "8px" }}>
-              <label>When</label>
               <DatePicker
                 selected={date}
                 onChange={(d) => setDate(d)}

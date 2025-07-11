@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", marginTop: "80px" }}>
       <div>
         <Sidebar />
       </div>

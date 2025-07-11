@@ -26,7 +26,7 @@ const AnalyticsWidgetSummary = ({
       <div className={styles.content}>
         <div className={styles.text}>
           <p className={styles.title}>{title}</p>
-          <h2 className={styles.total}>{total.toLocaleString()}k</h2>
+          <h2 className={styles.total}>{total.toLocaleString()}</h2>
         </div>
         <div className={styles.chart}>
           <ResponsiveContainer width={90} height={50}>

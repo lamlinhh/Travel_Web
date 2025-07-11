@@ -8,32 +8,32 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "no-duplicate-imports": "error",
-    "react-hooks/exhaustive-deps": 0, // không check hooks useEffect
-    "@next/next/no-img-element": "off",
+    "no-duplicate-imports": "error", // Lỗi nếu import trùng lặp
+    "react-hooks/exhaustive-deps": 0, // Tắt kiểm tra trong useEffect
+    "@next/next/no-img-element": "error", // Lỗi khi sử dụng <img> thay vì next/image
     "no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": true,
         "allowTernary": true
       }
     ],
-    "semi": 0,
-    "quotes": 0,
-    "no-empty-pattern": "off",
-    "react/react-in-jsx-scope": 0,
-    "react/display-name": 0,
-    "react/prop-types": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/explicit-member-accessibility": 0,
-    "@typescript-eslint/indent": 0,
-    "@typescript-eslint/member-delimiter-style": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-use-before-define": 0,
-    "@typescript-eslint/no-namespace": "off",
-    "no-extra-semi": "off",
-    "@typescript-eslint/no-extra-semi": 1,
+    "semi": "off", // Tắt cảnh báo về dấu chấm phẩy
+    "quotes": "off", // Tắt cảnh báo về dấu ngoặc kép/đơn
+    "no-empty-pattern": "off", // Tắt cảnh báo về pattern rỗng
+    "react/react-in-jsx-scope": "off", // Tắt cảnh báo về React trong JSX scope (trong Next.js không cần import React nữa)
+    "react/display-name": "off", // Tắt cảnh báo về display name trong React
+    "react/prop-types": "off", // Tắt kiểm tra PropTypes trong dự án TypeScript
+    "@typescript-eslint/explicit-function-return-type": "off", // Tắt yêu cầu khai báo kiểu trả về cho hàm
+    "@typescript-eslint/explicit-member-accessibility": "off", // Tắt yêu cầu khai báo quyền truy cập của thành viên
+    "@typescript-eslint/indent": "off", // Tắt kiểm tra thụt lề
+    "@typescript-eslint/member-delimiter-style": "off", // Tắt kiểm tra định dạng dấu phân cách thành viên
+    "@typescript-eslint/no-explicit-any": "error", // Lỗi khi sử dụng kiểu `any`
+    "@typescript-eslint/no-var-requires": "error", // Lỗi khi sử dụng `require` thay vì import
+    "@typescript-eslint/no-use-before-define": "error", // Lỗi khi sử dụng trước khi khai báo
+    "@typescript-eslint/no-namespace": "off", // Tắt cảnh báo về `namespace`
+    "no-extra-semi": "off", // Tắt cảnh báo về dấu chấm phẩy thừa
+    "@typescript-eslint/no-extra-semi": "warn", // Cảnh báo về dấu chấm phẩy thừa
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -43,20 +43,19 @@
         "argsIgnorePattern": "^_"
       }
     ],
-
     "no-console": [
-      2,
+      "error",
       {
-        "allow": ["warn", "error", "info"]
+        "allow": ["warn", "error", "info"] // Chỉ cho phép console.warn, console.error, console.info
       }
     ],
     "react/no-unknown-property": [
-      2,
+      "error",
       {
-        "ignore": ["jsx", "global"]
+        "ignore": ["jsx", "global"] // Tắt cảnh báo cho thuộc tính JSX và global
       }
     ],
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off" // Tắt cảnh báo về non-null assertion
   },
   "settings": {
     "react": {
